@@ -1,0 +1,40 @@
+<template name="honor">
+    <view class="honor">
+        <view class="honorContainer">
+                <view class="title">
+                资质荣誉
+                </view>
+            <view class="text">
+				{{certificate.honor.note}}
+		   </view>
+            <view class="honorItem money">
+                <view class="itemTitle">资产管理体系</view>
+                <view class="content">
+                    <rich-text nodes="{{certificate.honor.management}}" class="p"></rich-text>
+                </view>
+                <image src="./images/money.png" class="bgImg" mode="aspectFill" />
+            </view>
+            <view class="honorItem risk">
+                <view class="itemTitle">风险管控体系</view>
+                <view class="content">
+                       <rich-text nodes="{{certificate.honor.control}}" class="p"></rich-text>
+                </view>
+                <image src="./images/risk.png" class="bgImg" mode="aspectFill" />
+            </view>
+              <view class="certificates">
+	           <view class="title">
+	               资质证书
+	           </view>
+	           <view class="certificateItems" style="padding-bottom:40rpx">
+	               <view class="certificateItem" wx:for="{{certificate.list}}" wx:key="index">
+	                   <view class="pic">
+	                       <image src="{{baseUrl+item.image}}" alt="" mode="widthFix" />
+	                   </view>
+	                   <view class="name">{{item.title}}</view>
+	               </view>
+	
+	           </view>
+	       </view>
+        </view>
+    </view>
+</template>

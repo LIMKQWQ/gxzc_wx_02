@@ -1,0 +1,125 @@
+<template name="introduce">
+    <view class="introduceContainer">
+        <view class="introductions">
+            <!-- 关于大家共享资产仓 -->
+            <view class="aboutUs">
+                <view class="title">关于油气资产租赁</view>
+                <view class="content">
+                    {{introduces.introduce.about}}
+                </view>
+            </view>
+            <!-- 插图 swiper -->
+            <view class="illus">
+                <swiper autoplay="{{true}}" interval="2000" class="illusSwiper" circular current="{{swiper.s1.current}}"  data-swiper="s1" bindanimationfinish="swiperChange">
+                    <swiper-item class="illusItem" wx:for="{{introduces.introduce.images}}" wx:key="self">
+                        <image src="{{item}}" alt="" mode="aspectFill" />
+                    </swiper-item>
+                </swiper>
+                <view class="swiper-button-prev">
+                    <view class="clickBtn" data-swiper="s1" bind:tap="toPre"></view>
+                    <image src="./pages/introduce/images/left.png" mode="aspectFill" />
+                </view>
+                <view class="swiper-button-next">
+                    <view class="clickBtn" data-swiper="s1" bind:tap="toNext"></view>
+                    <image src="./pages/introduce/images/right.png" mode="aspectFill" />
+                </view>
+            </view>
+            <!-- 服务介绍 -->
+            <view class="serverIntroduce">
+                <view class="title">服务介绍</view>
+            </view>
+            <!-- swiper -->
+            <view class="selectSource">
+                <!-- style="height:{{introduce.getHeight(heights,swiper.s2.current)}}" -->
+                <swiper class="selectSwiper" autoplay="{{true}}" interval="5000" circular="{{true}}" current="{{swiper.s2.current}}"  data-swiper="s2" bindanimationfinish="swiperChange">
+                    <swiper-item class="selectItem" wx:for="{{introduces.service}}">
+                        <view class="all">
+                            <view class="img">
+                                <image src="{{baseUrl+item.image}}" alt="" mode="aspectFill" />
+                            </view>
+                            <view class="title">{{item.title}}</view>
+                            <view class="item">
+                                <!-- <view class="itemTitle">覆盖全球的资产寻源服务：</view> -->
+                                <scroll-view id="scrollView" enhanced="{{true}}"  scroll-y="{{true}}" style="height:500rpx">
+                                    <view  class="content">
+                                        {{item.content}}
+                                    </view>
+                                </scroll-view>
+                            </view>
+                        </view>
+                    </swiper-item>
+                </swiper>
+                <view class="swiper-button-prev">
+                    <view class="clickBtn" data-swiper="s2" bind:tap="toPre"></view>
+                    <image src="./pages/introduce/images/left.png" mode="aspectFill" />
+                </view>
+                <view class="swiper-button-next">
+                    <view class="clickBtn" data-swiper="s2" bind:tap="toNext"></view>
+                    <image src="./pages/introduce/images/right.png" mode="aspectFill" />
+                </view>
+            </view>
+            <!-- 发展历程 -->
+            <view class="course">
+                <view class="title">发展历程</view>
+                <swiper class="courseSwiper" autoplay="{{true}}" interval="2000" circular="{{true}}" current="{{swiper.s3.current}}"  data-swiper="s3" bindanimationfinish="swiperChange">
+                    <swiper-item class="swiper-slide" wx:for="{{introduces.development}}" wx:for-item="develop" wx:key="index">
+                        <view class="courseRow" >
+                            <view class="courseItem" wx:for="{{develop}}" wx:key="year">
+                                <view class="pic">
+                                    <image src="{{baseUrl+item.image}}" mode="aspectFill" alt="" />
+                                </view>
+                                <view class="icon"></view>
+                                <view class="info">
+                                    <view class="year">{{item.year}}</view>
+                                    <view class="infoTitle">{{item.title}}</view>
+                                    <view class="infoContent">{{item.content}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </swiper-item>
+                  
+                </swiper>
+                <view class="swiper-button-prev" data-swiper="s3" bind:tap="toPre">
+                    <image src="./pages/introduce/images/bigLeft.png" class="icon prevIcon" mode="aspectFill" />
+                </view>
+                <view class="swiper-button-next" data-swiper="s3" bind:tap="toNext">
+                    <image src="./pages/introduce/images/bigRight.png" class="icon nextIcon" mode="aspectFill" />
+                </view>
+            </view>
+        </view>
+        <!-- 发展愿景 -->
+        <view class="vision">
+            <view class="visionTitle">发展愿景</view>
+            <view class="text">{{introduces.introduce.vision}}</view>
+            <view class="visions">
+                <view class="visionItem">
+                    <view class="year">{{introduces.introduce.year1}}</view>
+                    <view class="visionContent">{{introduces.introduce.note1}}</view>
+                </view>
+                <view class="visionItem">
+                    <view class="year">{{introduces.introduce.year2}}</view>
+                    <view class="visionContent">{{introduces.introduce.note2}}</view>
+                </view>
+                <view class="visionItem">
+                    <view class="year">{{introduces.introduce.year3}}</view>
+                    <view class="visionContent">{{introduces.introduce.note3}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<wxs module="introduce">
+    function getHeight(hs,index){
+       
+        return hs[index]+"px"
+
+    }
+    function getContent(text){
+        return text.slice(3,-4)
+    }
+    module.exports={
+        getHeight:getHeight,
+        getContent:getContent
+    }
+
+</wxs>

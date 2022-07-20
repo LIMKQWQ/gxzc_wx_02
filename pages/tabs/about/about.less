@@ -1,0 +1,106 @@
+
+.container{
+    .banner{
+        min-height: 280rpx;
+        image{
+            height:280rpx;
+            width:100%;
+        }
+    }
+    .tabs{
+        display: flex;
+        width:690rpx;
+        margin: 0 auto;
+        margin-top: 40rpx;
+    
+        position: relative;
+        justify-content: space-between;
+        @distance:190.5rpx;
+       &.item1{
+           .tabItem.item1{
+               color:#333333;
+               font-weight: bold;
+           }
+           &::before{
+                transform: translateX(0);
+            }
+       }
+       &.item2{
+        .tabItem.item2{
+            color:#333333;
+            font-weight: bold;
+        }
+        &::before{
+             transform: translateX(@distance);
+         }
+       }
+       &.item3{
+        .tabItem.item3{
+            color:#333333;
+            font-weight: bold;
+        }
+        &::before{
+             transform: translateX(@distance*2);
+         }
+       }
+       &.item4{
+        .tabItem.item4{
+            color:#333333;
+            font-weight: bold;
+        }
+        &::before{
+             transform: translateX(@distance*3);
+         }
+       }
+       &.item5{
+        .tabItem.item5{
+            color:#333333;
+            font-weight: bold;
+        }
+        &::before{
+             transform: translateX(@distance*4);
+         }
+       }
+      
+        .tabItem{
+            width:120rpx;
+            color:#666666;
+            font-size: 28rpx;
+            padding-bottom: 24rpx;
+            &:last-child{
+                margin-right: 0;
+            }
+           
+        }
+        
+        &::before{
+            content: "";
+            display: block;
+            width:120rpx;
+            border-bottom:4rpx solid #21439B;
+            position: absolute;
+            bottom:0;
+            left:0;
+            z-index:1;
+            transition: transform .2s;
+        }
+        &::after{
+            content: "";
+            display: block;
+            width:690rpx;
+            border-bottom:1px solid #E7E5F2;
+            position: absolute;
+            bottom:0;
+            left:0;
+            border-radius: 1rpx;
+        }
+
+    }
+    .pages{
+        margin-top: 40rpx;
+        @import "./pages/introduce/introduce.less";
+        @import "./pages/case/case.less";
+        @import "./pages/honor/honor.less";
+        @import "./pages/contact/contact.less";
+    }
+}

@@ -1,0 +1,56 @@
+@import "../../common/less/common.less";
+.lodingMoreIcon{
+    .flexCenter;
+    font-size: 28rpx;
+    height:100rpx;
+}
+.container{
+    .banner{
+        min-height: 280rpx;
+        image{
+            height:280rpx;
+            width:100%;
+        }
+    }
+    .list{
+        width:690rpx;
+        margin:0 auto;
+        margin-top: 39rpx; 
+        .listItem{
+            margin-bottom: 40rpx;
+            height: 130rpx;
+            box-shadow: 0px 6rpx 17rpx 1rpx rgba(153, 153, 153, 0.2);
+            border-radius: 10rpx;
+            padding:0 30rpx;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            &:last-child{
+                margin-bottom: 0;
+            }
+            .title{
+                font-size: 28rpx;
+                font-weight: bold;
+                width:480rpx;
+                .clipOneLine
+            }
+            .time{
+                margin-top: 22rpx;
+                color:#666666;
+                
+            }
+            .toInfo{
+                position: absolute;
+                right:30rpx;
+                top:50%;
+                .size(144rpx,44rpx);
+                .flexCenter;
+                border:1px solid #21439B;
+                transform:translateY(-50%);
+                font-size:22rpx;
+                color:#21439B;
+            }
+        }
+    }
+}

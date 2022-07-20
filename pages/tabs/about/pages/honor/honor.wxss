@@ -1,0 +1,139 @@
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mask {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  justify-content: center;
+  align-items: center;
+}
+.mask.show {
+  display: flex;
+}
+.clipOneLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.honor {
+  position: relative;
+}
+.honor .honorContainer {
+  margin-top: 41rpx;
+  padding: 0 29rpx;
+  position: relative;
+  overflow-x: hidden;
+}
+.honor .honorContainer .title {
+  color: #333333;
+  font-size: 34rpx;
+  font-weight: bold;
+  position: relative;
+  padding-left: 13rpx;
+}
+.honor .honorContainer .title::before {
+  content: "";
+  display: block;
+  width: 6rpx;
+  height: 32rpx;
+  background-color: #21439B;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  border-radius: 6rpx;
+  transform: translateY(-50%);
+}
+.honor .honorContainer .text {
+  margin-top: 37rpx;
+  font-size: 26rpx;
+  color: #666666;
+  line-height: 48rpx;
+  margin-bottom: 40rpx;
+}
+.honor .honorContainer .honorItem {
+  width: 690rpx;
+  box-shadow: 0px 0px 73px 3px rgba(33, 67, 155, 0.08);
+  padding: 40rpx 30rpx;
+  padding-right: 43rpx;
+  border-radius: 15rpx;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  position: relative;
+}
+.honor .honorContainer .honorItem.money .bgImg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 92rpx;
+  height: 125rpx;
+}
+.honor .honorContainer .honorItem.risk {
+  margin-top: 40rpx;
+}
+.honor .honorContainer .honorItem.risk .bgImg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 132rpx;
+  height: 127rpx;
+}
+.honor .honorContainer .honorItem .itemTitle {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.honor .honorContainer .honorItem .content {
+  margin-top: 39rpx;
+  color: #666666;
+  font-size: 28rpx;
+  line-height: 48rpx;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.honor .honorContainer .honorItem .content .p {
+  margin-top: 10rpx;
+}
+.honor .honorContainer .certificates {
+  margin-top: 60rpx;
+}
+.honor .honorContainer .certificates .title {
+  color: #333333;
+  font-size: 34rpx;
+}
+.honor .honorContainer .certificates .title::before {
+  content: "";
+  display: block;
+  width: 6rpx;
+  height: 32rpx;
+  background-color: #21439B;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  border-radius: 6rpx;
+  transform: translateY(-50%);
+}
+.honor .honorContainer .certificates .certificateItems {
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.honor .honorContainer .certificates .certificateItems .certificateItem {
+  margin-bottom: 68rpx;
+  width: 300rpx;
+}
+.honor .honorContainer .certificates .certificateItems .certificateItem .pic image {
+  width: 300rpx;
+}
+.honor .honorContainer .certificates .certificateItems .certificateItem .name {
+  text-align: center;
+  font-size: 26rpx;
+  margin-top: 25rpx;
+}

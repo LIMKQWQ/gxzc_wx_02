@@ -1,0 +1,363 @@
+@import "../../../common/less/common.less";
+.container{
+    height: 100vh;
+    
+  
+    .indexSwiper{
+        width:100vw;
+       height: 100vh;
+        overflow: hidden;
+        position: relative;
+        z-index:98;
+        .mainContent{
+            width: 100%;
+            position: absolute;
+            top:40%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            z-index:9;
+            .title{
+                font-size: 54rpx;
+                font-weight: bold;
+                color:#fff;
+                text-align: center;
+            }
+            .text{
+                margin-top: 44rpx;
+                text-align: center;
+                font-size: 32rpx;
+                height: 48rpx;
+            
+                display: flex;
+                justify-content: center;
+                view{
+                    color:#fff;
+                    position: relative;
+                    &::after{
+                        content:"";
+                        display: block;
+                        position: absolute;
+                        width:100%;
+                        bottom:-8rpx;
+                        border-top: 1px solid #fff ;
+                    }
+                }
+            
+                
+            }
+            
+        }
+        .swiper{
+            width:100vw;
+            height:100vh;
+            position: absolute;
+            top:0;
+            left:0;
+            .swiperItem{
+                height:100vh;
+                image{
+                    width:100vw;
+                    height:100vh;
+                }
+            }
+        }
+        .btns{
+		
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            display: flex;
+            justify-content: center;
+            
+            z-index:10;
+            .btn{
+                .flexCenter;
+                height:50rpx;
+                background: linear-gradient(0deg, #92F1F0, #1FCFCF, #1BBAB9);
+                border-radius: 25rpx;
+                text-align: center;
+                line-height: 50rpx;
+                font-size: 26rpx;
+                &.findSource{
+                    width:162rpx;
+                }
+                &.toBeSource{
+                    width:182rpx;
+                }
+                &:last-child{
+                    margin-left: 34rpx;
+                }
+                image{
+                    width:23rpx;
+                    margin-left: 8rpx;
+                }
+            }
+        }
+        .changeBtn{
+            position: absolute;
+            top:50%;
+            transform: translateY(-50%);
+           .size(16rpx,27rpx);
+           padding:20rpx;
+           &.pre{
+               left:10rpx;
+           }
+           &.next{
+             right:10rpx;
+           }
+        }
+
+    }
+    .notices{
+        text{
+            margin:0 50rpx;
+            color: #333333;
+        }
+    }
+    .census{
+	margin-top: 60rpx;
+	min-width: 100%;
+	position: relative;
+	width:100%;
+	
+        .censusContainer{
+            width:530rpx;
+            margin:0 auto;
+            .censusRow{
+                display: flex;
+                justify-content: space-between;
+                
+                margin-top: 22rpx;
+                position: relative;
+                
+                &:last-child{
+                    margin-top: 50rpx;
+                }
+                &::after{
+                    content: "";
+                    display: block;
+                    height:60rpx;
+                    border-right: 1px solid #d4d4d4;
+                    position: absolute;
+                    top:50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%) scaleX(.5);
+                }
+                .censusItem{
+                    width:350rpx;
+                    
+                    text-align: center;
+                    // border:1px solid red;
+                    .censusData{
+                        color:#666666;
+                        .num{
+                            font-size: 58rpx;
+                            font-weight: bold;
+                            color:#21439B;
+                            vertical-align: top;
+                        }
+                    }
+                    .censusTitle{
+                        // margin-top:22rem;
+                        font-size: 22rpx;
+                        color:#666666;
+                    }
+                }
+            }
+        }
+	
+    }
+    .hotList{
+        margin-top: 65rpx;
+        
+        .top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20rpx;
+            .title{
+                font-size: 34rpx;
+            
+                font-weight: 500;
+                font-weight: bold;
+            }
+            .more{
+                
+                display: flex;
+                align-items: center;
+                view{
+                    font-size: 22px;
+                    color:#21439B;
+                    margin-right: 6rpx;
+                }
+                image{
+                    width:22rpx;
+                    height:22rpx;
+                    margin-left: 4rpx;
+                }
+            }
+        }
+        .swiper-container{
+            box-sizing: border-box;
+            height: 980rpx;
+            .wx-swiper-dot{
+                width:25rpx;
+                height:4rpx;
+                background-color: #E0E0E0;
+				border-radius: 0;
+               
+            }
+            .wx-swiper-dot.wx-swiper-dot-active{
+                background: #21439B;
+				border-radius: 0;
+            }
+            .list{
+                margin-top: 39rpx;
+                height: 900rpx;
+                .row{
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0 20rpx;
+                    &:last-child{
+                        margin-top: 30rpx;
+                        
+                    }
+                    .listItem{
+                        width:335rpx;
+                       
+                       padding-bottom: 20rpx;
+                        box-shadow: 0rpx 6rpx 17rpx 1rpx rgba(153, 153, 153, 0.2);
+                        .thumbnail{
+                            
+                            image{
+                                width:100%;
+                                height: 229rpx;
+                                object-fit: cover;
+                            }
+                        }
+                        .title{
+                            padding: 15rpx;
+                            font-weight: bold;
+                            font-size: 28rpx;
+                            // font-family: SourceHanSansSC-Medium;
+                        }
+                        .info{
+                            display: flex;
+                            justify-content: space-between;
+                            padding: 0 10rpx;
+                            font-size:22rpx;
+                            color:#666666;
+                            overflow: hidden;
+                            .stock{
+                                width: 45%;
+                                overflow-x: hidden;
+                                word-break: keep-all;
+                            }
+                            .distance{
+                                // margin-left: 19rem;
+                                width: 55%;
+                                
+                                image{
+                                    width:20rpx;
+                                }
+                            }
+                            
+                            
+                        }
+                        .toKf{
+                            margin-top: 23rpx;
+                            .btn{
+                                display: block;
+                                width:144rpx;
+                                height:44rpx;
+                                .flexCenter;
+                                margin:0 auto;
+                                background-color: #019E97;
+                                border-radius: 22rpx;
+                                color:#ffffff;
+                                image{
+                                    width:18rpx;
+                                    margin-left: 6rpx;
+                                }
+                            }
+                            
+                        }
+                    }
+                    
+                }
+                
+            }
+        }
+        
+    }
+    .sharingKnowledge{
+        margin-top: 24rpx;
+        padding: 0 20rpx;
+        padding-bottom: 26rpx;
+        .top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .title{
+                font-size:34rpx;
+                font-weight: 500;
+                font-weight: bold;
+            }
+            .more{
+                display: flex;
+                align-items: center;
+                view{
+                    font-size: 22rpx;
+                    color:#21439B;
+                    margin-right: 6rpx;
+                }
+                image{
+                    width:22rpx;
+                    margin-left: 4rpx;
+                }
+            }
+        }
+        .list{
+            margin-top: 39rpx;
+            .listItem{
+                margin-bottom: 40rpx;
+                height: 130rpx;
+                box-shadow: 0px 6rpx 17rpx 1rpx rgba(153, 153, 153, 0.2);
+                border-radius: 10rpx;
+                padding:0 30rpx;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: relative;
+                &:last-child{
+                    margin-bottom: 0;
+                }
+                .title{
+                    font-size: 28rpx;
+                    font-weight: bold;
+                    width:480rpx;
+                    .clipOneLine
+                }
+                .time{
+                    margin-top: 22rpx;
+                    color:#666666;
+                    
+                }
+                .toInfo{
+                    position: absolute;
+                    right:30rpx;
+                    top:50%;
+                    .size(144rpx,44rpx);
+                    .flexCenter;
+                    border:1px solid #21439B;
+                    transform:translateY(-50%);
+                    font-size:22rpx;
+                    color:#21439B;
+                }
+            }
+        }
+    }
+    
+    
+}

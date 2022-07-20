@@ -1,0 +1,60 @@
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mask {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mask.show {
+  display: flex;
+}
+.clipOneLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.lodingMoreIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  height: 100rpx;
+}
+.container .list {
+  width: 690rpx;
+  margin: 0 auto;
+}
+.container .list .listItem {
+  margin-top: 40rpx;
+  padding-bottom: 35rpx;
+  border-bottom: 1rpx solid #DCDCDC;
+}
+.container .list .listItem .title {
+  font-size: 30rpx;
+  line-height: 50rpx;
+}
+.container .list .listItem .title .status {
+  font-size: 24rpx;
+}
+.container .list .listItem .title .status.readed {
+  color: #019E97;
+}
+.container .list .listItem .title .status.unread {
+  color: #C51227;
+}
+.container .list .listItem .time {
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 25rpx;
+}

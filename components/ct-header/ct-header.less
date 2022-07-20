@@ -1,0 +1,98 @@
+@import "../../common/less/common.less";
+.container{
+    width:100%;
+  
+    position: fixed;
+    font-size: 36rpx;
+    font-weight: bold;
+    z-index:99;
+    top:0;
+    background-color: #fff;
+    border-bottom:1rpx solid #F1F1F1;
+    &.isIndex{
+        position: fixed;
+        width:100%;
+        background-color: transparent;
+        border-bottom: none;
+        .content{
+            color:#fff;
+            .toggleLangIcon.isIndex{
+                display: block;
+            }
+        }
+        
+    }
+    &.isBack{
+        position: fixed;
+        width:100%;
+        background-color: #fff;
+        .content{
+            .toggleLangIcon{
+                display: none;
+            }
+            .btns{
+                display: flex;
+            }
+        }
+       
+    }
+    .flexCenter;
+    .content{
+        .flexCenter;
+        position: absolute;
+        height:88rpx;
+        bottom:0;
+        width:100%;
+        color:#333;
+        .toggleLangIcon{
+            width:37rpx;
+            position: absolute;
+            left:36rpx;
+            top:50%;
+            transform: translateY(-50%);
+            &.isIndex{
+                display: none;
+            }
+        }
+        .btns{
+            .size(168rpx,62rpx);
+            // border:1px solid #E0E0E0;
+            border-radius: 31rpx;
+            position: absolute;
+            left:0;
+            top:50%;
+            transform: translateY(-50%);
+            display: none;
+            &::after{
+                content: "";
+                display: none;
+                height: 32rpx;
+                border-right: 1rpx solid #E0E0E0;
+                position: absolute;
+                left:50%;
+                top:50%;
+                transform: translate(-50%,-50%);
+            }
+            .btn{
+                height: 100%;
+                .flexCenter;
+                &.backBtn{
+                    width:79rpx;
+                    .backIcon{
+                        width:37rpx;
+                    }
+                }
+               &.toggleBtn{
+                    width:88rpx;
+                    .backToggleLangIcon{
+                        width:37rpx;
+                    }
+               }
+                
+            }
+           
+           
+        }
+    }
+    
+}

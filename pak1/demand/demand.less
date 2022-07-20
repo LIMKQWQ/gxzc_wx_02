@@ -1,0 +1,36 @@
+@import "../../common/less/common.less";
+.lodingMoreIcon{
+    .flexCenter;
+    font-size: 28rpx;
+    height:100rpx;
+}
+.container{
+    .list{
+        width:690rpx;
+        margin:0 auto;
+        .listItem{
+            margin-top: 40rpx;
+            padding-bottom: 35rpx;
+            border-bottom:1rpx solid #DCDCDC;
+            .title{
+                font-size: 30rpx;
+                line-height: 50rpx;
+                .status{
+                    font-size: 24rpx;
+                    &.readed{
+                        color:#019E97;
+                    }
+                    &.unread{
+                        color:#C51227;
+                    }
+                }
+               
+            }
+            .time{
+                font-size: 24rpx;
+                color:#999999;
+                margin-top: 25rpx;
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+<view class="container" style="padding-top:{{top}}">
+  <image src="./images/empty.png" class="icon"></image>
+  <view class="text">
+    <slot></slot>
+  </view>
+  
+</view>

@@ -1,0 +1,11 @@
+{
+    "navigationStyle":"custom",
+    "navigationBarTextStyle": "black",
+    "usingComponents": {
+        "van-picker": "@vant/weapp/picker/index",
+        "van-loading": "@vant/weapp/loading/index",
+        "empty": "/components/empty/empty"
+      },
+      "onReachBottomDistance":100
+     
+}

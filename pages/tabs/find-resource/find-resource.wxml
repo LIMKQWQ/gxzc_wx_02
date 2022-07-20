@@ -1,0 +1,147 @@
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
+    <ctHeader>找资源</ctHeader>
+    <fixedMenus top="560rpx" id="fixedMenus"></fixedMenus>
+    <view class="newsInfo">
+        <view class="top">
+            <view class="title">最新<text>通告</text> </view>
+            <!-- <view class="more"><navigator 	hover-class="none" url="/pak1/announce-list/announce-list">查看更多</navigator><image src="./images/moreIcon.png" mode="widthFix" /></view> -->
+        </view>
+        <swiper class="infoSwiper" circular indicator-dots>
+            <swiper-item class="swiperItem" wx:for="{{announceList_}}" wx:key="self">
+                <view class="list">
+                    <navigator hover-class="none" url="/pak1/notice-detail/notice-detail?id={{item[0].id}}" class="newsItem">
+                        <view class="content">
+                            <view class="contentTitle">{{item[0].title}}</view>
+                            <view class="time">{{item[0].time}}</view>
+                        </view>
+                        <image src="{{baseUrl+item[0].image}}" wx:if="{{item[0].image}}" mode="aspectFill" />
+                    </navigator>
+                    <navigator hover-class="none" url="/pak1/notice-detail/notice-detail?id={{item[1].id}}" class="newsItem" wx:if="{{item[1]}}">
+                        <view class="content">
+                            <view class="contentTitle">{{item[1].title}}</view>
+                            <view class="time">{{item[1].time}}</view>
+                        </view>
+                        <image src="{{baseUrl+item[1].image}}" wx:if="{{item[1].image}}" mode="aspectFill" />
+                    </navigator>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+    <!-- 筛选 -->
+    <view class="resourcontent">
+        <!-- <view class="resoutop">
+            <view class="resoutopRow">
+                <picker header-text="类别" range="{{classes.list}}" range-key="name" value="{{classes.index}}" data-picker="classes" bindchange="pickChange">
+                    <view class="selectx">
+                        <view class="dropdown">
+                            {{classes.index?classes.list[classes.index].name:'类别'}}
+                        </view>
+                        <image src="./images/xia.png" mode="widthFix" alt="" />
+                    </view>
+                </picker>
+                <picker header-text="规格" range="{{size.list}}" range-key="name" value="{{size.index}}" data-picker="size" bindchange="pickChange">
+                    <view class="selectx">
+                        <view class="dropdown">{{size.index?size.list[size.index].name:'规格'}}</view>
+                        <image src="./images/xia.png" mode="widthFix" alt="" />
+                    </view>
+                </picker>
+                <picker header-text="材质" range="{{gj.list}}" range-key="name" value="{{gj.index}}" data-picker="gj" bindchange="pickChange">
+                    <view class="selectx">
+                        <view class="dropdown">{{gj.index?gj.list[gj.index].name:'材质'}}</view>
+                        <image src="./images/xia.png" mode="widthFix" alt="" />
+                    </view>
+                </picker>
+            </view>
+            <view class="resoutopRow">
+                <picker header-text="生产厂家" range="{{proder.list}}" range-key="name" value="{{proder.index}}" data-picker="proder" bindchange="pickChange">
+                    <view class="selectx">
+                        <view class="dropdown prod">
+                            {{proder.index?proder.list[proder.index].name:'生产厂家'}}
+                        </view>
+                        <image src="./images/xia.png" mode="widthFix" alt="" />
+                    </view>
+                </picker>
+                <picker header-text="位置" range="{{address.list}}" range-key="name" value="{{address.index}}" data-picker="address" bindchange="pickChange">
+                    <view class="selectx">
+                        <view class="dropdown">
+                            {{address.index?address.list[address.index].name:'位置'}}
+                        </view>
+                        <image src="./images/xia.png" mode="widthFix" alt="" />
+                    </view>
+                </picker>
+                <view class="filterBtn">
+                    <view class="seach" bind:tap="search">筛选</view>
+                </view>
+
+            </view>
+        </view> -->
+        <view class="inputseach">
+            <image src="./images/seach.png" mode="widthFix" alt="" />
+            <input placeholder-style="font-size:28rpx" type="text" confirm-type='search' placeholder="请输入关键词进行搜索" model:value="{{searchStr}}" bindinput="inputChange" bindconfirm="search" />
+            <view class="searchBtn" bind:tap="search">搜索</view>
+        </view>
+    </view>
+    <!-- 资源列表 -->
+    <view class="tip" hidden="{{!showTip}}">
+        搜索结果如下
+    </view>
+    <view class="resourceList">
+
+        <navigator hover-class="none" url="/pak1/resource-detail/resource-detail?id={{item.id}}" class="resourceItem" wx:for="{{resourceList}}" wx:key="self">
+            <view class="pic">
+                <image src="{{find.getImg(item.image,baseUrl)}}" mode="aspectFill" class="picIcon"></image>
+                <view class="distance">
+                    <image src="./images/distance.png" mode="aspectFill" class="distanceIcon"></image>
+                    距您{{item.distance}}KM
+                </view>
+            </view>
+            <view class="info">
+                <view class="infoTitle">{{item.titel}}</view>
+                <view class="tags">
+                    <view class="tagItem">
+                        <block wx-if="{{item.water_eye}}">{{item.water_eye}} <block wx-if="{{item.manufacturer||item.steel_grade}}">|</block>
+                        </block>
+                        <block wx-if="{{item.manufacturer}}">{{item.manufacturer}} <block wx-if="{{item.steel_grade}}">|</block>
+                        </block>{{item.steel_grade||""}}
+                    </view>
+                </view>
+                <!-- <view class="intr">
+                    介绍：非标钻杆的主要特点是11111111111
+                </view> -->
+                <view class="pak">
+                    <view class="pakitem" wx-if="{{item.diameter}}">
+                        接头外径:
+                        <view>{{item.diameter}}</view>
+                    </view>
+                    <view class="pakitembet" wx-if="{{item.again_rent}}">
+                        <view>状态:<text class="pak_cz">出租</text>/<text class="pak_cs">出售</text></view>
+                        <view>库存: <text>{{item.again_rent}}根</text></view> 
+                    </view>
+                </view>
+            </view>
+            <view catchtap="{{true}}">
+                <view class="toKf" bind:tap="showKf">
+                    在线询价
+                    <image src="./images/to.png" mode="aspectFill" class="toKfIcon"></image>
+                </view>
+            </view>
+
+        </navigator>
+        <empty style="margin:0 auto;padding-bottom:50rpx" top="0" wx-if="{{!resourceList||!resourceList.length}}">无搜索结果</empty>
+        <view class="lodingMoreIcon" hidden="{{!showLoading}}">
+            <van-loading style="margin-right:20rpx" />
+            加载中
+        </view>
+    </view>
+</view>
+<wxs module="find">
+    function getImg(str, baseUrl) {
+        if (str.indexOf("http") != -1) {
+            return str;
+        }
+        return baseUrl + str;
+    }
+    module.exports = {
+        getImg: getImg
+    }
+</wxs>

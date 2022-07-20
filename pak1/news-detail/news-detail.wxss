@@ -1,0 +1,208 @@
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mask {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  justify-content: center;
+  align-items: center;
+}
+.mask.show {
+  display: flex;
+}
+.clipOneLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.container .banner {
+  min-height: 280rpx;
+}
+.container .banner image {
+  height: 280rpx;
+  width: 100%;
+}
+.container .newsInfo {
+  width: 692rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+}
+.container .newsInfo .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20rpx;
+}
+.container .newsInfo .top .title {
+  font-size: 34rpx;
+  font-weight: 500;
+  font-weight: bold;
+  position: relative;
+  padding-left: 10rpx;
+}
+.container .newsInfo .top .title::before {
+  content: "";
+  display: block;
+  width: 6rpx;
+  height: 32rpx;
+  background-color: #21439B;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  border-radius: 6rpx;
+  transform: translateY(-50%);
+}
+.container .newsInfo .top .more {
+  display: flex;
+  align-items: center;
+}
+.container .newsInfo .top .more view {
+  font-size: 22px;
+  color: #21439B;
+  margin-right: 6rpx;
+}
+.container .newsInfo .top .more image {
+  width: 22rpx;
+  height: 22rpx;
+  margin-left: 4rpx;
+}
+.container .newsInfo .infoSwiper {
+  margin-top: 29rpx;
+  height: 312rpx;
+}
+.container .newsInfo .infoSwiper .wx-swiper-dot {
+  width: 25rpx;
+  height: 4rpx;
+  background-color: #E0E0E0;
+}
+.container .newsInfo .infoSwiper .wx-swiper-dot.wx-swiper-dot-active {
+  background: #21439B;
+}
+.container .newsInfo .infoSwiper .swiperItem {
+  width: 342rpx;
+  height: 262rpx;
+}
+.container .newsInfo .infoSwiper .swiperItem .list {
+  display: flex;
+  justify-content: space-between;
+}
+.container .newsInfo .infoSwiper .swiperItem .list .newsItem {
+  width: 342rpx;
+  height: 262rpx;
+  position: relative;
+}
+.container .newsInfo .infoSwiper .swiperItem .list .newsItem .content {
+  width: 342rpx;
+  max-height: 175rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  color: #fff;
+  padding: 0 20rpx;
+  padding-top: 30rpx;
+  background: rgba(0, 0, 0, 0.21);
+}
+.container .newsInfo .infoSwiper .swiperItem .list .newsItem .content .contentTitle {
+  font-size: 24rpx;
+  line-height: 30rpx;
+  max-height: 90rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.container .newsInfo .infoSwiper .swiperItem .list .newsItem .content .time {
+  margin-top: 15rpx;
+  font-size: 20rpx;
+  margin-bottom: 10rpx;
+}
+.container .newsInfo .infoSwiper .swiperItem .list .newsItem image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 342rpx;
+  height: 262rpx;
+}
+.container .content .title {
+  font-size: 35rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 40rpx;
+  padding: 0 30rpx;
+}
+.container .content .info {
+  display: flex;
+  justify-content: center;
+  margin-top: 32rpx;
+}
+.container .content .info .item {
+  font-size: 22rpx;
+  color: #999999;
+  display: flex;
+  align-items: center;
+}
+.container .content .info .item .icon {
+  width: 24rpx;
+  margin-right: 8rpx;
+}
+.container .content .info .item.views {
+  margin-left: 49rpx;
+}
+.container .content .text {
+  margin-top: 40rpx;
+  width: 690rpx;
+  padding: 0 30rpx;
+}
+.container .switch {
+  width: 690rpx;
+  border-top: 1px solid #E4E4E4;
+  margin: 0 auto;
+  margin-top: 39rpx;
+  padding-top: 39rpx;
+  display: flex;
+  justify-content: space-between;
+  color: #666666;
+  font-size: 24rpx;
+  padding-bottom: 30rpx;
+}
+.container .switch .icon {
+  width: 20rpx;
+}
+.container .switch .pre {
+  width: 325rpx;
+  display: flex;
+  align-items: center;
+}
+.container .switch .pre .preText {
+  width: 300rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.container .switch .pre .icon {
+  margin-right: 5rpx;
+}
+.container .switch .next {
+  display: flex;
+  align-items: center;
+  width: 325rpx;
+}
+.container .switch .next .nextText {
+  width: 300rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
+}
+.container .switch .next .icon {
+  margin-left: 5rpx;
+}

@@ -1,0 +1,15 @@
+//需要在comp上绑定windowh dataset
+function isShow(comp,cb,v){
+    if(!v) v=0;
+    var res=comp.getBoundingClientRect();
+    if(!comp.getDataset().windowh){
+        console.warn("组件上没有绑定windowh")
+    }
+   if(res.top<=comp.getDataset().windowh-v){
+       cb(comp)
+   }
+}
+module.exports={
+    isShow:isShow
+    
+}

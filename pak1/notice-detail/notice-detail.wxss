@@ -1,0 +1,135 @@
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mask {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  justify-content: center;
+  align-items: center;
+}
+.mask.show {
+  display: flex;
+}
+.clipOneLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.container .banner {
+  min-height: 280rpx;
+}
+.container .banner image {
+  height: 280rpx;
+  width: 100%;
+}
+.container .newsInfo {
+  width: 692rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+}
+.container .newsInfo .title {
+  font-size: 34rpx;
+  font-weight: bold;
+  position: relative;
+  padding-left: 12rpx;
+}
+.container .newsInfo .title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4rpx;
+  height: 32rpx;
+  background-color: #21439B;
+}
+.container .newsInfo .infoSwiper {
+  margin-top: 29rpx;
+  height: 312rpx;
+}
+.container .newsInfo .infoSwiper .wx-swiper-dot {
+  width: 25rpx;
+  height: 4rpx;
+  background-color: #E0E0E0;
+}
+.container .newsInfo .infoSwiper .wx-swiper-dot.wx-swiper-dot-active {
+  background: #21439B;
+}
+.container .newsInfo .infoSwiper .swiperItem {
+  width: 342rpx;
+  height: 262rpx;
+}
+.container .newsInfo .infoSwiper .swiperItem .list {
+  display: flex;
+  justify-content: space-between;
+}
+.container .newsInfo .infoSwiper .swiperItem .list .newsItem {
+  width: 342rpx;
+  height: 262rpx;
+  position: relative;
+}
+.container .newsInfo .infoSwiper .swiperItem .list .newsItem .content {
+  width: 342rpx;
+  height: 145rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  color: #fff;
+  padding: 0 20rpx;
+  padding-top: 30rpx;
+  background: rgba(0, 0, 0, 0.21);
+}
+.container .newsInfo .infoSwiper .swiperItem .list .newsItem .content .contentTitle {
+  font-size: 24rpx;
+  line-height: 30rpx;
+}
+.container .newsInfo .infoSwiper .swiperItem .list .newsItem .content .time {
+  margin-top: 15rpx;
+  font-size: 20rpx;
+}
+.container .newsInfo .infoSwiper .swiperItem .list .newsItem image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 342rpx;
+  height: 262rpx;
+}
+.container .content .title {
+  font-size: 35rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 40rpx;
+}
+.container .content .info {
+  display: flex;
+  justify-content: center;
+  margin-top: 32rpx;
+  margin-bottom: 32rpx;
+}
+.container .content .info .item {
+  font-size: 22rpx;
+  color: #999999;
+  display: flex;
+  align-items: center;
+}
+.container .content .info .item .icon {
+  width: 24rpx;
+  margin-right: 8rpx;
+}
+.container .content .info .item.views {
+  margin-left: 49rpx;
+}
+.container .content .text {
+  margin-top: 40rpx;
+  width: 690rpx;
+}

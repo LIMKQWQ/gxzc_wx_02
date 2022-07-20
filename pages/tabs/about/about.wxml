@@ -1,0 +1,40 @@
+<import src="./pages/introduce/introduce.wxml"/>
+<import src="./pages/case/case.wxml"/>
+<import src="./pages/honor/honor.wxml"/>
+<import src="./pages/contact/contact.wxml"/>
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx;padding-bottom: {{nav_scroll_height}}px;" >
+    <ctHeader>关于我们</ctHeader>
+    <fixedMenus top="545rpx" id="fixedMenus"></fixedMenus>
+
+    <view class="banner">
+        <image src="./images/banner.png" mode="aspectFill"></image>
+    </view>
+    <view class="tabs {{about.getItemClass(tabActive)}}" >
+        <view class="tabItem item1" data-tab="{{1}}" bind:tap="switchTab">
+            公司简介
+        </view>
+        <view class="tabItem item2" data-tab="{{2}}" bind:tap="switchTab">
+            成功案例
+        </view>
+         <view class="tabItem item3" data-tab="{{3}}" bind:tap="switchTab">
+            荣誉资质
+        </view>
+         <!-- <view class="tabItem item4" data-tab="{{4}}" >
+            安东标准
+        </view> -->
+         <view class="tabItem item4" data-tab="{{4}}" bind:tap="switchTab">
+           联系我们
+        </view>
+    </view>
+    <view class="pages">
+        <template is="{{tabName}}" data="{{keyboardOcclusion,baseUrl,getAnimatedClass:about.getAnimatedClass,_deviceInfo,swiper,caseList,animated,heights,introduces,cases,contact,certificate,msg_name,msg_phone,msg_email,msg_content,subMessage}}"></template>
+    </view>
+</view>
+<wxs module="about">
+ function getItemClass(code){
+     return "item"+code
+ }
+ module.exports={
+     getItemClass:getItemClass,
+ }
+</wxs>

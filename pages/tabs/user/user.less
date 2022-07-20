@@ -1,0 +1,223 @@
+@import "../../../common/less/common.less";
+.container{
+  
+    .info{
+        height:220rpx;
+        background-color: #21439B;
+        display: flex;
+        align-items: center;
+        padding-left: 30rpx;
+        position: relative;
+        &.unlogin{
+            
+            .infoContent .rightInfo .unlogin{
+                display: flex
+            }
+        }
+        &.personb{
+            height:280rpx;
+            align-items: flex-start;
+            padding-top: 50rpx;
+            .infoContent .rightInfo .personb{
+                display: block;
+            }
+           
+         }
+         &.personc{
+            .infoContent .rightInfo .personc{
+                display: block;
+            }
+         }
+         .infoContent{
+             display: flex;
+             align-items: center;
+            .avatar{
+                .size(120rpx,120rpx);
+                .avatarPic{
+                    .size(120rpx,120rpx);
+                }
+            }
+            .rightInfo{
+                color:#fff;
+                font-size: 26rpx;
+                margin-left: 30rpx;
+                .unlogin{
+                    .size(195rpx,46rpx);
+                    border:1px solid #fff;
+                    border-radius: 23rpx;
+                    padding: 0 29rpx;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    display: none;
+                }
+                .personb{
+                    color:#fff;
+                    display: none;
+                    .username{
+                        font-size: 34rpx;
+                    }
+                    .code{
+                        font-size: 28rpx;
+                    }
+                }
+            }
+         }
+         .personbInfo{
+            .size(690rpx,170rpx);
+            border-radius: 10rpx;
+            background-color: #fff;
+            position: absolute;
+            bottom:0;
+            left:50%;
+            z-index: 1;
+            transform: translate(-50%,50%); 
+            box-shadow: 0px 0px 14px 1px rgba(33, 67, 155, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .infoItem{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+               
+               
+                &::after{
+                    content:"";
+                    display: block;
+                    height:30rpx;
+                    border-right:1rpx solid #D4D4D4;
+                    position: absolute;
+                    right:0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+               &.follow{
+                   width:228rpx;
+               }
+               &.trade{
+                   width:245rpx;
+               }
+               &.views{
+                   width: 215rpx;
+                   &::after{
+                       display: none;
+                   }
+               }
+                .num{
+                    font-size: 38rpx;
+                    font-weight: bold;
+                }
+                .infoTitle{
+                    margin-top: 10rpx;
+                    font-size: 24rpx;
+                }
+            }
+        }
+    }
+    .menus{
+        width:690rpx;
+        margin:0 auto;
+        margin-top: 10rpx;
+        &.personb{
+           margin-top: 110rpx;
+        }
+        .menuItem{
+            height:100rpx;
+            display: flex;
+            align-items: center;
+            border-bottom: 1rpx solid #DCDCDC;
+            position: relative;
+            .menuIcon{
+                width:24rpx;
+            }
+            .rightIcon{
+                width:12rpx;
+                position: absolute;
+                right:0;
+                top:50%;
+                transform: translateY(-50%);
+            }
+            .menuText{
+                font-size: 32rpx;
+                margin-left: 15rpx;
+            }
+        }
+    }
+    //注册身份
+    .selectUserMask{
+        .selectUser{
+            .size(620rpx,456rpx);
+            background-color: #fff;
+            padding:40rpx;
+            .top{
+                display: flex;
+                justify-content: space-between;
+                .title{
+                    color:#21439B;
+                    font-size: 34rpx;
+                    font-weight: bold;
+                }
+                .closeBtn{
+                    height:30rpx;
+                }
+            }
+            .selectMenus{
+                display: flex;
+                justify-content: center;
+                margin-top: 60rpx;
+                .menuItem{
+                    &:last-child{
+                        margin-left: 140rpx;
+                    }
+                    &.selected{
+                        .btn{
+                            .selectedIcon{
+                                display: block;
+                            }
+                        }
+                    }
+                    .btn{
+                        .size(120rpx,120rpx);
+                        background-color: #fff;
+                        border-radius: 50%;
+                        box-shadow: 0px 1px 9px 0px rgba(143, 143, 143, 0.2);
+                        position: relative;
+                        .flexCenter;
+                        .icon{
+                            width: 60rpx;
+                        }
+                        .selectedIcon{
+                            width:23rpx;
+                            position: absolute;
+                            bottom:0;
+                            left:50%;
+                            transform: translate(-50%,40%);
+                            display: none;
+                        }
+                    }
+                    
+                    .title{
+                        font-size: 26rpx;
+                        text-align: center;
+                        margin-top: 24rpx;
+                    }
+                }
+            }
+            .nextStepBtn{
+                width:170rpx;
+                height:54rpx;
+                background-color: #21439B;
+                font-size: 28rpx;
+                color:#fff;
+                .flexCenter;
+                border-radius: 27rpx;
+                margin:0 auto;
+                margin-top:40rpx;
+            }
+        }
+        
+    }
+}

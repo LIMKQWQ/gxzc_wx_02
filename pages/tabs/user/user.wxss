@@ -1,0 +1,231 @@
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mask {
+  visibility: hidden;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mask.show {
+  visibility: visible;
+}
+.container .info {
+  height: 220rpx;
+  background-color: #21439B;
+  display: flex;
+  align-items: center;
+  padding-left: 30rpx;
+  position: relative;
+}
+.container .info.unlogin .infoContent .rightInfo .unlogin {
+  display: flex;
+}
+.container .info.personb {
+  height: 280rpx;
+  align-items: flex-start;
+  padding-top: 50rpx;
+}
+.container .info.personb .infoContent .rightInfo .personb {
+  display: block;
+}
+.container .info.personc .infoContent .rightInfo .personc {
+  display: block;
+}
+.container .info .infoContent {
+  display: flex;
+  align-items: center;
+}
+.container .info .infoContent .avatar {
+  width: 120rpx;
+  height: 120rpx;
+}
+.container .info .infoContent .avatar .avatarPic {
+  width: 120rpx;
+  height: 120rpx;
+}
+.container .info .infoContent .rightInfo {
+  color: #fff;
+  font-size: 26rpx;
+  margin-left: 30rpx;
+}
+.container .info .infoContent .rightInfo .unlogin {
+  width: 195rpx;
+  height: 46rpx;
+  border: 1px solid #fff;
+  border-radius: 23rpx;
+  padding: 0 29rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  display: none;
+}
+.container .info .infoContent .rightInfo .personb {
+  color: #fff;
+  display: none;
+}
+.container .info .infoContent .rightInfo .personb .username {
+  font-size: 34rpx;
+}
+.container .info .infoContent .rightInfo .personb .code {
+  font-size: 28rpx;
+}
+.container .info .personbInfo {
+  width: 690rpx;
+  height: 170rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, 50%);
+  box-shadow: 0px 0px 14px 1px rgba(33, 67, 155, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container .info .personbInfo .infoItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.container .info .personbInfo .infoItem::after {
+  content: "";
+  display: block;
+  height: 30rpx;
+  border-right: 1rpx solid #D4D4D4;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.container .info .personbInfo .infoItem.follow {
+  width: 228rpx;
+}
+.container .info .personbInfo .infoItem.trade {
+  width: 245rpx;
+}
+.container .info .personbInfo .infoItem.views {
+  width: 215rpx;
+}
+.container .info .personbInfo .infoItem.views::after {
+  display: none;
+}
+.container .info .personbInfo .infoItem .num {
+  font-size: 38rpx;
+  font-weight: bold;
+}
+.container .info .personbInfo .infoItem .infoTitle {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+}
+.container .menus {
+  width: 690rpx;
+  margin: 0 auto;
+  margin-top: 10rpx;
+}
+.container .menus.personb {
+  margin-top: 110rpx;
+}
+.container .menus .menuItem {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #DCDCDC;
+  position: relative;
+}
+.container .menus .menuItem .menuIcon {
+  width: 24rpx;
+}
+.container .menus .menuItem .rightIcon {
+  width: 12rpx;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.container .menus .menuItem .menuText {
+  font-size: 32rpx;
+  margin-left: 15rpx;
+}
+.container .selectUserMask .selectUser {
+  width: 620rpx;
+  height: 456rpx;
+  background-color: #fff;
+  padding: 40rpx;
+}
+.container .selectUserMask .selectUser .top {
+  display: flex;
+  justify-content: space-between;
+}
+.container .selectUserMask .selectUser .top .title {
+  color: #21439B;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.container .selectUserMask .selectUser .top .closeBtn {
+  height: 30rpx;
+}
+.container .selectUserMask .selectUser .selectMenus {
+  display: flex;
+  justify-content: center;
+  margin-top: 60rpx;
+}
+.container .selectUserMask .selectUser .selectMenus .menuItem:last-child {
+  margin-left: 140rpx;
+}
+.container .selectUserMask .selectUser .selectMenus .menuItem.selected .btn .selectedIcon {
+  display: block;
+}
+.container .selectUserMask .selectUser .selectMenus .menuItem .btn {
+  width: 120rpx;
+  height: 120rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0px 1px 9px 0px rgba(143, 143, 143, 0.2);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .selectUserMask .selectUser .selectMenus .menuItem .btn .icon {
+  width: 60rpx;
+}
+.container .selectUserMask .selectUser .selectMenus .menuItem .btn .selectedIcon {
+  width: 23rpx;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 40%);
+  display: none;
+}
+.container .selectUserMask .selectUser .selectMenus .menuItem .title {
+  font-size: 26rpx;
+  text-align: center;
+  margin-top: 24rpx;
+}
+.container .selectUserMask .selectUser .nextStepBtn {
+  width: 170rpx;
+  height: 54rpx;
+  background-color: #21439B;
+  font-size: 28rpx;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 27rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+}

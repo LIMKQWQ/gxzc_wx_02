@@ -1,0 +1,55 @@
+@import "../../../../../common/less/common.less";
+@import "../../../../../common/less/animate.min.less";
+.caseContainer{
+	position: relative;
+	overflow: hidden;
+    padding-bottom: 41rpx;
+	.animated {
+        animation-duration:1.2s;
+    }
+	.caseItem{
+		width:690rpx;
+		margin:0 auto;
+		margin-top:40rpx;
+		box-shadow: 0px 0px 14rpx 10rpx rgba(33, 67, 155, 0.08);
+		padding-bottom:43rpx;
+		position: relative;
+		overflow-x: hidden;
+		border-bottom: 4rpx solid #21439B;
+		visibility: hidden;
+		&:first-child{
+			margin-top: 0;
+		}
+		&.animated{
+			visibility: visible;
+		}
+		.pic{
+			.img{
+				width:690rpx;
+				height:300rpx;
+			}
+		}
+		.title{
+			margin-top: 30rpx;
+			margin-left: 31rpx;
+			color:#21439B;
+			font-size: 30rpx;
+			font-weight: bold;
+			
+		}
+		.content{
+			margin-top: 28rpx;
+			color:#666666;
+			font-size: 28rpx;
+			padding: 0 31rpx;
+			line-height: 48rpx;
+			text-indent:2em;
+			word-break: break-all;
+		}
+	}
+	#caseFooterContainer{
+		position: absolute;
+		bottom:0;
+		width:100%;
+	}
+}

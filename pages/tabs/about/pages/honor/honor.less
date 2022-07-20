@@ -1,0 +1,122 @@
+@import  "../../../../../common/less/common.less";
+.honor{
+	position: relative;
+	// padding-bottom: 40rpx; 
+	.honorContainer{
+	  margin-top: 41rpx;
+	  padding: 0 29rpx;
+	  position: relative;
+	  overflow-x: hidden;
+	  .title{
+	    color: #333333;
+	    font-size: 34rpx;
+	    font-weight: bold;
+		position: relative;
+		padding-left: 13rpx;
+		
+		&::before{
+			content:"";
+			display: block;
+			.size(6rpx,32rpx);
+			background-color: #21439B;
+			position: absolute;
+			left:0;
+			top:50%;
+			border-radius: 6rpx;
+			transform: translateY(-50%);
+		}
+	  }
+	  .text{
+	    margin-top: 37rpx;
+	    font-size: 26rpx;
+	    color: #666666;
+	    line-height: 48rpx;
+		margin-bottom: 40rpx;
+	  }
+	  .honorItem{
+	    width: 690rpx;
+	    box-shadow: 0px 0px 73px 3px rgb(33 67 155 / 8%);
+	    padding: 40rpx 30rpx;
+	    padding-right: 43rpx;
+	    border-radius: 15rpx;
+	    background-repeat: no-repeat;
+	    background-position: right bottom;
+	  
+        position: relative;
+	    &.money{
+            .bgImg{
+                position: absolute;
+                bottom:0;
+                right:0;
+                .size(92rpx,125rpx);
+            }
+	    }
+	    &.risk{
+			margin-top:40rpx;
+            .bgImg{
+                position: absolute;
+                bottom:0;
+                right:0;
+                .size(132rpx,127rpx);
+            }
+	    }
+	    .itemTitle{
+	      font-size: 30rpx;
+	      font-weight: bold;
+	    }
+	    .content{
+	      margin-top: 39rpx;
+	      color: #666666;
+	      font-size: 28rpx;
+	      line-height: 48rpx;
+	      word-break: break-all;
+	      word-wrap:break-word;
+	      .p{
+	        margin-top: 10rpx;
+	      }
+	    }
+	
+	  }
+	  .certificates{
+	    margin-top: 60rpx;
+	    .title{
+	      color:#333333;
+	      font-size: 34rpx;
+		  &::before{
+			content:"";
+			display: block;
+			.size(6rpx,32rpx);
+			background-color: #21439B;
+			position: absolute;
+			left:0;
+			top:50%;
+			border-radius: 6rpx;
+			transform: translateY(-50%);
+		}
+	    }
+	    .certificateItems{
+	      margin-top: 40rpx;
+	      display: flex;
+	      justify-content: space-between;
+	      flex-wrap: wrap;
+	      .certificateItem{
+	        margin-bottom: 68rpx;
+	        width: 300rpx;
+	        .pic{
+	          image{
+	            width:300rpx;
+	          }
+	        }
+	        .name{
+	          text-align: center;
+	          font-size: 26rpx;
+	          margin-top: 25rpx;
+	        }
+	
+	        
+	      }
+	    }
+	
+	  }
+	}
+}

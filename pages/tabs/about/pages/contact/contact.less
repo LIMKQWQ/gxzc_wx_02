@@ -1,0 +1,164 @@
+@import "../../../../../common/less/common.less";
+.contactContainer{
+    position: relative;
+    overflow-x: hidden;
+    .contactContent{ 
+        
+        margin-top: 40rpx;
+        padding: 0 30rpx;
+        .title{
+            font-size: 34rpx;
+            font-weight: bold;
+            position: relative;
+            padding-left: 13rpx;
+            &::before{
+                content:"";
+                display: block;
+                .size(6rpx,32rpx);
+                background-color: #21439B;
+                position: absolute;
+                left:0;
+                top:50%;
+                border-radius: 6rpx;
+                transform: translateY(-50%);
+            }
+        }
+        .name{
+            font-size: 30rpx;
+            font-weight: bold;
+            margin-top: 40rpx;
+        }
+        .info{
+            margin-top: 47rpx;
+            .infoItem{
+                display: flex;
+                margin-top: 50rpx;
+                position: relative;
+                &:first-child{
+                    margin-top: 0;
+                }
+                &:last-child{
+                    &::after{
+                        display: none;
+                    }
+                }
+                &::after{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    left:21rpx;
+                    bottom:-5rpx;
+                    transform: translateY(100%);
+                    height: 40rpx;
+                    border-right: 1px solid #21439B;
+                }
+                .icon{
+                    height: 42rpx;
+                }
+                .text{
+                    margin-left:21rpx;
+                    font-size:28rpx;
+                    color: #666666;
+                }
+            }
+        }
+    
+    }
+    .map{
+        position: relative;
+        width:690rpx;
+        margin:0 auto;
+        margin-top:53rpx;
+        .addPoint{
+            position: absolute;
+            top:50%;
+            left:50%;
+            width:30rpx;
+        }
+        image{
+            width:100%;
+        }
+    }
+    .comment{
+      
+        padding-bottom: 40rpx;
+        margin-top:48rpx;
+        .title{
+            padding: 0 30rpx;
+            font-size: 34rpx;
+            font-weight: bold;
+            position: relative;
+            padding-left: 43rpx;
+            &::before{
+                content:"";
+                display: block;
+                .size(6rpx,32rpx);
+                background-color: #21439B;
+                position: absolute;
+                left:30rpx;
+                top:50%;
+                border-radius: 6rpx;
+                transform: translateY(-50%);
+            }
+        }
+        .commentForm{
+            width:690rpx;
+            margin:0 auto;
+            margin-top: 39rpx;
+
+            .formItem{
+                margin-top: 31rpx;
+                display: flex;
+                align-items: center;
+                &:nth-last-child(2){
+                   display: block;
+                }
+                .formTitle{
+                    font-size: 30rpx;
+                    margin-right: 20rpx;
+                }
+                .input{
+                    margin-top: 20rpx;
+                    width:603rpx;
+                    input{
+                        height:72rpx;
+                        border:1px solid #D7D7D7;
+                        width:603rpx;
+                        padding-left: 21rpx;
+                        outline: none;
+                        box-sizing: border-box;
+                        border-radius: 7rpx;
+                        &::-webkit-input-placeholder{
+                            color: #999999;
+                            font-size: 28rpx;
+                        }
+                        
+                    }
+                    textarea{
+                        width: 690rpx;
+                        height: 180rpx;
+                        border:1px solid #D7D7D7;
+                        outline: none;
+                        padding-left:21rpx;
+                        padding-top: 25rpx;
+                        box-sizing: border-box;
+                        border-radius: 7rpx;
+                        &::-webkit-input-placeholder{
+                            color: #999999;
+                            font-size: 28rpx;
+                        }
+                    }
+                }
+            }
+            .submitBtn{
+                .size(690rpx,78rpx);
+                background-color: #21439B;
+                .flexCenter;
+                color: #fff;
+                font-size: 28rpx;
+                border-radius: 39rpx;
+                margin-top: 30rpx;
+            }
+        }
+    }
+}

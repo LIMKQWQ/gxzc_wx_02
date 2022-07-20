@@ -1,0 +1,12 @@
+<!--pages/auth/auth.wxml-->
+<view class="auth-container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
+<ctHeader isBack="{{true}}">授权登录</ctHeader>
+  <!-- <van-nav-bar title="请先登录" z-index="{{ 100 }}" left-arrow border="{{false}}" fixed="{{true}}" placeholder="{{true}}" bind:click-left="back" /> -->
+  <view class="auth-content">
+    <image src="./images/logo.png"  mode="widthFix" class="wechat-icon"></image>
+    <text class="title">微信授权页面</text>
+    <text class="tips">授权并同意使用微信账号登录当前小程序</text>
+    <button class="btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">授权登录</button>
+  </view>
+</view>
+

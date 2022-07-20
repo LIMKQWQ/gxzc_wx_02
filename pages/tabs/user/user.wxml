@@ -1,0 +1,120 @@
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
+    <ctHeader>个人中心</ctHeader>
+    <fixedMenus top="{{status=='personb'?'191rpx':'687rpx'}}" id="fixedMenus" disabledShare="{{true}}"></fixedMenus>
+    <view class="info {{status}}">
+        <view class="infoContent">
+            <view class="avatar">
+                <image src="./images/avatar.png" mode="aspectFill" class="avatarPic" wx:if="{{status=='unlogin'}}"/>
+                <image src="{{userInfo.avatar?user.getImg(userInfo.avatar,baseUrl):'./images/avatar.png'}}" mode="aspectFill" class="avatarPic"  wx:if="{{status!='unlogin'}}"/>
+            </view>
+            <view class="rightInfo">
+                <!-- 未登录 -->
+                <view class="unlogin">
+                    <text class="tologin" bind:tap="toLogin">登录</text>
+                    <text>|</text>
+                    <text class="toregister" bind:tap="showSelect">注册</text>
+                </view>
+                <view class="personb personc">
+                    <view class="username">{{_userInfo.username}}</view>
+                    <view class="code" wx:if="{{userInfo.type==1}}">{{userInfo.number}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="personbInfo" wx:if="{{status=='personb'}}">
+            <view class="infoItem follow">
+                <view class="num">{{nums[0].num}}</view>
+                <view class="infoTitle">产品关注度</view>
+            </view>
+            <view class="infoItem trade">
+                <view class="num">{{nums[1].num}}</view>
+                <view class="infoTitle">成交量</view>
+            </view>
+            <view class="infoItem views">
+                <view class="num">{{nums[2].num}}</view>
+                <view class="infoTitle">浏览量</view>
+            </view>
+            
+        </view>
+    </view>
+    <view class="menus {{status=='personb'?'personb':''}}">
+        
+        <view data-url="/pak1/set-passwd/set-passwd" bind:tap="to" class="menuItem setPasswd">
+            <image src="./images/lock.png" class="menuIcon" mode="widthFix" />
+            <image src="./images/right.png" class="rightIcon" mode="widthFix" />
+            <view class="menuText">密码设置</view>
+        </view>
+         <navigator 	hover-class="none" url="/pak1/pub-prod/pub-prod"  class="menuItem collection" wx:if="{{status=='personb'}}">
+            <image src="./images/pub.png" class="menuIcon" mode="widthFix" />
+            <image src="./images/right.png" class="rightIcon" mode="widthFix" />
+            <view class="menuText">发布产品</view>
+        </navigator>
+         <navigator 	hover-class="none" url="/pak1/demand/demand" class="menuItem collection" wx:if="{{status=='personb'}}">
+            <image src="./images/msg.png" class="menuIcon" mode="widthFix" />
+            <image src="./images/right.png" class="rightIcon" mode="widthFix" />
+            <view class="menuText">需求信息箱</view>
+        </navigator>
+        <view data-url="/pak1/demand/demand" class="menuItem resourceMsg" bind:tap="to" wx:if="{{status!='personb'}}">
+            <image src="./images/msg.png" class="menuIcon" mode="widthFix" />
+            <image src="./images/right.png" class="rightIcon" mode="widthFix" />
+            <view class="menuText">新上资源信息箱</view>
+        </view>
+         <navigator 	hover-class="none" url="/pak1/manage-prod/manage-prod" class="menuItem collection" wx:if="{{status=='personb'}}">
+            <image src="./images/prod.png" class="menuIcon" mode="widthFix" />
+            <image src="./images/right.png" class="rightIcon" mode="widthFix" />
+            <view class="menuText">产品管理</view>
+        </navigator>
+        
+        <view data-url="/pak1/collection/collection" bind:tap="to" class="menuItem collection">
+            <image src="./images/star.png" class="menuIcon" mode="widthFix" />
+            <image src="./images/right.png" class="rightIcon" mode="widthFix" />
+            <view class="menuText">我的收藏</view>
+        </view>
+        <view  class="menuItem collection" bind:tap="logout" wx:if="{{status!='unlogin'}}">
+            <image src="./images/logout.png" class="menuIcon" mode="widthFix" />
+            <image src="./images/right.png" class="rightIcon" mode="widthFix" />
+            <view class="menuText">退出登录</view>
+        </view>
+    </view>
+    <!-- 身份选择 -->
+    <view class="selectUserMask mask {{isShowSelect?'show':''}}" bind:tap="hideSelect">
+        <view class="selectUser" catchtap="{{user.prevent}}">
+            <view class="top">
+                <view class="title">选择注册身份</view>
+                <image src="./images/header/close.png" class="closeBtn" mode="heightFix" bind:tap="hideSelect" />
+            </view>
+            <view class="selectMenus">
+                <view class="menuItem {{actived==1?'selected':''}}" data-item="1" bind:tap="selectItem">
+                    <view class="btn">
+                        <image src="./images/header/rzIcon.png" class="icon" mode="widthFix" />
+                        <image src="./images/header/selected.png" class="selectedIcon" mode="widthFix" />
+                    </view>
+                    
+                    <view class="title">资源入驻</view>
+                </view>
+                <view class="menuItem {{actived==2?'selected':''}}" data-item="2" bind:tap="selectItem" >
+                    <view class="btn">
+                        <image src="./images/header/rzIcon.png" class="icon" mode="widthFix"/>
+                        <image src="./images/header/selected.png" class="selectedIcon" mode="widthFix" />
+                    </view>
+                    <view class="title">找资源</view>
+                </view>
+            </view>
+            <view class="nextStepBtn" bind:tap="toRegister">下一步</view>
+        </view>
+    </view>
+</view>
+<wxs module="user">
+    function prevent(){
+
+    }
+    	function getImg(str,baseUrl){
+		if(str.indexOf("http")!=-1){
+			return str;
+		}
+		return baseUrl+str;
+	}
+    module.exports={
+        prevent:prevent,
+        getImg:getImg
+    }
+</wxs>

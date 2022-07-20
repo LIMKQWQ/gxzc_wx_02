@@ -1,0 +1,38 @@
+/* pages/auth/auth.wxss */
+.auth-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100rpx;
+}
+
+.wechat-icon {
+  width: 200rpx;
+  margin-bottom: 80rpx;
+}
+
+.title {
+  font-size: 32rpx;
+  color: #152030;
+  margin-bottom: 30rpx;
+}
+
+.tips {
+  font-size: 28rpx;
+  color: #8E9EB3;
+  margin-bottom: 80rpx;
+}
+
+.btn {
+  font-size: 34rpx;
+  color: #ffffff;
+  width: 320rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  background-color: #55A935;
+}
+
+.boxPhone {
+  padding: 40rpx 50rpx;
+  width: 480rpx;
+}

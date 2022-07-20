@@ -1,0 +1,24 @@
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
+    <ctHeader isBack="{{true}}">通告详情</ctHeader>
+    <fixedMenus top="639rpx" id="fixedMenus"></fixedMenus>
+    <view class="banner">
+        <image src="{{banner?baseUrl+banner:null}}" />
+    </view>
+     <view class="content">
+        <view class="title">
+           {{info.title}}
+        </view>
+        <view class="info">
+            <view class="item time">
+                <image src="./images/time.png" class="icon" mode="widthFix"></image>
+                发布时间：{{info.time}}
+            </view>
+            <view class="item views">
+                <image src="./images/views.png" class="icon" mode="widthFix"></image>
+                浏览数量：{{info.views}}次
+            </view>
+        </view>
+        <rich-text nodes="{{info.content}}" class="text">
+        </rich-text>
+    </view>
+</view>

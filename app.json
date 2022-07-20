@@ -1,0 +1,88 @@
+{
+  "pages": [
+    "pages/tabs/index/index",
+    "pages/tabs/news/news",
+    "pages/tabs/find-resource/find-resource",
+    "pages/tabs/need-resource/need-resource",
+    "pages/tabs/about/about",
+    "pages/tabs/user/user",
+    "pages/register/register",
+    "pages/login/login",
+    "pages/auth/auth"
+
+  ],
+  "subpackages":[
+    {
+      "root": "pak1",
+      "pages": [
+        "share-knowledge/share-knowledge",
+        "knowledge-detail/knowledge-detail",
+        "resource-detail/resource-detail",
+        "news-detail/news-detail",
+        "pub-prod/pub-prod",
+        "set-passwd/set-passwd",
+        "manage-prod/manage-prod",
+        "collection/collection",
+        "demand/demand",
+        "notice-detail/notice-detail",
+        "necessary-detail/necessary-detail",
+        "agreement/agreement",
+        "announce-list/announce-list",
+        "forgot-pwd/forgot-pwd"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents":{
+    "ctHeader":"./components/ct-header/ct-header",
+    "fixedMenus":"./components/fixed-menus/fixed-menus"
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission":{
+    "scope.userLocation":{
+      "desc":"您的位置将用于计算资源据您的距离"
+    }
+  },
+  "tabBar":{
+    "borderStyle":"black",
+    "color":"#666666",
+    "selectedColor":"#21439B",
+    "list": [
+      {
+        "pagePath":"pages/tabs/index/index",
+        "text":"首页",
+        "iconPath":"assets/imgs/index.png",
+        "selectedIconPath":"assets/imgs/index_s.png"
+      },
+      {
+        "pagePath":"pages/tabs/find-resource/find-resource",
+        "text":"资产大厅",
+        "iconPath":"assets/imgs/resource.png",
+        "selectedIconPath":"assets/imgs/news_s.png"
+      },
+      {
+        "pagePath":"pages/tabs/need-resource/need-resource",
+        "text":"需求大厅",
+        "iconPath":"assets/imgs/news.png",
+        "selectedIconPath":"assets/imgs/resource_s.png"
+      },
+      {
+        "pagePath":"pages/tabs/about/about",
+        "text":"关于我们",
+        "iconPath":"assets/imgs/about.png",
+        "selectedIconPath":"assets/imgs/about_s.png"
+      },
+      {
+        "pagePath":"pages/tabs/user/user",
+        "text":"个人中心",
+        "iconPath":"assets/imgs/user.png",
+        "selectedIconPath":"assets/imgs/user_s.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
+    <ctHeader isBack="{{true}}">资源详情</ctHeader>
+    <fixedMenus top="800rpx" id="fixedMenus"></fixedMenus>
+    <view class="swiperContainer">
+        <swiper class="resourceSwiper" autoplay="{{true}}" circular="{{true}}" 	bindanimationfinish="swiperChange">
+            <swiper-item class="swiperItem" wx:for="{{images}}" wx:key="filename">
+                <image src="{{m_resourceDetail.getImg(item.url,baseUrl)}}" wx-if="{{item.type=='img'}}" mode="aspectFill"></image>
+                <video src="{{m_resourceDetail.getImg(item.url,baseUrl)}}" wx-if="{{item.type=='video'}}" mode="aspectFill"></video>
+            
+            </swiper-item>
+           
+        </swiper>
+        <view class="nums">
+            {{swiper.current}}/{{swiper.sum}}
+        </view>
+    </view>
+    <view class="resourBox">
+        <view class="titleBox">{{info.titel}}</view>
+        <view class="math">
+                <view class="math001">
+                    <span class="quantity animateNum num">{{info.again_rent||0}}根</span>
+                    <span>库存数量</span>
+                </view>
+                <span class="span"></span>
+                <view class="math001">
+                    <span class="quantity">{{info.stock||0}}根</span>
+                    <span>在租数量</span>
+                </view>
+                <span class="span"></span>
+            <view class="math001">
+                <span class="quantity">{{info.turnover||0}}万</span>
+                <span>成交量</span>
+            </view>
+        </view>
+        <view class="contenttext">
+            <view wx-if="{{info.year}}">使用年限：{{info.year}}年</view>
+            <view wx-if="{{info.name}}">品牌名称：{{info.name}}</view>
+            <view wx-if="{{info.grade}}">钻具等级：{{info.grade}}</view>
+            <view wx-if="{{info.address}}">所在地点：{{info.address}}</view>
+        </view>
+        <!-- 详情 -->
+        <view class="detaildata">
+            <view class="span"></view>
+            <view class="viewTitle">商品详情</view>
+            <view class="span2"></view>
+        </view>
+        <view class="detailcontent {{!_userInfo?'unlogin':''}}">
+            <rich-text nodes="{{info.content}}">
+            </rich-text>
+            <view class="fuwenbenregiet">
+                <image src="./images/lock.png" mode="aspectFill" alt="" />
+                <navigator 	hover-class="none" url="/pages/login/login" class="jianjie">登录后即可查看全部内容</navigator>
+            </view>
+        </view>
+    </view>
+    <view class="rebuttones" catchtap="{{true}}">
+        <view class="btn miPhon" bind:tap="showKf">
+            <span>在线询价</span>
+            <image src="./images/jinru.png" alt="" mode="aspectFill" />
+        </view>
+        <view class="btn actionesData" bind:tap="toggleCollectResource">
+            <span wx:if="{{!collected}}">收藏资源</span>
+            <span wx:if="{{collected}}">取消收藏</span>
+            <image class="img1" src="./images/love.png" mode="aspectFill" wx:if="{{!collected}}"  alt="" />
+            <image class="img2" src="./images/love2.png" mode="aspectFill" wx:if="{{collected}}" alt="" />
+        </view>
+    </view>
+    
+</view>
+<wxs module="m_resourceDetail">
+    function getImg(str,baseUrl){
+		if(str.indexOf("http")!=-1){
+			return str;
+		}
+		return baseUrl+str;
+	}
+	module.exports={
+		getImg:getImg
+	}
+</wxs>

@@ -1,0 +1,55 @@
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
+    <ctHeader isBack="{{true}}"></ctHeader>
+    <image src="./images/logo.png" class="logo" mode="widthFix"  />
+    <view class="text">欢迎登录大家共享资产仓</view>
+     <view class="formContent">
+        <view class="input">
+            <input placeholder-style="font-size:28rpx" type="text" model:value="{{username}}" bindinput="prevent" placeholder="请输入用户名" />
+            <image src="./images/user.png" alt="" class="icon" mode="widthFix" />
+        </view>
+        <view class="input">
+            <input placeholder-style="font-size:28rpx" type="text" model:value="{{password}}" bindinput="prevent" placeholder="请输入密码" 	password="{{true}}" />
+            <image src="./images/lock.png" alt="" class="icon" mode="widthFix" />
+        </view>
+        <view class="forgotPwd">
+            <navigator url="/pak1/forgot-pwd/forgot-pwd" class="forgotPwdText">忘记密码?</navigator>
+        </view>
+        <view class="ronBtn" bind:tap="login">{{isLogining?"正在登录":"登录"}}</view>
+     </view>
+     <view class="tip">
+            暂无账号？<view bind:tap="showSelect" class="toRegister">立即注册>></view>
+     </view>
+      <!-- 身份选择 -->
+    <view class="selectUserMask mask {{isShowSelect?'show':''}}" bind:tap="hideSelect">
+        <view class="selectUser" catchtap="{{login.fn}}">
+            <view class="top">
+                <view class="title">选择注册身份</view>
+                <image src="./images/header/close.png" class="closeBtn" mode="heightFix" bind:tap="hideSelect" />
+            </view>
+            <view class="selectMenus">
+                <view class="menuItem {{actived==1?'selected':''}}" data-item="1" bind:tap="selectItem">
+                    <view class="btn">
+                        <image src="./images/header/rzIcon.png" class="icon" mode="widthFix" />
+                        <image src="./images/header/selected.png" class="selectedIcon" mode="widthFix" />
+                    </view>
+                    
+                    <view class="title">资源入驻</view>
+                </view>
+                <view class="menuItem {{actived==2?'selected':''}}" data-item="2" bind:tap="selectItem" >
+                    <view class="btn">
+                        <image src="./images/header/rzIcon.png" class="icon" mode="widthFix"/>
+                        <image src="./images/header/selected.png" class="selectedIcon" mode="widthFix" />
+                    </view>
+                    <view class="title">找资源</view>
+                </view>
+            </view>
+            <view class="nextStepBtn" bind:tap="toRegister">下一步</view>
+        </view>
+    </view>
+</view>
+<wxs module="login">
+    function fn(){}
+    module.exports={
+        fn:fn
+    }
+</wxs>

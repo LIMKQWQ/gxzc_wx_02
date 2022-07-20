@@ -1,0 +1,82 @@
+@import "../../common/less/common.less";
+.container{
+   
+    .list{
+        width:690rpx;
+        margin:0 auto;
+        margin-top: 30rpx;
+        .row{
+            display: flex;
+            justify-content: space-between;
+           
+            &:last-child{
+                margin-top: 30rpx;
+                
+            }
+            .listItem{
+                min-width:335rpx;
+                box-shadow: 0rpx 6rpx 17rpx 1rpx rgba(153, 153, 153, 0.2);
+                padding-bottom: 84rpx;
+                position: relative;
+                .thumbnail{
+                    image{
+                        width:100%;
+                        height: 260rpx;
+                        object-fit: cover;
+                    }
+                }
+                .title{
+                    padding: 15rpx;
+                    font-weight: bold;
+                    font-size: 28rpx;
+                    // font-family: SourceHanSansSC-Medium;
+                }
+                .tags{
+                    font-size: 22rpx;
+                    color: #666666;
+                    padding-left: 15rpx;
+                }
+                .info{
+                    margin-top: 16rpx;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0 15rpx;
+                    font-size:22rpx;
+                    color:#666666;
+                    .distance{
+                        // margin-left: 19rem;
+                        image{
+                            width:20rpx;
+                        }
+                    }
+                    
+                    
+                }
+                .toManage{
+                    margin-top: 15rpx;
+                    position: absolute;
+                    bottom:20rpx;
+                    left:50%;
+                    transform: translateX(-50%);
+                    .btn{
+                        display: block;
+                        width:144rpx;
+                        height:44rpx;
+                        .flexCenter;
+                        margin:0 auto;
+                        background-color: #019E97;
+                        border-radius: 22rpx;
+                        color:#ffffff;
+                        image{
+                            width:18rpx;
+                            margin-left: 6rpx;
+                        }
+                    }
+                    
+                }
+            }
+            
+        }
+        
+    }
+}

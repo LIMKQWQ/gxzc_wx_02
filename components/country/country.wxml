@@ -1,0 +1,28 @@
+
+	<scroll-view scroll-y="{{true}}" scroll-into-view="{{currentScroll}}" class="country_ {{show?'show':''}}" style="padding-top:{{_deviceInfo.ktxStatusHeight+50}}rpx">
+		<view class="countryTitle">
+			国际区号
+			<image src="./images/close.png" bind:tap="close" class="closeIcon" mode="scaleToFill" alt="" />
+		</view>
+		<view class="leftContent">
+			<view class="item" id="itemCommonUse">
+				<view class="start">常用</view>
+				<view class="countryItem" bind:tap="selectedCountry" wx:for="{{commonUse}}" wx:key="code" data-code="{{item.code}}" data-cn="{{item.cn}}" data-en="{{item.en}}">
+					<view class="num">{{item.code}}</view>
+					{{item.cn}}
+				</view>
+			</view>
+			<view class="item" id="item{{word}}" wx:for="{{wordArr}}" wx:for-item="word" wx:key="self">
+				<view class="start">{{word}}</view>
+				<view class="countryItem" bind:tap="selectedCountry" wx:for="{{words[word]}}" wx:key="en" data-code="{{item.code}}" data-cn="{{item.cn}}" data-en="{{item.en}}">
+					<view class="num">{{item.code}}</view>
+					{{item.cn}}
+				</view>
+			</view>
+		</view>
+		<view class="rightContent">
+			<view data-to="{{item}}" class="start" wx:for="{{wordArr}}" wx:key="self" bind:tap="scrollTo">
+				{{item}}
+			</view>
+		</view>
+	</scroll-view>

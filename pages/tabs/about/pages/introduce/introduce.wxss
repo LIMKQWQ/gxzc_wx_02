@@ -1,0 +1,378 @@
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mask {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  justify-content: center;
+  align-items: center;
+}
+.mask.show {
+  display: flex;
+}
+.clipOneLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.introduceContainer .introductions {
+  position: relative;
+  overflow-x: hidden;
+  margin-top: 40rpx;
+}
+.introduceContainer .introductions .aboutUs {
+  padding: 0 30rpx;
+}
+.introduceContainer .introductions .aboutUs .title {
+  font-size: 34rpx;
+  font-weight: bold;
+  position: relative;
+  padding-left: 13rpx;
+}
+.introduceContainer .introductions .aboutUs .title::before {
+  content: "";
+  display: block;
+  width: 6rpx;
+  height: 32rpx;
+  background-color: #21439B;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  border-radius: 6rpx;
+  transform: translateY(-50%);
+}
+.introduceContainer .introductions .aboutUs .content {
+  margin-top: 37rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  word-wrap: break-word;
+  word-break: break-all;
+  color: #666666;
+  text-align: justify;
+  white-space: pre-line;
+}
+.introduceContainer .introductions .illus {
+  margin-top: 39rpx;
+  position: relative;
+  padding: 0 30rpx;
+}
+.introduceContainer .introductions .illus .illusSwiper {
+  height: 320rpx;
+}
+.introduceContainer .introductions .illus .illusSwiper .illusItem {
+  height: 320rpx;
+}
+.introduceContainer .introductions .illus .illusSwiper .illusItem image {
+  width: 100%;
+  height: 320rpx;
+}
+.introduceContainer .introductions .illus .swiper-button-prev {
+  top: unset;
+  left: unset;
+  bottom: -60rpx;
+  right: 60rpx;
+}
+.introduceContainer .introductions .illus .swiper-button-next {
+  top: unset;
+  left: unset;
+  bottom: -60rpx;
+  right: 0rpx;
+}
+.introduceContainer .introductions .illus .swiper-button-prev,
+.introduceContainer .introductions .illus .swiper-button-next {
+  position: absolute;
+  width: 120rpx;
+  height: 120rpx;
+  overflow: hidden;
+}
+.introduceContainer .introductions .illus .swiper-button-prev .clickBtn,
+.introduceContainer .introductions .illus .swiper-button-next .clickBtn {
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.introduceContainer .introductions .illus .swiper-button-prev image,
+.introduceContainer .introductions .illus .swiper-button-next image {
+  width: 120rpx;
+  height: 120rpx;
+}
+.introduceContainer .introductions .serverIntroduce {
+  margin-top: 90rpx;
+  padding: 0 30rpx;
+}
+.introduceContainer .introductions .serverIntroduce .title {
+  font-size: 34rpx;
+  font-weight: bold;
+  position: relative;
+  padding-left: 13rpx;
+}
+.introduceContainer .introductions .serverIntroduce .title::before {
+  content: "";
+  display: block;
+  width: 6rpx;
+  height: 32rpx;
+  background-color: #21439B;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  border-radius: 6rpx;
+  transform: translateY(-50%);
+}
+.introduceContainer .introductions .serverIntroduce .content {
+  color: #666666;
+  font-size: 26rpx;
+  line-height: 46rpx;
+  margin-top: 37rpx;
+}
+.introduceContainer .introductions .selectSource {
+  margin: 0 auto;
+  margin-top: 40rpx;
+  padding-bottom: 40rpx;
+  background: rgba(33, 67, 155, 0.07);
+  position: relative;
+  width: 690rpx;
+}
+.introduceContainer .introductions .selectSource .selectSwiper {
+  height: 1000rpx;
+}
+.introduceContainer .introductions .selectSource .selectSwiper .selectItem .img image {
+  width: 100%;
+  height: 360rpx;
+}
+.introduceContainer .introductions .selectSource .selectSwiper .selectItem .title {
+  font-size: 30rpx;
+  margin-top: 40rpx;
+  font-weight: bold;
+  padding: 0 20rpx;
+  color: #21439B;
+}
+.introduceContainer .introductions .selectSource .selectSwiper .selectItem .item {
+  margin-top: 34rpx;
+  padding: 0 20rpx;
+}
+.introduceContainer .introductions .selectSource .selectSwiper .selectItem .item .itemTitle {
+  line-height: 40rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.introduceContainer .introductions .selectSource .selectSwiper .selectItem .item .content {
+  line-height: 48rpx;
+  font-size: 28rpx;
+  color: #666666;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: justify;
+  white-space: pre-line;
+}
+.introduceContainer .introductions .selectSource .swiper-button-prev {
+  left: unset;
+  top: 300rpx;
+  right: 30rpx;
+}
+.introduceContainer .introductions .selectSource .swiper-button-next {
+  left: unset;
+  top: 300rpx;
+  right: -30rpx;
+}
+.introduceContainer .introductions .selectSource .swiper-button-prev,
+.introduceContainer .introductions .selectSource .swiper-button-next {
+  position: absolute;
+  width: 120rpx;
+  height: 120rpx;
+  overflow: hidden;
+}
+.introduceContainer .introductions .selectSource .swiper-button-prev .clickBtn,
+.introduceContainer .introductions .selectSource .swiper-button-next .clickBtn {
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.introduceContainer .introductions .selectSource .swiper-button-prev image,
+.introduceContainer .introductions .selectSource .swiper-button-next image {
+  width: 120rpx;
+  height: 120rpx;
+}
+.introduceContainer .introductions .course {
+  padding: 0 30rpx;
+  margin-top: 60rpx;
+  padding-bottom: 50rpx;
+  position: relative;
+}
+.introduceContainer .introductions .course .title {
+  font-size: 34rpx;
+  color: #333333;
+  font-weight: bold;
+  position: relative;
+  padding-left: 13rpx;
+  height: 50rpx;
+}
+.introduceContainer .introductions .course .title::before {
+  content: "";
+  display: block;
+  width: 6rpx;
+  height: 32rpx;
+  background-color: #21439B;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  border-radius: 6rpx;
+  transform: translateY(-50%);
+}
+.introduceContainer .introductions .course .courseSwiper {
+  margin-top: 39rpx;
+  position: relative;
+  height: 530rpx;
+}
+.introduceContainer .introductions .course .courseSwiper .swiper-slide {
+  height: 530rpx;
+}
+.introduceContainer .introductions .course .courseSwiper .swiper-slide .courseRow {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.introduceContainer .introductions .course .courseSwiper .swiper-slide .courseRow::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 221rpx;
+  width: 100%;
+  border-bottom: 1px solid #D7D7D7;
+}
+.introduceContainer .introductions .course .courseSwiper .swiper-slide .courseRow .courseItem {
+  width: 320rpx;
+}
+.introduceContainer .introductions .course .courseSwiper .swiper-slide .courseRow .courseItem .pic {
+  width: 254rpx;
+  height: 170rpx;
+  margin: 0 auto;
+}
+.introduceContainer .introductions .course .courseSwiper .swiper-slide .courseRow .courseItem .pic image {
+  width: 254rpx;
+  height: 170rpx;
+}
+.introduceContainer .introductions .course .courseSwiper .swiper-slide .courseRow .courseItem .icon {
+  margin: 0 auto;
+  margin-top: 40rpx;
+  width: 22rpx;
+  height: 22rpx;
+  background-color: #fff;
+  border: 6rpx solid #21439B;
+  border-radius: 50%;
+  position: relative;
+  z-index: 9;
+}
+.introduceContainer .introductions .course .courseSwiper .swiper-slide .courseRow .courseItem .info {
+  margin-top: 22rpx;
+}
+.introduceContainer .introductions .course .courseSwiper .swiper-slide .courseRow .courseItem .info .year {
+  font-size: 34rpx;
+  font-weight: bold;
+  text-align: center;
+}
+.introduceContainer .introductions .course .courseSwiper .swiper-slide .courseRow .courseItem .info .infoTitle {
+  font-size: 24rpx;
+  text-align: center;
+  margin-top: 15rpx;
+  font-weight: bold;
+  max-height: 100rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.introduceContainer .introductions .course .courseSwiper .swiper-slide .courseRow .courseItem .info .infoContent {
+  max-height: 110rpx;
+  margin-top: 15rpx;
+  font-size: 24rpx;
+  color: #666666;
+  text-align: center;
+  line-height: 36rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.introduceContainer .introductions .course .swiper-button-prev {
+  left: 0rpx;
+}
+.introduceContainer .introductions .course .swiper-button-next {
+  right: 0rpx;
+}
+.introduceContainer .introductions .course .swiper-button-prev,
+.introduceContainer .introductions .course .swiper-button-next {
+  position: absolute;
+  top: 273rpx;
+  width: 40rpx;
+  height: 74rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.introduceContainer .introductions .course .swiper-button-prev .icon,
+.introduceContainer .introductions .course .swiper-button-next .icon {
+  width: 20rpx;
+  height: 37rpx;
+}
+.introduceContainer .vision {
+  background: rgba(33, 67, 155, 0.07);
+  padding: 40rpx 30rpx;
+}
+.introduceContainer .vision .visionTitle {
+  font-size: 34rpx;
+  color: #21439B;
+  font-weight: bold;
+}
+.introduceContainer .vision .text {
+  color: #666666;
+  font-size: 26rpx;
+  margin-top: 40rpx;
+}
+.introduceContainer .vision .visions {
+  margin-top: 37rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.introduceContainer .vision .visions .visionItem {
+  width: 210rpx;
+  position: relative;
+}
+.introduceContainer .vision .visions .visionItem::after {
+  content: "";
+  display: block;
+  height: 100rpx;
+  border-right: 1px solid #E4E4E4;
+  position: absolute;
+  right: -20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.introduceContainer .vision .visions .visionItem:last-child::after {
+  display: none;
+}
+.introduceContainer .vision .visions .visionItem .year {
+  font-size: 30rpx;
+  color: #21439B;
+  font-weight: bold;
+}
+.introduceContainer .vision .visions .visionItem .visionContent {
+  margin-top: 18rpx;
+  color: #666666;
+  font-size: 22rpx;
+}

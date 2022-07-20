@@ -1,0 +1,70 @@
+@import "../../common/less/common.less";
+
+	.country_{
+		.size(100vw,100vh);
+		background-color: #fff;
+		position: fixed;
+		top:0;
+		left:0;
+		z-index: 9999;
+		display: none;
+		&.show{
+			display: block;
+		}
+		.countryTitle{
+			height:100rpx;
+			line-height: 100rpx;
+			padding-left: 30rpx;
+			font-size: 28rpx;
+			font-weight: bold;
+			position: relative;
+			.closeIcon{
+				width:20rpx;
+				height:20rpx;
+				padding: 20rpx;
+				position: absolute;
+				right:50rpx;
+				top:50%;
+				transform: translateY(-50%);
+			}
+		}
+		.leftContent{
+			width:700rpx;
+			.item{
+				margin-bottom: 30rpx;
+				.start{
+					height:50rpx;
+					background-color: #f8f8f8;
+					line-height: 50rpx;
+					font-size: 28rpx;
+					padding-left: 30rpx;
+				}
+				.countryItem{
+					height:80rpx;
+					line-height: 80rpx;
+					margin-left: 20rpx;
+					
+					border-bottom:1px solid #DCDCDC;
+					display: flex;
+					font-size: 32rpx;
+					
+					.num{
+						font-size: 24rpx;
+						width:100rpx;
+						color: #666666;
+					}
+				}
+			}
+		}
+		.rightContent{
+			
+			text-align: center;
+			width:50rpx;
+			position: fixed;
+			right:0;
+			top:130rpx;
+			.start{
+				margin-bottom: 15rpx;
+			}
+		}
+	}

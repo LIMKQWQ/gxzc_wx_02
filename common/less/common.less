@@ -1,0 +1,38 @@
+.flexCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.size(@width,@height){
+	width:@width;
+	height:@height;
+}
+//遮罩
+.mask{
+	display: none;
+	height:100vh;
+	width:100%;
+	position: fixed;
+	top:0;
+	left:0;
+	background-color: rgba(0,0,0,.4);
+	z-index: 99;
+	justify-content: center;
+	align-items: center;
+	&.show{
+		display: flex;
+	}
+}
+//多行截断
+.overLine(@num){
+	display:-webkit-box;
+	-webkit-line-clamp:@num;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+//
+.clipOneLine{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

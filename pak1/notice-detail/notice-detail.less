@@ -1,0 +1,116 @@
+@import "../../common/less/common.less";
+
+.container{
+    .banner{
+        min-height: 280rpx;
+        image{
+            height:280rpx;
+            width:100%;
+        }
+    }
+    .newsInfo{
+        width:692rpx;
+        margin:0 auto;
+        margin-top: 40rpx;
+        .title{
+            font-size: 34rpx;
+            font-weight: bold;
+            position: relative;
+            padding-left: 12rpx;
+            &::after{
+                content:"";
+                display: block;
+                position: absolute;
+                left:0;
+                top:50%;
+                transform: translateY(-50%);
+                .size(4rpx,32rpx);
+                background-color: #21439B;
+            }
+        }
+        .infoSwiper{
+            margin-top: 29rpx;
+            height: 312rpx;
+            // border:1px solid red;
+            .wx-swiper-dot{
+                width:25rpx;
+                height:4rpx;
+                background-color: #E0E0E0;
+               
+               
+            }
+            .wx-swiper-dot.wx-swiper-dot-active{
+                background: #21439B;
+            }
+            .swiperItem{
+                .size(342rpx,262rpx);
+                .list{
+                    display: flex;
+                    justify-content: space-between;
+                    .newsItem{
+                        .size(342rpx,262rpx);
+                        position: relative;
+                        .content{
+                            .size(342rpx,145rpx);
+                            position: absolute;
+                            bottom:0;
+                            left:0;
+                            z-index:2;
+                            color: #fff;
+                            padding: 0 20rpx;
+                            padding-top: 30rpx;
+                            background: rgba(0,0,0,.21);
+                            .contentTitle{
+                                font-size: 24rpx;
+                                line-height: 30rpx;
+                                
+                            }
+                            .time{
+                                margin-top: 15rpx;
+                                font-size: 20rpx;
+                            }
+                        }
+                        image{
+                            position: absolute;
+                            top:0;
+                            left:0;
+                            .size(342rpx,262rpx);
+                        }
+                    }
+                }
+              
+            }
+        }
+    }
+    .content{
+        .title{
+            font-size: 35rpx;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 40rpx;
+        }
+        .info{
+            display: flex;
+            justify-content: center;
+            margin-top: 32rpx;
+            margin-bottom:32rpx;
+            .item{
+                font-size: 22rpx;
+                color: #999999;
+                display: flex;
+                align-items: center;
+                .icon{
+                    width:24rpx;
+                    margin-right: 8rpx;
+                }
+                &.views{
+                    margin-left: 49rpx;
+                }
+            }
+        }
+        .text{
+            margin-top: 40rpx;
+            width:690rpx;
+        }
+    }
+}

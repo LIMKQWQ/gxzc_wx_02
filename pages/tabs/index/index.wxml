@@ -1,0 +1,293 @@
+<view class="container" bindtouchmove="{{index.toScrollNum}}">
+	<ctHeader isIndex="{{isIndexStyle}}">大家共享资产仓</ctHeader>
+	<fixedMenus top="200rpx" id="fixedMenus"></fixedMenus>
+	<view class="indexSwiper">
+		<!-- 内容部分 -->
+		<view class="mainContent">
+			<view class="title">{{topData.banner_title}}</view>
+			<view class="text" data-test="1111">
+				<view>{{topData.banner_note}}</view>
+			</view>
+		</view>
+		<!-- swiper  -->
+		<swiper class="swiper" autoplay="{{true}}" interval="2000" circular current="{{swiperIndex}}" bindanimationfinish="swiperChange">
+			<swiper-item class="swiperItem" wx:for="{{topSwiper}}" wx:key="self">
+				<image src="{{item}}" mode="aspectFill"></image>
+			</swiper-item>
+
+		</swiper>
+		<!-- 和切换swiper按钮对齐的按钮 -->
+		<view class="btns">
+			<view bind:tap="to" data-url="/pages/tabs/find-resource/find-resource" data-open="switchTab" class="btn findSource">
+				找资源
+				<image src="./images/btnIcon.png" mode="widthFix" />
+			</view>
+			<view class="btn toBeSource" bind:tap="toBeSuber">
+				资源入驻
+				<image src="./images/btnIcon.png" mode="widthFix" />
+			</view>
+		</view>
+		<image src="./images/left.png" class="changeBtn pre" bind:tap="toPre" />
+		<image src="images/right.png" class="changeBtn next" bind:tap="toNext" />
+	</view>
+	<!-- <van-notice-bar left-icon="//s3.bmp.ovh/imgs/2022/05/25/4209f3efacbddd4c.png" background="#ffffff">
+		<view class="notices">
+			<text wx:for="{{notices}}" wx:key="index">{{item.title}}</text>
+
+		</view>
+	</van-notice-bar> -->
+	<!-- 统计数据 -->
+	<view class="census">
+
+		<view class="censusContainer" data-windowh="{{_deviceInfo.windowHeight}}">
+			<view class="censusRow">
+				<view class="censusItem">
+					<view class="censusData">
+						<span class="animateNum num kc">{{nums[0].num}}</span>根
+					</view>
+					<view class="censusTitle">库存数量</view>
+				</view>
+				<view class="censusItem">
+					<view class="censusData">
+						<span class="animateNum num">{{nums[1].num}}</span>根
+
+					</view>
+					<view class="censusTitle">在租数量</view>
+				</view>
+
+			</view>
+			<view class="censusRow">
+				<view class="censusItem">
+					<view class="censusData">
+						<span class="animateNum num">{{nums[2].num}}</span>万
+					</view>
+					<view class="censusTitle">成交额</view>
+				</view>
+				<view class="censusItem">
+					<view class="censusData">
+						<span class="animateNum num">{{nums[3].num}}</span>家
+
+					</view>
+					<view class="censusTitle">入驻资源</view>
+				</view>
+
+			</view>
+
+		</view>
+
+	</view>
+	<!-- 类别列表 -->
+	<view class="sortList">
+		<view class="top">
+			<view class="title">产品类别</view>
+			<view bind:tap="to" data-url="/pages/tabs/find-resource/find-resource" data-open="switchTab" class="more"> <text>查看更多</text>
+				<image src="./images/moreIcon.png" mode="widthFix" />
+			</view>
+		</view>
+		<view class="list">
+			<view wx:for="{{sortList}}" class="item">
+				<view class="sortIcon">
+					<image src="{{item.img}}" mode="widthFix" />
+				</view>
+				<view class="sortName">
+					{{item.name}}
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 热门租赁列表 -->
+	<view class="hotList">
+		<view class="top">
+			<view class="title">热门资源</view>
+			<view bind:tap="to" data-url="/pages/tabs/find-resource/find-resource" data-open="switchTab" class="more"> <text>查看更多</text>
+				<image src="./images/moreIcon.png" mode="widthFix" />
+			</view>
+		</view>
+		<!-- 列表swiper -->
+		<swiper interval="2000" circular class="swiper-container listSwiper" indicator-dots>
+
+			<swiper-item wx:for="{{hotList}}" wx:key="index">
+				<view class="list">
+					<view class="row">
+						<view bind:tap="to" data-url="/pak1/resource-detail/resource-detail?id={{item[0].id}}" class="listItem">
+							<view class="thumbnail">
+								<image src="{{baseUrl+item[0].image}}" mode="aspectFill" />
+							</view>
+							<view class="title">
+								{{item[0].titel}}
+							</view>
+
+							<view class="info">
+								<view class="stock" wx-if="{{item[0].again_rent}}">
+									库存:{{item[0].again_rent}}根
+								</view>
+								<view class="distance">
+									<image src="./images/distance.png" mode="widthFix" />据您{{item[0].distance}}KM
+								</view>
+							</view>
+							<view class="toKf" catchtap="{{true}}">
+								<view bind:tap="showKf" class="btn">在线询价
+									<image src="./images/btnIconWhite.png" mode="widthFix" />
+								</view>
+							</view>
+						</view>
+						<view wx:if="{{item[1]}}" bind:tap="to" data-url="/pak1/resource-detail/resource-detail?id={{item[1].id}}" class="listItem">
+							<view class="thumbnail">
+								<image src="{{baseUrl+item[1].image}}" mode="aspectFill" />
+							</view>
+							<view class="title">
+								{{item[1].titel}}
+							</view>
+
+							<view class="info">
+								<view class="stock" wx-if="{{item[1].again_rent}}">
+									库存:{{item[1].again_rent}}根
+								</view>
+								<view class="distance">
+									<image src="./images/distance.png" mode="widthFix" />据您{{item[1].distance}}KM
+								</view>
+							</view>
+							<view class="toKf" catchtap="{{true}}">
+								<view bind:tap="showKf" class="btn">在线询价
+									<image src="./images/btnIconWhite.png" mode="widthFix" />
+								</view>
+							</view>
+						</view>
+
+					</view>
+					<view class="row">
+						<view wx:if="{{item[2]}}" bind:tap="to" data-url="/pak1/resource-detail/resource-detail?id={{item[2].id}}" class="listItem">
+							<view class="thumbnail">
+								<image src="{{baseUrl+item[2].image}}" mode="aspectFill" />
+							</view>
+							<view class="title">
+								{{item[2].titel}}
+							</view>
+
+							<view class="info">
+								<view class="stock" wx-if="{{item[2].again_rent}}">
+									库存:{{item[2].again_rent}}根
+								</view>
+								<view class="distance">
+									<image src="./images/distance.png" mode="widthFix" />据您{{item[2].distance}}KM
+								</view>
+							</view>
+							<view class="toKf" catchtap="{{true}}">
+								<view bind:tap="showKf" class="btn">在线询价
+									<image src="./images/btnIconWhite.png" mode="widthFix" />
+								</view>
+							</view>
+						</view>
+						<view wx:if="{{item[3]}}" bind:tap="to" data-url="/pak1/resource-detail/resource-detail?id={{item[3].id}}" class="listItem">
+							<view class="thumbnail">
+								<image src="{{baseUrl+item[3].image}}" mode="aspectFill" />
+							</view>
+							<view class="title">
+								{{item[3].titel}}
+							</view>
+
+							<view class="info">
+								<view class="stock" wx-if="{{item[3].again_rent}}">
+									库存:{{item[3].again_rent}}根
+								</view>
+								<view class="distance">
+									<image src="./images/distance.png" mode="widthFix" />据您{{item[3].distance}}KM
+								</view>
+							</view>
+							<view class="toKf" catchtap="{{true}}">
+								<view bind:tap="showKf" class="btn">在线询价
+									<image src="./images/btnIconWhite.png" mode="widthFix" />
+								</view>
+							</view>
+						</view>
+
+					</view>
+				</view>
+
+			</swiper-item>
+
+
+		</swiper>
+
+	</view>
+
+	<!-- 共享知识 -->
+	<view class="sharingKnowledge">
+		<view class="top">
+			<view class="title">共享知识</view>
+			<view class="more">
+				<view bind:tap="to" data-url="/pak1/share-knowledge/share-knowledge">查看更多</view>
+				<image src="./images/moreIcon.png" mode="widthFix" />
+			</view>
+		</view>
+		<view class="list">
+			<view class="listItem" wx:for="{{knowledgeList}}" wx:key="id">
+				<view class="title">
+					{{item.title}}
+				</view>
+				<view class="time">
+					{{index.getTime(item.time)}}
+				</view>
+				<view bind:tap="to" data-url="/pak1/knowledge-detail/knowledge-detail?id={{item.id}}" class="toInfo">
+					查看详情>>
+				</view>
+			</view>
+
+
+		</view>
+	</view>
+
+	<!-- 新闻列表 -->
+	<view class="newsList">
+		<view class="top">
+			<view class="title">新闻列表</view>
+			<view bind:tap="to" data-url="/pages/tabs/find-resource/find-resource" data-open="switchTab" class="more"> <text>查看更多</text>
+				<image src="./images/moreIcon.png" mode="widthFix" />
+			</view>
+		</view>
+		<view class="list">
+			<navigator hover-class="none" url="/pak1/news-detail/news-detail?id={{item.id}}" class="newsItem" wx:for="{{newsList}}" wx:key="id">
+				<view class="leftInfo">
+					<view class="title">
+						{{item.title}}
+					</view>
+					<view class="info">
+						<view class="time">
+							{{item.time}}
+						</view>
+						<view class="views">
+							<image src="./images/views.png" mode="widthFix" />
+							{{item.views}}次
+						</view>
+					</view>
+				</view>
+				<view class="rightInfo">
+					<view class="pic">
+						<image src="{{item.image?baseUrl+item.image:''}}" mode="aspectFill" />
+					</view>
+				</view>
+			</navigator>
+		</view>
+	</view>
+
+
+</view>
+<wxs module="index">
+	var utils = require("../../../common/wxs/utils.wxs");
+	var scrolled = false;
+	function toScrollNum(e, instance) {
+		if (scrolled) return;
+		var comp = instance.selectComponent(".censusContainer");
+		utils.isShow(comp, function () {
+			instance.callMethod("_startScroll")
+		})
+	}
+	function getTime(time) {
+
+		return time.split(" ")[0]
+	}
+	module.exports = {
+		toScrollNum: toScrollNum,
+		getTime: getTime
+	}
+</wxs>

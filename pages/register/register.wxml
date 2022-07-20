@@ -1,0 +1,119 @@
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx;margin-top: -{{nav_scroll_height}}px;" catchtap="hideOptions">
+    <ctHeader isBack="{{true}}" bind:back="back">注册</ctHeader>
+    <country show="{{showCountry}}" bind:selected="selectedCountry" bind:close="close"></country>
+    <image src="./images/logo.png" class="logo" mode="widthFix"  />
+    <view class="text">欢迎注册大家共享资产仓</view>
+    <view class="tabs {{register.tabClass(activeTab)}}">
+        <view class="tabItem item1" data-tab="{{1}}" bind:tap="switchTab">企业用户</view>
+        <view class="tabItem item2" data-tab="{{isNext?1:2}}" bind:tap="switchTab">个人用户</view>
+    </view>
+    <!-- 企业第一步或用户 -->
+    <view class="formContent" wx:if="{{!isNext}}">
+        <view class="input">
+            <input placeholder-style="font-size:28rpx" type="text" model:value="{{username}}" bindinput="prevent" placeholder="请输入用户名" />
+            <image src="./images/user.png" alt="" class="icon" mode="widthFix" />
+        </view>
+        <view class="input" >
+            <input placeholder-style="font-size:28rpx" type="password" model:value="{{password}}" bindinput="prevent" placeholder="请输入密码" />
+            <image src="./images/lock.png" alt="" class="icon" mode="widthFix" />
+        </view>
+        <view class="input" >
+            <input placeholder-style="font-size:28rpx" type="password" model:value="{{repassword}}" bindinput="prevent" placeholder="请再次输入密码" />
+            <image src="./images/lock.png" alt="" class="icon" mode="widthFix" />
+        </view>
+        <view class="input name" >
+            <input placeholder-style="font-size:28rpx"  type="text" model:value="{{name}}" bindinput="prevent" placeholder="请输入姓名" />
+            <image src="./images/user.png" alt="" class="icon" mode="widthFix" />
+            <view catchtap="{{register.prevent}}">
+                <view id="sex" bind:tap="toggleOptions" >
+                    {{register.getSex(sexCode)}}<image src="./images/bottom.png" mode="widthFix" class="sexIcon" />
+                </view>
+            </view>
+            
+            
+            <view class="options {{isShowOptions?'show':''}}">
+                <view class="item" data-sex="1" bind:tap="setSex">先生</view>
+                <view class="item" data-sex="2" bind:tap="setSex">女士</view>
+            </view>
+        </view>
+        <view class="input" bind:tap="showCountry">
+            <input placeholder-style="font-size:28rpx" type="text" model:value="{{area}}" bindinput="prevent" disabled="{{true}}" placeholder="选择归属地" />
+            <image src="./images/phone.png" alt="" class="icon" mode="widthFix" />
+            <image src="./images/right.png" alt="" class="areaIcon" mode="widthFix" />
+        </view>
+        <view class="input phone" >
+           <view class="area_code">{{area_code}}</view> 
+            <input id="myInput1" bindfocus="keyboardOcclusion" adjust-position="{{false}}" bindblur="offKeyboardOcclusion" placeholder-style="font-size:28rpx" type="text" model:value="{{phone}}" bindinput="prevent" placeholder="请输入手机号" />
+            <image src="./images/phone.png" alt="" class="icon" mode="widthFix" />
+        </view>
+        <view class="input code" >
+            <input id="myInput2" bindfocus="keyboardOcclusion" adjust-position="{{false}}" bindblur="offKeyboardOcclusion" placeholder-style="font-size:28rpx" type="text" model:value="{{code}}" bindinput="prevent" placeholder="请输入验证码" />
+            <image src="./images/code.png" alt="" class="icon" mode="widthFix" />
+            <view class="getCodeBtn" bind:tap="getCode" >{{restTime>0?restTime+"s后重发":"获取验证码"}}</view>
+        </view>
+        
+        <!-- 注册或下一步按钮 -->
+        <view class="ronBtn" bind:tap="toNext" wx:if="{{user==1}}">下一步</view>
+        <view class="ronBtn" wx:if="{{user==2}}" bind:tap="registerPersonal">注册</view>
+        <view class="tip" hidden="{{user!=2}}">
+            已有账号？<navigator url="/pages/login/login" open-type="redirect" class="toLogin">立即登录>></navigator>
+        </view>
+    </view>
+    <!-- 企业第二步 -->
+    <view class="formContent " wx:if="{{isNext}}">
+        <view class="input">
+            <input placeholder-style="font-size:28rpx" type="text" model:value="{{companyName}}" bindinput="prevent" placeholder="请输入公司名称" />
+            <image src="./images/enterprise.png" alt="" class="icon" mode="widthFix" />
+        </view>
+        <view class="input">
+            <input placeholder-style="font-size:28rpx" type="text" model:value="{{name_company}}" bindinput="prevent" placeholder="请输入联系人姓名" />
+            <image src="./images/user.png" alt="" class="icon" mode="widthFix" />
+        </view>	
+        <view class="input">
+            <input placeholder-style="font-size:28rpx" type="text" model:value="{{phone_company}}"  bindinput="prevent" placeholder="请输入联系人手机号" />
+            <image src="./images/phone.png" alt="" class="icon" mode="widthFix" />
+        </view>	
+        <view class="input">
+            <input placeholder-style="font-size:28rpx" type="text" model:value="{{wechat}}" bindinput="prevent" placeholder="请输入联系人微信号" />
+            <image src="./images/wx.png" alt="" class="icon" mode="widthFix" />
+        </view>
+        <view class="license">
+            <view class="licenseTitle">营业执照</view>
+            <van-uploader imageFit="aspectFit" max-count="{{1}}" file-list="{{ fileList }}" preview-size="150rpx" bind:after-read="afterRead"  deletable="{{true}}" bind:delete="removePic">
+                
+            </van-uploader>
+        </view>
+        
+        <view class="agreement">
+           <checkbox-group bind:change="checkChange"> <checkbox color="#21439B"  style="transform: scale(0.8,0.8);"></checkbox></checkbox-group>
+            我已阅读并同意<navigator url="/pak1/agreement/agreement" class="highlight">《用户协议》</navigator>
+        </view>
+        <!-- 注册或下一步按钮 -->
+        <view class="ronBtn" bind:tap="registerEnterprise">
+            注册
+        </view>
+        <view class="tip">
+            已有账号？<navigator url="/pages/login/login" open-type="redirect" class="toLogin">立即登录>></navigator>
+        </view>
+    </view>
+</view>
+<wxs module="register">
+ function tabClass(code){
+        return "item"+code;
+    }
+    function getSex(code){
+        if(code==1)return "先生";
+        return "女士";
+    }
+    function prevent(){
+        
+    }
+    function getBtnText(){
+
+    }
+    module.exports={
+        tabClass:tabClass,
+        getSex:getSex,
+        prevent:prevent
+    }
+</wxs>

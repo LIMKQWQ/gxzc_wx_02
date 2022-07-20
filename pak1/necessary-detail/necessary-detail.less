@@ -1,0 +1,43 @@
+@import "../../common/less/common.less";
+
+.container{
+    .banner{
+        min-height: 280rpx;
+        image{
+            height:280rpx;
+            width:100%;
+        }
+    }
+    
+    .content{
+        .title{
+            font-size: 35rpx;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 40rpx;
+        }
+        .info{
+            display: flex;
+            justify-content: center;
+            margin-top: 32rpx;
+            margin-bottom:32rpx;
+            .item{
+                font-size: 22rpx;
+                color: #999999;
+                display: flex;
+                align-items: center;
+                .icon{
+                    width:24rpx;
+                    margin-right: 8rpx;
+                }
+                &.views{
+                    margin-left: 49rpx;
+                }
+            }
+        }
+        .text{
+            margin-top: 40rpx;
+            width:690rpx;
+        }
+    }
+}

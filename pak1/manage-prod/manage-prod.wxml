@@ -1,0 +1,45 @@
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
+    <ctHeader isBack="{{true}}">产品管理</ctHeader>
+	<fixedMenus top="184rpx" id="fixedMenus"></fixedMenus>
+    <view class="list">
+		<view class="row" wx:for="{{list}}" wx:for-item="prods" wx:key="index">
+			
+			<navigator 	hover-class="none" url="/pak1/resource-detail/resource-detail?id={{item.id}}" class="listItem" wx:for="{{prods}}" wx:key="id">
+				<view class="thumbnail">
+					<image src="{{manage.getImg(item.image,baseUrl)}}" mode="aspectFill"/>
+				</view>
+				<view class="title">
+					{{item.titel}}
+				</view>
+				<view class="tags">
+					<block wx-if="{{item.water_eye}}">{{item.water_eye}} <block wx-if="{{item.manufacturer||item.steel_grade}}">|</block></block> <block wx-if="{{item.manufacturer}}">{{item.manufacturer}} <block wx-if="{{item.steel_grade}}">|</block></block>{{item.steel_grade||""}}
+				</view>
+				<view class="info">
+					<view class="params" wx-if="{{item.diameter}}">
+						接头外径:{{item.diameter}}
+					</view>
+					<view class="stock" wx-if="{{item.again_rent}}">
+						库存:{{item.again_rent}}根
+					</view>
+					
+				</view>
+				<view class="toManage" catchtap="{{true}}">
+					<navigator 	hover-class="none" url="/pak1/pub-prod/pub-prod?id={{item.id}}" class="btn">产品管理<image src="./images/btnIconWhite.png" mode="widthFix"/></navigator>
+				</view>
+			</navigator>
+			
+		</view>	
+		<empty top="100rpx" wx:if="{{!list||!list.length}}">产品列表为空</empty>
+	</view>
+</view>
+<wxs module="manage">
+	function getImg(str,baseUrl){
+		if(str.indexOf("http")!=-1){
+			return str;
+		}
+		return baseUrl+str;
+	}
+	module.exports={
+		getImg:getImg
+	}
+</wxs>

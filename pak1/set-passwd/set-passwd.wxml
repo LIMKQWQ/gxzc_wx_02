@@ -1,0 +1,41 @@
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx" >
+    <ctHeader isBack="{{true}}">密码设置</ctHeader>
+   <country show="{{showCountry}}" bind:selected="selected" bind:close="close"></country>
+   <view class="formContainer">
+        <view class="formItem">
+           <view class="title">归属地</view>
+           <view class="input areaCode" bind:tap="show">
+               <input placeholder-style="font-size:28rpx" type="text" model:value="{{area}}" disabled="{{true}}" placeholder-style="font-size:30rpx;color:#999999"/>
+                    <image src="./images/right.png" class="areaIcon" mode="widthFix"></image>
+                    <view class="phoneAreaCode">{{area_code}}</view>
+           </view>
+       </view>
+       <view class="formItem">
+           <view class="title">手机号</view>
+           <view class="input phoneNum">
+               
+               <input placeholder-style="font-size:28rpx" type="text" bind:input="prevent" model:value="{{phone}}" placeholder="请输入手机号" placeholder-style="font-size:30rpx;color:#999999"/>
+           </view>
+       </view>
+        <view class="formItem getCode">
+           <view class="title">验证码</view>
+           <view class="input">
+               <input placeholder-style="font-size:28rpx" type="text" bind:input="prevent" model:value="{{code}}"  placeholder="请输入验证码" placeholder-style="font-size:30rpx;color:#999999"/>
+           </view>
+           <view class="getCode" bind:tap="getCode">{{restTime==0?'获取验证码':restTime+'s后重发'}}</view>
+       </view>
+        <view class="formItem">
+           <view class="title">密码</view>
+           <view class="input">
+               <input placeholder-style="font-size:28rpx" type="password" bind:input="prevent" model:value="{{password}}" placeholder="请输入密码" placeholder-style="font-size:30rpx;color:#999999"/>
+           </view>
+       </view>
+        <view class="formItem">
+           <view class="title">确认密码</view>
+           <view class="input">
+               <input placeholder-style="font-size:28rpx" type="password" bind:input="prevent" model:value="{{repassword}}" placeholder="请再次输入密码" placeholder-style="font-size:30rpx;color:#999999"/>
+           </view>
+       </view>
+       <view class="submitBtn" bind:tap="setPasswd">提交</view>
+   </view>
+</view>

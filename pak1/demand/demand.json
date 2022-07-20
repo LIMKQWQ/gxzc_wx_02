@@ -1,0 +1,9 @@
+{
+    "navigationStyle":"custom",
+    "navigationBarTextStyle": "black",
+    "usingComponents": {
+        "van-loading": "@vant/weapp/loading/index",
+        "empty": "/components/empty/empty"
+      },
+      "onReachBottomDistance":100
+}

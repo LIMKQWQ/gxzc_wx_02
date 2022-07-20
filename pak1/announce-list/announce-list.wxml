@@ -1,0 +1,33 @@
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
+    <ctHeader isBack="{{true}}">最新通告</ctHeader>
+    <fixedMenus top="551rpx" id="fixedMenus"></fixedMenus>
+    <view class="banner">
+        <image src="{{banner}}" mode="aspectFill"></image>
+    </view>
+    <view  class="newsList">
+        <navigator 	hover-class="none" url="/pak1/notice-detail/notice-detail?id={{item.id}}" class="newsItem" wx:for="{{announceList}}" wx:key="id">
+                <view class="leftInfo">
+                    <view class="title">
+                       {{item.title}}
+                    </view>
+                    <view class="info">
+                        <view class="time">
+                            {{item.time}}
+                        </view>
+                        <!-- <view class="views">
+                            <image src="./images/views.png" mode="widthFix"/>
+                            {{item.views}}次  
+                        </view> -->
+                    </view>
+                </view>
+                <view class="rightInfo">
+                    <view class="pic">
+                        <image src="{{item.image?baseUrl+item.image:''}}" mode="aspectFill" />
+                    </view>
+                </view>
+        </navigator>
+        	<view class="lodingMoreIcon" hidden="{{!_showLoading}}">
+				<van-loading style="margin-right:20rpx"/>加载中
+			</view>
+    </view>
+</view>

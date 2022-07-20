@@ -1,0 +1,7 @@
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
+<ctHeader isBack="{{true}}">用户协议</ctHeader>
+<rich-text nodes="{{htmlStr}}">
+
+</rich-text> 
+
+</view>

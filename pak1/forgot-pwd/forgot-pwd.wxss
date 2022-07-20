@@ -1,0 +1,97 @@
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mask {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mask.show {
+  display: flex;
+}
+.clipOneLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.container .formContainer {
+  width: 690rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+}
+.container .formContainer .formItem {
+  height: 60rpx;
+  display: flex;
+  border-bottom: 1rpx solid #DCDCDC;
+  margin-bottom: 40rpx;
+}
+.container .formContainer .formItem:last-child {
+  margin-bottom: 0;
+}
+.container .formContainer .formItem.getCode .input {
+  width: 350rpx;
+}
+.container .formContainer .formItem .title {
+  font-size: 30rpx;
+  width: 190rpx;
+}
+.container .formContainer .formItem .input {
+  width: 500rpx;
+}
+.container .formContainer .formItem .input.areaCode {
+  position: relative;
+}
+.container .formContainer .formItem .input.areaCode input {
+  padding-right: 50rpx;
+}
+.container .formContainer .formItem .input.areaCode .areaIcon {
+  width: 15rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.container .formContainer .formItem .input.areaCode .phoneAreaCode {
+  position: absolute;
+  right: 60rpx;
+  bottom: 20rpx;
+  transform: translateX(-80rpx);
+  font-size: 32rpx;
+  color: #999;
+}
+.container .formContainer .formItem .input input {
+  box-sizing: border-box;
+  font-size: 30rpx;
+}
+.container .formContainer .formItem .getCode {
+  width: 150rpx;
+  height: 44rpx;
+  background-color: #21439B;
+  border-radius: 22rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 24rpx;
+}
+.container .formContainer .submitBtn {
+  height: 78rpx;
+  border-radius: 39rpx;
+  background-color: #21439B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36rpx;
+  color: #fff;
+  margin-top: 120rpx;
+}

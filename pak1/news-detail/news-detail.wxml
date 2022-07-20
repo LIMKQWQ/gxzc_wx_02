@@ -1,0 +1,62 @@
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
+    <ctHeader isBack="{{true}}" >资讯详情</ctHeader>
+    <fixedMenus top="639rpx" id="fixedMenus"></fixedMenus>
+    <view class="banner">
+        <image src="{{banner}}" mode="aspectFill"/>
+    </view>
+    <view class="newsInfo">
+         <view class="top">
+			<view class="title">最新通告</view>
+			<view class="more"><navigator 	hover-class="none" url="/pak1/announce-list/announce-list">查看更多</navigator><image src="./images/moreIcon.png" mode="widthFix" /></view>
+		</view>
+        <swiper class="infoSwiper" circular indicator-dots>
+            <swiper-item class="swiperItem" wx:for="{{announce}}" wx:for-item="list" wx:key="index">
+                <view class="list"  >
+                    <navigator 	hover-class="none" url="/pak1/notice-detail/notice-detail?id={{item.id}}" class="newsItem" wx:for="{{list}}" wx:key="id">
+                        <view class="content">
+                            <view class="contentTitle">{{item.title}}</view>
+                            <view class="time">{{item.time}}</view>
+                        </view>
+                        <image src="{{baseUrl+item.image}}" mode="aspectFill" />
+                    </navigator>
+                </view>
+            </swiper-item>
+           
+        </swiper>
+    </view>
+     <view class="content">
+        <view class="title">
+            {{info.title}}
+        </view>
+        <view class="info">
+            <view class="item time">
+                <image src="./images/time.png" class="icon" mode="widthFix"></image>
+                发布时间：{{info.time}}
+            </view>
+            <view class="item views">
+                <image src="./images/views.png" class="icon" mode="widthFix"></image>
+                浏览数量：{{info.views}}次
+            </view>
+        </view>
+        <rich-text nodes="{{info.content}}" class="text">
+        </rich-text>
+        <view class="switch">
+				<navigator url="/pak1/news-detail/news-detail?id={{last.id}}&tab={{tab}}" wx:if="{{last.title}}" open-type="redirect" class="pre">
+					<image mode="widthFix" src="./images/left.png" alt="" class="icon" /> 
+                    <div class="preText">上一篇: {{last.title}}</div>
+				</navigator>
+                <view class="pre" wx:if="{{!last.title}}">
+					<image mode="widthFix" src="./images/left.png" alt="" class="icon" /> 
+                    <div class="preText">上一篇: 已经是第一篇了</div>
+				</view>
+				<navigator url="/pak1/news-detail/news-detail?id={{next.id}}&tab={{tab}}" wx:if="{{next.title}}" open-type="redirect" class="next">
+					<view class="nextText"> 下一篇: {{next.title}}</view>
+                    <image mode="widthFix" src="./images/right.png" alt="" class="icon" /> 
+				</navigator>
+                <view  class="next" wx:if="{{!next.title}}">
+					<view class="nextText"> 下一篇: 已经是最后一篇了</view>
+                    <image mode="widthFix" src="./images/right.png" alt="" class="icon" /> 
+				</view>
+			</view>
+    </view>
+</view>

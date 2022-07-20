@@ -1,0 +1,19 @@
+/**app.wxss**/
+page{
+    font-size: 24rpx;
+    color:#333333;
+}
+
+
+view{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+image{
+    max-width:750rpx;
+    height:auto;
+}
+input{
+    font-size: 28rpx;
+}

@@ -1,0 +1,131 @@
+@import "../../../common/less/common.less";
+.lodingMoreIcon{
+    .flexCenter;
+    font-size: 28rpx;
+    height:100rpx;
+}
+.container{
+  
+    .banner{
+        min-height: 280rpx;
+        image{
+            height:280rpx;
+            width:100%;
+        }
+    }
+    .tabs{
+        display: flex;
+        width:690rpx;
+        margin: 0 auto;
+        margin-top: 40rpx;
+        position: relative;
+       &.newsActive{
+           .tabItem.news{
+               color:#333333;
+               font-weight: bold;
+           }
+           &::before{
+                transform: translateX(0);
+            }
+           
+       }
+       &.dynamicActive{
+        .tabItem.dynamic{
+            color:#333333;
+            font-weight: bold;
+        }
+        &::before{
+            transform: translateX(154rpx);
+            }
+       }
+        .tabItem{
+            width:120rpx;
+            color:#666666;
+            font-size: 28rpx;
+            padding-bottom: 24rpx;
+            &:last-child{
+                margin-left: 34rpx;
+            }
+           
+        }
+        
+        &::before{
+            content: "";
+            display: block;
+            width:120rpx;
+            border-bottom:4rpx solid #21439B;
+            position: absolute;
+            bottom:0;
+            left:0;
+            z-index:1;
+            transition: transform .2s;
+        }
+        &::after{
+            content: "";
+            display: block;
+            width:690rpx;
+            border-bottom:1px solid #E7E5F2;
+            position: absolute;
+            bottom:0;
+            left:0;
+            border-radius: 1rpx;
+        }
+
+    }
+    .newsList{
+        width:692rpx;
+        margin: 0 auto;
+        flex-grow: 99;
+        
+        .newsItem{
+            display: flex;
+            height: 145rpx;
+            position: relative;
+            margin-bottom: 80rpx;
+            &:first-child{
+                padding-top: 40rpx;
+            }
+            &::after{
+                content: "";
+                display: block;
+                position: absolute;
+                bottom:-40rpx;
+                width:100%;
+                border-bottom: 1rpx solid #E7E5F2;
+            }
+            .leftInfo{
+                width: 433rpx;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                .title{
+                    font-size: 30rpx;
+                    color: #333333;
+                    line-height: 46rpx;
+                    height: 95rpx;
+                    .overLine(2);
+                }
+                .info{
+                    display: flex;
+                    color:#666666;
+                    .views{
+                        margin-left: 33rpx;
+                        image{
+                            width:24rpx;
+                        }
+                    }
+                }
+            }
+            .rightInfo{
+                margin-left: 32rpx;
+                .pic{
+                    image{
+                        width:225rpx;
+                        height:145rpx;
+                    }
+                }
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<template name="case">
+    <view class="caseContainer">
+        <view class="caseItem  {{animated['a'+index]?(index%2?'animated slideInRight':'animated slideInLeft'):'none'}}" wx:for="{{cases.list}}" data-index="{{index}}" data-windowh="{{_deviceInfo.windowHeight}}" wx:key="index">
+            <view class="pic">
+                <image src="{{baseUrl+item.image}}" alt="" class="img" mode="aspectFill" />
+            </view>
+            <view class="title">
+                {{item.title}}
+            </view>
+            <view class="content">
+                    {{item.content}}
+            </view>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,21 @@
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
+     <ctHeader isBack="{{true}}">需求信息箱</ctHeader>
+     <fixedMenus top="191rpx" id="fixedMenus"></fixedMenus>
+    <view class="list">
+         <navigator 	hover-class="none" url="/pak1/necessary-detail/necessary-detail?id={{item.id}}" class="listItem" wx:for="{{list}}" wx:key="id">
+            <view class="title" >
+                <!-- readed unread -->
+                <text class="status {{item.status=='normal'?'readed':'unread'}}">[{{item.status_text}}]</text>
+                {{item.title}}
+            </view>
+            <view class="time">
+                {{item.time}}
+            </view>
+        </navigator>
+        <view class="lodingMoreIcon" hidden="{{!_showLoading}}">
+				<van-loading style="margin-right:20rpx"/>加载中
+        </view>
+    </view>
+	<empty top="100rpx" wx:if="{{!list||!list.length}}">需求信息箱为空</empty>
+    
+</view>

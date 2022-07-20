@@ -1,0 +1,39 @@
+.container .banner {
+  min-height: 280rpx;
+}
+.container .banner image {
+  height: 280rpx;
+  width: 100%;
+}
+.container .content .title {
+  padding: 0 30rpx;
+  font-size: 35rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 40rpx;
+}
+.container .content .info {
+  display: flex;
+  justify-content: center;
+  margin-top: 32rpx;
+  margin-bottom: 40rpx;
+}
+.container .content .info .item {
+  font-size: 22rpx;
+  color: #999999;
+  display: flex;
+  align-items: center;
+}
+.container .content .info .item .icon {
+  width: 24rpx;
+  margin-right: 8rpx;
+}
+.container .content .info .item.views {
+  margin-left: 49rpx;
+}
+.container .content .text {
+  width: 690rpx;
+}
+.container .content .text image {
+  max-width: 300rpx;
+}

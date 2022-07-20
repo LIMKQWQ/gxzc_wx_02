@@ -1,0 +1,186 @@
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mask {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  justify-content: center;
+  align-items: center;
+}
+.mask.show {
+  display: flex;
+}
+.clipOneLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.contactContainer {
+  position: relative;
+  overflow-x: hidden;
+}
+.contactContainer .contactContent {
+  margin-top: 40rpx;
+  padding: 0 30rpx;
+}
+.contactContainer .contactContent .title {
+  font-size: 34rpx;
+  font-weight: bold;
+  position: relative;
+  padding-left: 13rpx;
+}
+.contactContainer .contactContent .title::before {
+  content: "";
+  display: block;
+  width: 6rpx;
+  height: 32rpx;
+  background-color: #21439B;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  border-radius: 6rpx;
+  transform: translateY(-50%);
+}
+.contactContainer .contactContent .name {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-top: 40rpx;
+}
+.contactContainer .contactContent .info {
+  margin-top: 47rpx;
+}
+.contactContainer .contactContent .info .infoItem {
+  display: flex;
+  margin-top: 50rpx;
+  position: relative;
+}
+.contactContainer .contactContent .info .infoItem:first-child {
+  margin-top: 0;
+}
+.contactContainer .contactContent .info .infoItem:last-child::after {
+  display: none;
+}
+.contactContainer .contactContent .info .infoItem::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 21rpx;
+  bottom: -5rpx;
+  transform: translateY(100%);
+  height: 40rpx;
+  border-right: 1px solid #21439B;
+}
+.contactContainer .contactContent .info .infoItem .icon {
+  height: 42rpx;
+}
+.contactContainer .contactContent .info .infoItem .text {
+  margin-left: 21rpx;
+  font-size: 28rpx;
+  color: #666666;
+}
+.contactContainer .map {
+  position: relative;
+  width: 690rpx;
+  margin: 0 auto;
+  margin-top: 53rpx;
+}
+.contactContainer .map .addPoint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30rpx;
+}
+.contactContainer .map image {
+  width: 100%;
+}
+.contactContainer .comment {
+  padding-bottom: 40rpx;
+  margin-top: 48rpx;
+}
+.contactContainer .comment .title {
+  padding: 0 30rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+  position: relative;
+  padding-left: 43rpx;
+}
+.contactContainer .comment .title::before {
+  content: "";
+  display: block;
+  width: 6rpx;
+  height: 32rpx;
+  background-color: #21439B;
+  position: absolute;
+  left: 30rpx;
+  top: 50%;
+  border-radius: 6rpx;
+  transform: translateY(-50%);
+}
+.contactContainer .comment .commentForm {
+  width: 690rpx;
+  margin: 0 auto;
+  margin-top: 39rpx;
+}
+.contactContainer .comment .commentForm .formItem {
+  margin-top: 31rpx;
+  display: flex;
+  align-items: center;
+}
+.contactContainer .comment .commentForm .formItem:nth-last-child(2) {
+  display: block;
+}
+.contactContainer .comment .commentForm .formItem .formTitle {
+  font-size: 30rpx;
+  margin-right: 20rpx;
+}
+.contactContainer .comment .commentForm .formItem .input {
+  margin-top: 20rpx;
+  width: 603rpx;
+}
+.contactContainer .comment .commentForm .formItem .input input {
+  height: 72rpx;
+  border: 1px solid #D7D7D7;
+  width: 603rpx;
+  padding-left: 21rpx;
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 7rpx;
+}
+.contactContainer .comment .commentForm .formItem .input input::-webkit-input-placeholder {
+  color: #999999;
+  font-size: 28rpx;
+}
+.contactContainer .comment .commentForm .formItem .input textarea {
+  width: 690rpx;
+  height: 180rpx;
+  border: 1px solid #D7D7D7;
+  outline: none;
+  padding-left: 21rpx;
+  padding-top: 25rpx;
+  box-sizing: border-box;
+  border-radius: 7rpx;
+}
+.contactContainer .comment .commentForm .formItem .input textarea::-webkit-input-placeholder {
+  color: #999999;
+  font-size: 28rpx;
+}
+.contactContainer .comment .commentForm .submitBtn {
+  width: 690rpx;
+  height: 78rpx;
+  background-color: #21439B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 39rpx;
+  margin-top: 30rpx;
+}
