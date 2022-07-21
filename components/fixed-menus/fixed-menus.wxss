@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .mask {
   display: none;
   height: 100vh;
@@ -15,14 +16,17 @@
   justify-content: center;
   align-items: center;
 }
+
 .mask.show {
   display: flex;
 }
+
 .clipOneLine {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .box {
   position: absolute;
   top: 55rpx;
@@ -30,17 +34,21 @@
   z-index: 97;
   overflow-x: hidden;
 }
+
 .box .fixedMenus {
   display: flex;
   flex-direction: column;
   transition: transform 0.3s;
 }
+
 .box .fixedMenus .mask {
   display: none;
 }
+
 .box .fixedMenus.hide {
   transform: translateX(72rpx);
 }
+
 .box .fixedMenus .menu {
   margin-bottom: 6rpx;
   border-radius: 50%;
@@ -48,10 +56,12 @@
   justify-content: center;
   align-items: center;
 }
+
 .box .fixedMenus .menu image {
   width: 85rpx;
   height: 85rpx;
 }
+
 .qrcodeContent {
   width: 600rpx;
   height: 720rpx;
@@ -63,52 +73,63 @@
   position: relative;
   border-radius: 20rpx;
 }
+
 .qrcodeContent .closeIcon {
   width: 25rpx;
   position: absolute;
   top: 30rpx;
   right: 30rpx;
 }
+
 .qrcodeContent .qrcodeText {
   color: #333333;
   font-size: 36rpx;
   margin-top: 30rpx;
 }
+
 .qrcodeContent .qrcodeImg {
   width: 300rpx;
 }
+
 .messageBoard {
   padding: 40rpx;
   width: 620rpx;
   background-color: #fff;
   position: relative;
 }
-.messageBoard > .title {
+
+.messageBoard>.title {
   color: #21439B;
   font-size: 34rpx;
   font-weight: bold;
 }
+
 .messageBoard .inputs {
   margin-top: 44rpx;
 }
+
 .messageBoard .inputs .inputItem {
   margin-top: 20rpx;
   display: flex;
   align-items: center;
 }
+
 .messageBoard .inputs .inputItem:first-child {
   margin-top: 0;
 }
+
 .messageBoard .inputs .inputItem:last-child {
   display: block;
   margin-top: 40rpx;
 }
+
 .messageBoard .inputs .inputItem .title {
   font-size: 30rpx;
   text-align: left;
   margin-right: 30rpx;
   min-width: 70rpx;
 }
+
 .messageBoard .inputs .inputItem input {
   flex-grow: 1;
   height: 70rpx;
@@ -118,11 +139,13 @@
   padding-left: 17rpx;
   border-radius: 7rpx;
 }
+
 .messageBoard .inputs .inputItem input::-webkit-input-placeholder {
   padding-left: 17rpx;
   font-size: 28rpx;
   color: #999999;
 }
+
 .messageBoard .inputs .inputItem textarea {
   box-sizing: border-box;
   margin-top: 20rpx;
@@ -135,10 +158,12 @@
   padding-left: 17rpx;
   border-radius: 7rpx;
 }
+
 .messageBoard .inputs .inputItem textarea::-webkit-input-placeholder {
   font-size: 28rpx;
   color: #999999;
 }
+
 .messageBoard .submitBtn {
   width: 100%;
   height: 68rpx;
@@ -151,12 +176,14 @@
   margin-top: 50rpx;
   border-radius: 27rpx;
 }
+
 .messageBoard .closeBtn {
   width: 30rpx;
   position: absolute;
   top: 42rpx;
   right: 40rpx;
 }
+
 .wxShareYd .wxShareYdContent {
   color: #fff;
   position: absolute;
@@ -165,9 +192,11 @@
   font-size: 36rpx;
   text-align: center;
 }
+
 .wxShareYd .wxShareYdContent .p {
   width: 100%;
 }
+
 .bottomShareContent {
   position: fixed;
   left: 0;
@@ -177,12 +206,14 @@
   background-color: #fff;
   z-index: 99;
 }
-.bottomShareContent > .title {
+
+.bottomShareContent>.title {
   margin-top: 40rpx;
   text-align: center;
   font-size: 34rpx;
   color: #21439B;
 }
+
 .bottomShareContent .icons {
   width: 283rpx;
   display: flex;
@@ -190,6 +221,7 @@
   margin: 0 auto;
   margin-top: 59rpx;
 }
+
 .bottomShareContent .icons .shareBtn {
   background-color: transparent;
   width: 83rpx;
@@ -198,12 +230,15 @@
   margin: 0;
   margin-right: 60rpx;
 }
+
 .bottomShareContent .icons .shareBtn::after {
   border: 0;
 }
+
 .bottomShareContent .icons .menuPic {
   width: 73rpx;
 }
+
 .bottomShareContent .cancel {
   margin: 0 auto;
   margin-top: 50rpx;
@@ -216,4 +251,16 @@
   align-items: center;
   color: #fff;
   font-size: 28rpx;
+}
+.recommend .messageBoard .inputs .inputItem {
+  display: block;
+}
+.recommend .messageBoard .inputs .inputItem .title {
+  width: 100%;
+  display: block;
+  font-weight: 600;
+}
+.recommend .messageBoard .submitBtn {
+  width: 160rpx;
+  border-radius: 34rpx;
 }

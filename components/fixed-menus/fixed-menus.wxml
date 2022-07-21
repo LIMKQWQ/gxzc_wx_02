@@ -1,94 +1,122 @@
-
 <block>
-<!-- 悬浮菜单 -->
-<view class="box" style="position:fixed; top:{{top}}">
-    <view class="fixedMenus {{hide?'hide':''}}"  id="{{id}}">
-        <view class="menu fixedKf" bind:tap="showQrcode">
-            <image src="./images/fixedMenus/kf.png" mode="widthFix"/>
+    <!-- 悬浮菜单 -->
+    <view class="box" style="position:fixed; top:{{top}}">
+        <view class="fixedMenus {{hide?'hide':''}}" id="{{id}}">
+            <view class="menu fixedKf" bind:tap="showQrcode">
+                <image src="./images/fixedMenus/kf.png" mode="widthFix" />
+            </view>
+            <view class="menu fixedPhone" bind:tap="call">
+                <image src="./images/fixedMenus/phone.png" mode="widthFix" />
+            </view>
+            <view class="menu fixedComment" bind:tap="showComment">
+                <image src="./images/fixedMenus/comment.png" mode="widthFix" />
+            </view>
+            <view class="menu fixedShare" bind:tap="showShare" wx:if="{{!disabledShare}}">
+                <image src="./images/fixedMenus/share.png" mode="widthFix" />
+            </view>
+            <view bind:tap="showRecommend">
+            </view>
         </view>
-        <view class="menu fixedPhone" bind:tap="call">
-            <image src="./images/fixedMenus/phone.png" mode="widthFix"/>
-        </view>
-        <view class="menu fixedComment" bind:tap="showComment">
-            <image src="./images/fixedMenus/comment.png" mode="widthFix"/>
-        </view>
-        <view class="menu fixedShare" bind:tap="showShare"  wx:if="{{!disabledShare}}">
-            <image src="./images/fixedMenus/share.png" mode="widthFix"/>
-        </view>
-        
     </view>
-</view>
 
-<!-- 留言板 -->
-<view class="message mask {{isShowComment?'show':''}}"  wx:if="isShowComment" bind:tap="hideComment" catchtouchmove="{{fixedMenus.prevent}}">
-    <view class="messageBoard" catchtap="{{fixedMenus.prevent}}">
-        <image src="./images/close.png" class="closeBtn" mode="widthFix" bind:tap="hideComment" />
-        <view class="title">
-            留言板
-        </view>
-        <view class="inputs">
-            <view class="inputItem">
-                <view class="title">姓名</view>
-                <input placeholder-style="font-size:28rpx"  type="text" model:value="{{msg_name}}" id="name"  placeholder="请输入姓名"/>
+    <!-- 留言板 -->
+    <view class="message mask {{isShowComment?'show':''}}" wx:if="isShowComment" bind:tap="hideComment" catchtouchmove="{{fixedMenus.prevent}}">
+        <view class="messageBoard" catchtap="{{fixedMenus.prevent}}">
+            <image src="./images/close.png" class="closeBtn" mode="widthFix" bind:tap="hideComment" />
+            <view class="title">
+                留言板
             </view>
-            <view class="inputItem">
-                <view class="title">电话</view>
-                <input placeholder-style="font-size:28rpx" type="text" id="phone" model:value="{{msg_phone}}" placeholder="请输入电话"/>
-            </view>
-            <view class="inputItem">
-                <view class="title">邮箱</view>
-                <input placeholder-style="font-size:28rpx" type="text" id="email" model:value="{{msg_email}}" placeholder="请输入邮箱"/>
-            </view>
-            <view class="inputItem">
-                <view class="title">咨询/反馈内容</view>
-                <textarea placeholder="" model:value="{{msg_content}}" ></textarea>
-            </view>
-        </view>
-        <view class="submitBtn" bind:tap="subComment">
-            提交
-        </view>
-    </view>
-</view>
-<!-- 公众号二维码 -->
-<view class="mask qrcode {{isShowQrcode?'show':'false'}}" bind:tap="hideQrcode" catchtouchmove="{{fixedMenus.prevent}}">
-    <view class="qrcodeContent" catchtap="{{fixedMenus.prevent}}">
-        <image src="./images/close.png" mode="widthFix" class="closeIcon" bind:tap="hideQrcode"></image>
-        <image src="./images/qrcode.jpg" mode="widthFix" class="qrcodeImg" show-menu-by-longpress="{{true}}"></image>
-        <view class="qrcodeText">
-            扫一扫 联系客服
-        </view>
-    </view>
-</view>
-<!-- 微信引导 -->
-<view class="wxShareYd mask {{isShowWxShareYd?'show':''}}" bind:tap="hideWxShareYd" catchtouchmove="{{fixedMenus.prevent}}">
-	<view class="wxShareYdContent">
-		<view>点击右上角<image mode="widthFix" src="./images/more.png" style="width:50rpx;margin:0 10rpx;vertical-align:middle" alt="" /><image mode="widthFix" src="./images/wxRow.png" alt="" style="margin-left:30rpx;width:120rpx;" /></view>
-		分享到朋友圈
-	</view>
-</view>
-<!-- 底部分享 -->
-<view class="bottomShare mask {{isShowShare?'show':''}}" bind:tap="hideShare" catchtouchmove="{{fixedMenus.prevent}}">
-		<view class="bottomShareContent" catchtap="{{fixedMenus.prevent}}">
-			<view class="title">分享到</view>
-           
-			<view class="icons" bind:tap="hideShare">
-				<button class="shareBtn" open-type="share">
-                    <image src="./images/wx.png" mode="widthFix" class="menuPic" alt="" style="margin-right:128rpx"/>
-                </button>
-                <view bind:tap="showWxShareYd" >
-                    <image src="./images/pyq.png" mode="widthFix" class="menuPic" alt=""/>
+            <view class="inputs">
+                <view class="inputItem">
+                    <view class="title">姓名</view>
+                    <input placeholder-style="font-size:28rpx" type="text" model:value="{{msg_name}}" id="name" placeholder="请输入姓名" />
                 </view>
-			</view>
-			<view class="cancel" bind:tap="hideShare">取消</view>
-		</view>
-		
-</view>
+                <view class="inputItem">
+                    <view class="title">电话</view>
+                    <input placeholder-style="font-size:28rpx" type="text" id="phone" model:value="{{msg_phone}}" placeholder="请输入电话" />
+                </view>
+                <view class="inputItem">
+                    <view class="title">邮箱</view>
+                    <input placeholder-style="font-size:28rpx" type="text" id="email" model:value="{{msg_email}}" placeholder="请输入邮箱" />
+                </view>
+                <view class="inputItem">
+                    <view class="title">咨询/反馈内容</view>
+                    <textarea placeholder="" model:value="{{msg_content}}"></textarea>
+                </view>
+            </view>
+            <view class="submitBtn" bind:tap="subComment">
+                提交
+            </view>
+        </view>
+    </view>
+    <!-- 公众号二维码 -->
+    <view class="mask qrcode {{isShowQrcode?'show':'false'}}" bind:tap="hideQrcode" catchtouchmove="{{fixedMenus.prevent}}">
+        <view class="qrcodeContent" catchtap="{{fixedMenus.prevent}}">
+            <image src="./images/close.png" mode="widthFix" class="closeIcon" bind:tap="hideQrcode"></image>
+            <image src="./images/qrcode.jpg" mode="widthFix" class="qrcodeImg" show-menu-by-longpress="{{true}}"></image>
+            <view class="qrcodeText">
+                扫一扫 联系客服
+            </view>
+        </view>
+    </view>
+    <view class="message mask recommend {{isShowRecommend?'show':'false'}}" bind:tap="hideRecommend" catchtouchmove="{{fixedMenus.prevent}}">
+        <view class="messageBoard" catchtap="{{fixedMenus.prevent}}">
+            <image src="./images/close.png" mode="widthFix" class="closeBtn" bind:tap="hideRecommend"></image>
+            <view class="title">
+                资源推荐
+            </view>
+            <view class="inputs">
+                <view class="inputItem">
+                    <view class="title">资源单位</view>
+                    <input placeholder-style="font-size:28rpx" type="text" model:value="{{rmd_unit}}" id="name" placeholder="请输入资源单位" />
+                </view>
+                <view class="inputItem">
+                    <view class="title">联系人</view>
+                    <input placeholder-style="font-size:28rpx" type="text" id="phone" model:value="{{rmd_name}}" placeholder="请输入联系人" />
+                </view>
+                <view class="inputItem">
+                    <view class="title">内容</view>
+                    <textarea placeholder="" model:value="{{rmd_content}}" placeholder="请输入联系内容"></textarea>
+                </view>
+            </view>
+            <view class="submitBtn" bind:tap="subRecommend">
+                提交
+            </view>
+        </view>
+    </view>
+    <!-- 微信引导 -->
+    <view class="wxShareYd mask {{isShowWxShareYd?'show':''}}" bind:tap="hideWxShareYd" catchtouchmove="{{fixedMenus.prevent}}">
+        <view class="wxShareYdContent">
+            <view>点击右上角
+                <image mode="widthFix" src="./images/more.png" style="width:50rpx;margin:0 10rpx;vertical-align:middle" alt="" />
+                <image mode="widthFix" src="./images/wxRow.png" alt="" style="margin-left:30rpx;width:120rpx;" />
+            </view>
+            分享到朋友圈
+        </view>
+    </view>
+    <!-- 底部分享 -->
+    <view class="bottomShare mask {{isShowShare?'show':''}}" bind:tap="hideShare" catchtouchmove="{{fixedMenus.prevent}}">
+        <view class="bottomShareContent" catchtap="{{fixedMenus.prevent}}">
+            <view class="title">分享到</view>
+
+            <view class="icons" bind:tap="hideShare">
+                <button class="shareBtn" open-type="share">
+                    <image src="./images/wx.png" mode="widthFix" class="menuPic" alt="" style="margin-right:128rpx" />
+                </button>
+                <view bind:tap="showWxShareYd">
+                    <image src="./images/pyq.png" mode="widthFix" class="menuPic" alt="" />
+                </view>
+            </view>
+            <view class="cancel" bind:tap="hideShare">取消</view>
+        </view>
+
+    </view>
 </block>
 <wxs module="fixedMenus">
-    function prevent(){
+    function prevent() {
 
     }
-    module.exports={
-        prevent:prevent
+    module.exports = {
+        prevent: prevent
     }
 </wxs>

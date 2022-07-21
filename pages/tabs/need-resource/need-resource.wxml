@@ -1,19 +1,19 @@
 <view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
-  <ctHeader>找资源</ctHeader>
+  <ctHeader>需求大厅</ctHeader>
   <fixedMenus top="560rpx" id="fixedMenus"></fixedMenus>
   <!-- 筛选 -->
   <view class="resourcontent">
 
     <view class="inputseach">
       <image src="./images/seach.png" mode="widthFix" alt="" />
-      <input placeholder-style="font-size:28rpx" type="text" confirm-type='search' placeholder="请输入关键词进行搜索" model:value="{{searchStr}}" bindinput="inputChange" bindconfirm="search" />
+      <input placeholder-style="font-size:28rpx" type="text" confirm-type='search' placeholder="请输入关键词进行搜索" model:value="{{searchStr}}" bindinput="inputChange" bindconfirm="search" bindfocus="inputFocus" />
       <view class="searchBtn" bind:tap="search">搜索</view>
     </view>
   </view>
   <!-- 注册和发布 -->
   <view class="btnBar">
     <view class="registerBtn">注册会员</view>
-    <view class="releaseBtn">发布需求</view>
+    <view class="releaseBtn" bindtap="release">发布需求</view>
   </view>
   <!-- 资源列表 -->
   <view class="tip" hidden="{{!showTip}}">
@@ -21,7 +21,7 @@
   </view>
   <view class="resourceList">
 
-    <navigator hover-class="none" url="/pak1/resource-detail/resource-detail?id={{item.id}}" class="resourceItem" wx:for="{{resourceList}}" wx:key="self">
+    <navigator hover-class="none" url="/pak1/need-detail/need-detail?id={{item.id}}" class="resourceItem" wx:for="{{resourceList}}" wx:key="self">
       <view class="pic">
         <image src="{{find.getImg(item.image,baseUrl)}}" mode="aspectFill" class="picIcon"></image>
         <view class="distance">
@@ -59,7 +59,7 @@
       </view>
       <view catchtap="{{true}}">
         <view class="toKf" bind:tap="showKf">
-          在线询价
+          资源推荐
           <image src="./images/to.png" mode="aspectFill" class="toKfIcon"></image>
         </view>
       </view>

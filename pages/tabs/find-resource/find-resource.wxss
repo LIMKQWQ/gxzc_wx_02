@@ -388,22 +388,93 @@
 .container .resourceList .resourceItem .info .pak .pakitembet {
   justify-content: space-between;
 }
-.container .resourceList .resourceItem .info .pak .pakitembet>view{
+
+.container .resourceList .resourceItem .info .pak .pakitembet>view {
   max-width: 49%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.pak .pak_cz{
+
+.pak .pak_cz {
   color: #21439B;
-}.pak .pak_cs{
-  color: #CF1D1D ;
 }
-.container .resourceList .resourceItem  .intr{
+
+.pak .pak_cs {
+  color: #CF1D1D;
+}
+
+.container .resourceList .resourceItem .intr {
   font-size: 22rpx;
   margin-top: 21rpx;
   color: #666;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.filterBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 98;
+}
+
+.filterBar .filterTabs {
+  display: flex;
+  align-items: center;
+}
+
+.filterBar .filterTabs text {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-right: 40rpx;
+}
+
+.filterBar .registerBtn {
+  display: block;
+  color: #21439B;
+  border: 1rpx solid #21439B;
+  border-radius: 4rpx;
+  text-align: center;
+  height: 48rpx;
+  line-height: 48rpx;
+  width: 150rpx;
+}
+
+.filterBar .filterMenu {
+  position: absolute;
+  top: 44rpx;
+  left: 0;
+  width: 100%;
+}
+
+.filterBar .filterMenu .filterCont {
+  background-color: #fff;
+  padding: 0 30rpx;
+  box-shadow: 0rpx 10rpx 25rpx 5rpx rgba(153, 153, 153, 0.5);
+  width: 100%;
+}
+
+.filterBar .filterMenu .filterCont .filterList {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.filterBar .filterMenu .filterCont .filterList .filterTit {
+  line-height: 66rpx;
+  font-weight: bold;
+}
+
+.filterBar .filterMenu .filterCont .filterList .filterOption {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filterBar .filterMenu .filterCont .filterList .filterOption text {
+  display: block;
+  margin-bottom: 20rpx;
+  margin-right: 20rpx;
 }

@@ -15,8 +15,8 @@
         </view>
     </view>
     <view class="resourBox">
-        <view class="titleBox">{{info.titel}}</view>
-        <view class="math">
+        <view class="titleBox">{{info.titel}} <text class="tag_qz">求租</text> <text class="tag_qg">求购</text></view>
+        <!-- <view class="math">
                 <view class="math001">
                     <span class="quantity animateNum num">{{info.again_rent||0}}根</span>
                     <span>库存数量</span>
@@ -31,12 +31,17 @@
                 <span class="quantity">{{info.turnover||0}}万</span>
                 <span>成交量</span>
             </view>
-        </view>
-        <view class="contenttext">
+        </view> -->
+        <!-- <view class="contenttext">
             <view wx-if="{{info.year}}">使用年限：{{info.year}}年</view>
             <view wx-if="{{info.name}}">品牌名称：{{info.name}}</view>
             <view wx-if="{{info.grade}}">钻具等级：{{info.grade}}</view>
             <view wx-if="{{info.address}}">所在地点：{{info.address}}</view>
+        </view> -->
+        <!-- 简介 -->
+        <view class="intr">
+            <view class="intrTit">介绍：</view>
+            <view class="intrCont">杆防刺漏技能，同时加大了接头水眼尺。非标钻杆的主要特点是优化了过渡带的结构， 提高了钻杆防刺漏技能，同时加大了接头水眼尺非标钻杆的主要特点是优化了过渡带的结构， 提高了钻杆防刺漏技能，同时加大了接头水眼尺。非标钻杆的主要特点是优化了过渡带的结构， 提高了钻杆防刺漏技能，同时加大了接头水眼尺非标钻杆的主要特点是优化了过渡带的结构， 提高了钻杆防刺漏技能，同时加大了接头水眼尺。非标钻杆的主要特点是优化了过渡带的结构， 提高了钻杆防刺漏技能，同时加大了接头水眼尺。</view>
         </view>
         <!-- 详情 -->
         <view class="detaildata">

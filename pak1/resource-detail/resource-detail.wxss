@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .mask {
   display: none;
   height: 100vh;
@@ -15,34 +16,43 @@
   justify-content: center;
   align-items: center;
 }
+
 .mask.show {
   display: flex;
 }
+
 .clipOneLine {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .container {
   padding-bottom: 98rpx;
 }
+
 .container .swiperContainer {
   position: relative;
 }
+
 .container .swiperContainer .resourceSwiper {
   height: 500rpx;
 }
+
 .container .swiperContainer .resourceSwiper .swiperItem {
   height: 500rpx;
 }
+
 .container .swiperContainer .resourceSwiper .swiperItem image {
   width: 100%;
   height: 500rpx;
 }
+
 .container .swiperContainer .resourceSwiper .swiperItem video {
   width: 100%;
   height: 100%;
 }
+
 .container .swiperContainer .nums {
   color: #fff;
   font-size: 40rpx;
@@ -51,17 +61,22 @@
   right: 60rpx;
   bottom: 40rpx;
 }
+
 .container .resourBox {
   padding: 30rpx;
   position: relative;
   overflow-x: hidden;
 }
+
 .container .resourBox .titleBox {
   height: 31rpx;
   font-size: 32rpx;
-  font-weight: 500;
+  font-weight: 600;
   color: #333333;
+  display: flex;
+  align-items: center;
 }
+
 .container .resourBox .math {
   display: flex;
   align-items: center;
@@ -69,14 +84,17 @@
   margin-top: 40rpx;
   margin-bottom: 40rpx;
 }
+
 .container .resourBox .math .span {
   width: 1rpx;
   height: 30rpx;
   background: #D4D4D4;
 }
+
 .container .resourBox .math .math001 {
   display: block;
 }
+
 .container .resourBox .math .math001 span {
   display: block;
   color: #21439B;
@@ -84,15 +102,18 @@
   font-size: 22rpx;
   font-weight: 400;
 }
+
 .container .resourBox .math .math001 .quantity {
   font-size: 36rpx;
   color: #21439B;
   font-weight: bold;
 }
+
 .container .resourBox .contenttext {
   display: flex;
   flex-wrap: wrap;
 }
+
 .container .resourBox .contenttext view {
   font-size: 28rpx;
   display: block;
@@ -101,6 +122,7 @@
   font-weight: 400;
   color: #333333;
 }
+
 .container .resourBox .detaildata {
   display: flex;
   justify-content: center;
@@ -108,6 +130,7 @@
   margin-bottom: 40rpx;
   align-items: center;
 }
+
 .container .resourBox .detaildata .span {
   margin-right: 15rpx;
   display: block;
@@ -115,6 +138,7 @@
   height: 2rpx;
   background: linear-gradient(to right, rgba(225, 255, 255, 0.1), blue);
 }
+
 .container .resourBox .detaildata .span2 {
   margin-left: 15rpx;
   display: block;
@@ -128,26 +152,32 @@
   /* Firefox 3.6 - 15 */
   background: linear-gradient(to left, rgba(225, 255, 255, 0.1), blue);
 }
+
 .container .resourBox .detaildata .viewTitle {
   font-size: 34rpx;
   font-weight: 500;
   color: #21439B;
   padding: 0 20rpx;
 }
+
 .container .resourBox .detailcontent {
   position: relative;
   width: 690rpx;
 }
+
 .container .resourBox .detailcontent.unlogin {
   height: 500rpx;
   overflow-y: hidden;
 }
+
 .container .resourBox .detailcontent.unlogin .fuwenbenregiet {
   display: flex;
 }
+
 .container .resourBox .detailcontent image {
   width: 100%;
 }
+
 .container .resourBox .detailcontent .fuwenbenregiet {
   position: absolute;
   bottom: 0;
@@ -162,12 +192,14 @@
   background-image: -webkit-linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0.99), hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0));
   padding-top: 200rpx;
 }
+
 .container .resourBox .detailcontent .fuwenbenregiet image {
   margin: 100rpx auto 0;
   display: block;
   width: 42rpx;
   height: 42rpx;
 }
+
 .container .resourBox .detailcontent .jianjie {
   width: 100%;
   display: block;
@@ -177,6 +209,7 @@
   font-weight: 400;
   color: #666666;
 }
+
 .container .rebuttones {
   position: fixed;
   bottom: 0;
@@ -185,6 +218,7 @@
   flex-wrap: wrap;
   height: 98rpx;
 }
+
 .container .rebuttones .btn {
   width: 50%;
   text-align: center;
@@ -194,6 +228,7 @@
   align-items: center;
   color: #019E97;
 }
+
 .container .rebuttones .btn.miPhon {
   width: 50%;
   font-size: 28rpx;
@@ -201,17 +236,57 @@
   color: #FFFFFF;
   background: #019E97;
 }
+
 .container .rebuttones .btn.miPhon image {
   width: 30rpx;
   height: 30rpx;
   margin-left: 8rpx;
 }
+
 .container .rebuttones .btn.actionesData {
   background-color: #fff;
   border: 1rpx solid #019E97;
 }
+
 .container .rebuttones .btn.actionesData image {
   width: 32rpx;
   height: 32rpx;
   margin-left: 8rpx;
+}
+
+.container .resourBox .titleBox .tag_qz {
+  font-size: 22rpx;
+  color: #fff;
+  background-color: #21439B;
+  margin-left: 30rpx;
+  width: 80rpx;
+  text-align: center;
+  display: block;
+
+}
+
+.container .resourBox .titleBox .tag_qg {
+  font-size: 22rpx;
+  color: #fff;
+  background-color: #CF1D1D;
+  margin-left: 30rpx;
+  width: 80rpx;
+  text-align: center;
+  display: block;
+}
+
+.intr {
+  margin-top: 40rpx;
+  color: #333;
+  margin-bottom: 60rpx;
+}
+
+.intr .intrTit {
+  margin-bottom: 20rpx;
+  font-weight: 500;
+}
+
+.intr .intrCont {
+  line-height: 42rpx;
+  font-size: 24rpx;
 }

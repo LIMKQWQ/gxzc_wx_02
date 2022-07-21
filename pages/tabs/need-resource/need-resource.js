@@ -68,7 +68,7 @@ Component({
     },
     methods:{
         showKf(){
-            this.selectComponent("#fixedMenus").showQrcode()
+            this.selectComponent("#fixedMenus").showRecommend()
         },
         async _initData(){
             let res=await getApp().globalData._location;
@@ -144,6 +144,12 @@ Component({
                 showLoading:false
             })
            
+        },
+        inputFocus(){
+            console.log("111");
+            wx.navigateTo({
+              url: '/pak1/hot-search/hot-search',
+            })
         },
         async search(){
             let {getResources}=getApp().$apis;
@@ -266,7 +272,12 @@ Component({
             }
             return arr;
         },
-       
+    //   发布需求
+    release(){
+        wx.navigateTo({
+          url: '/pak1/pub-prod-need/pub-prod-need'
+        })
+    }
 
 
     }

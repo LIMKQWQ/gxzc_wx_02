@@ -1,11 +1,17 @@
 <view class="container ctHeader {{isIndex?'isIndex':''}} {{isBack?'isBack':''}}" style="height:{{_deviceInfo.ktxStatusHeight+88}}rpx">
- <view class="content">
-   
-    <view class="btns isBack">
-       <view class="btn backBtn" bind:tap="back">
-          <image src="./images/back.png" mode="widthFix" class="backIcon" />
-       </view>
-    </view>
-    <text><slot></slot></text>
- </view>
+   <view class="content">
+      <view class="btns isBack">
+         <view class="btn backBtn" bind:tap="back">
+            <image src="./images/back.png" mode="widthFix" class="backIcon" />
+         </view>
+      </view>
+      <view class="en">EN</view>
+      <view class="leftBtn">
+         <text></text>
+      </view>
+
+      <text>
+         <slot></slot>
+      </text>
+   </view>
 </view>

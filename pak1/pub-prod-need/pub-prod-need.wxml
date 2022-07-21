@@ -1,0 +1,246 @@
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx;padding-bottom: {{nav_scroll_height||80}}px;">
+  <ctHeader isBack="{{true}}">发布需求</ctHeader>
+  <fixedMenus top="200rpx" id="fixedMenus"></fixedMenus>
+  <view class="formContainer">
+    <!-- 品牌名称改单位名称 -->
+    <view class="formItem">
+      <view class="title">
+        单位名称
+      </view>
+      <view class="input">
+        <input placeholder-style="font-size:28rpx" type="text" model:value="{{brandName}}" bindinput="prevent" placeholder="请输入单位名称" />
+      </view>
+    </view>
+    <!-- 新增联系人 联系电话 -->
+    <view class="formItem">
+      <view class="title">
+        联系人
+      </view>
+      <view class="input">
+        <input placeholder-style="font-size:28rpx" type="text" model:value="{{brandName}}" bindinput="prevent" placeholder="请输入联系人" />
+      </view>
+    </view>
+    <view class="formItem">
+      <view class="title">
+        联系电话
+      </view>
+      <view class="input">
+        <input placeholder-style="font-size:28rpx" type="text" model:value="{{brandName}}" bindinput="prevent" placeholder="请输入电话" />
+      </view>
+    </view>
+    <view class="formItem">
+      <view class="title">
+        标题
+      </view>
+      <view class="input">
+        <input placeholder-style="font-size:28rpx" type="text" model:value="{{title}}" bindinput="prevent" placeholder="请输入标题" />
+      </view>
+    </view>
+    <view class="formItem">
+      <view class="title">
+        数量
+      </view>
+      <view class="input">
+        <input placeholder-style="font-size:28rpx" type="text" model:value="{{stock}}" bindinput="prevent" placeholder="请输入数量" />
+      </view>
+    </view>
+    <!-- <view class="formItem">
+            <view class="title">
+                在租数量
+            </view>
+            <view class="input">
+                <input placeholder-style="font-size:28rpx" type="text" model:value="{{quantity}}" bindinput="prevent" placeholder="请输入在租数量" />
+            </view>
+        </view> -->
+
+    <!-- 钻具类别改为 新增 状态 -->
+    <view class="formItem">
+      <view class="title">
+        状态
+      </view>
+      <picker class="input" header-text="状态" range="{{lists.category.list}}" range-key="name" value="{{lists.category.index}}" data-picker="category" bindchange="pickChange">
+
+        <input placeholder-style="font-size:28rpx" type="text" value="{{lists.category.index!==null?lists.category.list[lists.category.index].name:''}}" placeholder="请选择状态" disabled="{{true}}" />
+        <image src="./images/right.png" mode="widthFix" class="icon" />
+      </picker>
+    </view>
+    <!-- <view class="formItem">
+      <view class="title">
+        生产厂家
+      </view>
+      <view class="input">
+        <input placeholder-style="font-size:28rpx" type="text" model:value="{{manufactor}}" bindinput="prevent" placeholder="请输入生产厂家,多个请用、隔开" />
+      </view>
+    </view> -->
+
+
+    <!-- <view class="formItem">
+      <view class="title">
+        钻具等级
+      </view>
+      <picker class="input" header-text="钻具等级" range="{{lists.grade.list}}" range-key="name" value="{{lists.grade.index}}" data-picker="grade" bindchange="pickChange">
+        <input placeholder-style="font-size:28rpx" type="text" value="{{lists.grade.index!==null?lists.grade.list[lists.grade.index].name:''}}" placeholder="请选择钻具等级" disabled />
+        <image src="./images/right.png" mode="widthFix" class="icon" />
+      </picker>
+    </view>
+    <view class="formItem">
+      <view class="title">
+        使用年限
+      </view>
+      <view class="input">
+        <input placeholder-style="font-size:28rpx" type="text" model:value="{{years}}" bindinput="prevent" placeholder="请输入使用年限" />
+      </view>
+    </view>
+    <view class="formItem">
+      <view class="title">
+        管体钢材
+      </view>
+      <view class="input pipe_level" bind:tap="showActionSheet">
+        <input placeholder-style="font-size:28rpx" type="text" value="{{prod.getPipeLevel(lists.pipe_level.list,lists.pipe_level.keys)}}" placeholder="请选择管体钢材" disabled="{{true}}" />
+        <image src="./images/right.png" mode="widthFix" class="icon" />
+      </view>
+    </view>
+
+    <view class="formItem">
+      <view class="title">
+        水眼
+      </view>
+      <view class="input">
+        <input placeholder-style="font-size:28rpx" type="text" model:value="{{shuiyan}}" bindinput="prevent" placeholder="请输入水眼" />
+      </view>
+    </view>
+    <view class="formItem">
+      <view class="title">
+        管体尺寸
+      </view>
+      <picker class="input" header-text="管体尺寸" range="{{lists.sizedata.list}}" range-key="name" value="{{lists.sizedata.index}}" data-picker="sizedata" bindchange="pickChange">
+
+        <input placeholder-style="font-size:28rpx" type="text" value="{{lists.sizedata.index!==null?lists.sizedata.list[lists.sizedata.index].name:''}}" placeholder="请选择管体尺寸" disabled="{{true}}" />
+        <image src="./images/right.png" mode="widthFix" class="icon" />
+      </picker>
+    </view>
+    <view class="formItem">
+      <view class="title">
+        接头外径
+      </view>
+      <view class="input">
+        <input id="i1" bindfocus="keyboardOcclusion" adjust-position="{{false}}" bindblur="offKeyboardOcclusion" placeholder-style="font-size:28rpx" type="text" model:value="{{diameter}}" bindinput="prevent" placeholder="请输入接头外径" />
+      </view>
+    </view> -->
+
+
+    <!-- 所在地点改为需求所在地 -->
+    <view class="formItem">
+      <view class="title titleBr">
+        <text>需求所</text>
+        <text>在地</text>
+      </view>
+      <picker class="input address" mode="multiSelector" header-text="所在地点" range="{{lists.address.list}}" value="{{lists.address.index}}" range-key="name" bindcolumnchange="regionChange" bindchange="addressChange">
+
+        <input placeholder-style="font-size:28rpx" type="text" value="{{prod.getAddress(lists.address.list,selectedAddress)}}" placeholder="请选择所在地点" disabled="{{true}}" />
+        <image src="./images/right.png" mode="widthFix" class="icon" />
+      </picker>
+    </view>
+
+    <view class="formItem" wx-if="{{!selectedAddress.length||currentPID!=9999}}">
+      <view class="title">
+        详细地址
+      </view>
+      <view class="input detailAddress">
+        <input placeholder-style="font-size:28rpx" type="text" value="{{address}}" bindinput="prevent" disabled bind:tap="showMap" placeholder="请选择详细地址" />
+        <image src="./images/right.png" mode="widthFix" class="icon" />
+      </view>
+    </view>
+    <!-- <view class="formItem">
+            <view class="title titleBr">
+               <text>在线成</text> 
+               <text>交量</text> 
+            </view>
+            <view class="input">
+                <input id="i2" bindfocus="keyboardOcclusion" adjust-position="{{false}}" bindblur="offKeyboardOcclusion" placeholder-style="font-size:28rpx" type="text" model:value="{{turnover}}" bindinput="prevent" placeholder="请输入在线成交量" />
+            </view>
+        </view> -->
+    <view class="illus">
+      <view class="illusTitle">
+        产品缩略图（图片/视频）
+      </view>
+      <van-uploader showCenterPlayBtn="{{false}}" max-count="{{5}}" accept="media" file-list="{{ fileList }}" preview-size="100rpx" bind:after-read="afterRead" deletable="{{true}}" bind:delete="removePic">
+        <image src="./images/upload.png" mode="widthFix" style="width:100rpx"></image>
+      </van-uploader>
+    </view>
+    <view class="textareaItem">
+      <view class="detailTitle">
+        要求
+      </view>
+      <textarea placeholder="请输入要求"></textarea>
+    </view>
+
+    <view class="detailTitle">
+      详细信息
+    </view>
+    <view class="detail">
+
+      <view class="header">
+        <view class="item" bind:tap="insertImg">
+          <image src="./images/textIcon.png" mode="widthFix"></image>
+          文字
+          <image src="./images/imgIcon.png" mode="widthFix" style="margin-left:10rpx"></image>
+          图片
+        </view>
+      </view>
+      <editor class="editor" id="richEditor">
+
+      </editor>
+
+    </view>
+    <view class="submitBtn" bind:tap="submit">提交</view>
+  </view>
+  <view class="mapContainer mask {{isShowMap?'show':''}}" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
+    <map enable-poi="{{true}}" name="" subkey="{{map.key}}" longitude="{{map.lng}}" latitude="{{map.lat}}" show-location="{{true}}" bindtap="selectedAddress_map"></map>
+  </view>
+  <van-action-sheet show="{{isShowActionSheet}}" bind:close="closeActionSheet" title="材质" catchtouchmove="{{prod.fn}}">
+    <checkbox-group bindchange="checkboxChange" class="checkboxes">
+      <checkbox wx:for="{{lists.pipe_level.list}}" value="{{item.key}}" wx:key="id" class="checkboxItem" checked="{{prod.isChecked(lists.pipe_level.keys,item.key)}}">{{item.name}}</checkbox>
+    </checkbox-group>
+  </van-action-sheet>
+</view>
+<wxs module="prod">
+  function getAddress(list, index) {
+    if (!index.length) return "";
+    var provice = list[0][index[0]] ? (list[0][index[0]]).name : "";
+    var city = list[1][index[1]] ? (list[1][index[1]]).name : "";
+    var area = list[2][index[2]] ? (list[2][index[2]]).name : "";
+    return provice + " " + city + " " + area;
+  }
+  function fn() { }
+  function isChecked(keyArr, key) {
+    var checked = false;
+    keyArr.forEach(function (key_) {
+      if (key_ == key) {
+        checked = true;
+      }
+    })
+
+    return checked
+  }
+  function getPipeLevel(objArr, keyArr) {
+    var pipeLevelArr = [];
+    keyArr.forEach(function (key) {
+      for (var i = 0; i < objArr.length; i++) {
+        var obj = objArr[i];
+        if (obj.key == key) {
+          pipeLevelArr.push(obj.name);
+          return;
+        }
+      }
+
+    })
+    return pipeLevelArr.join(" ")
+  }
+  module.exports = {
+    getAddress: getAddress,
+    isChecked: isChecked,
+    getPipeLevel: getPipeLevel,
+    fn: fn
+  }
+</wxs>

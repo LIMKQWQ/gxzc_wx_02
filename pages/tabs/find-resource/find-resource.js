@@ -23,6 +23,7 @@ Component({
         announceList:[],
         resourceList:[],
         showLoading:false,
+        filterActive:0,
         banner:"",
         classes:{
             list:["类别1","类别2"],
@@ -67,6 +68,20 @@ Component({
          }
     },
     methods:{
+        // 切换筛选
+        handover(e){
+            console.log(e);
+            if(e.target.dataset.num == this.data.filterActive){
+                this.setData({
+                    filterActive:0
+                })
+                return false
+            }
+            this.setData({
+                filterActive:e.target.dataset.num
+            })
+        },
+
         showKf(){
             this.selectComponent("#fixedMenus").showQrcode()
         },

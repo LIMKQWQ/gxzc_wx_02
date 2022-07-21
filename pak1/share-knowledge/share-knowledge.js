@@ -15,7 +15,37 @@ Page({
     last_page:1, //总页数
     currentPage:1,//当前页数
     knowledgeList:[],
-    _showLoading:false
+    _showLoading:false,
+    state:0,
+    tabsList:[
+      {
+        name:"钻井技术类",
+        id:"l11"
+      },
+      {
+        name:"钻井技术类",
+        id:"l21"
+      },
+      {
+        name:"钻井技术类",
+        id:"l31"
+      },
+      {
+        name:"钻井技术类",
+        id:"l41"
+      }, {
+        name:"钻井技术类",
+        id:"l51"
+      },
+      {
+        name:"钻井技术类",
+        id:"l89"
+      },
+      {
+        name:"钻井技术类",
+        id:"l546"
+      },
+    ]
     
   },
   async loadMore(){
@@ -54,5 +84,11 @@ Page({
         last_page:list.last_page,
         currentPage:list2.length?2:1
       })   
+  },
+  selectTab(e){
+    // console.log(e);
+    this.setData({
+      state:e.target.dataset.key
+    })
   }
 })

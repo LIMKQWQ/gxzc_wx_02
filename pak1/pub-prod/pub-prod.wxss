@@ -42,6 +42,7 @@
   height: 70rpx;
   display: flex;
   align-items: center;
+  font-weight: 600;
 }
 .container .formContainer .formItem .input {
   width: 540rpx;
@@ -81,10 +82,12 @@
 .container .formContainer .illus .illusTitle {
   font-size: 30rpx;
   margin-bottom: 20rpx;
+  font-weight: 600;
 }
 .container .formContainer .detailTitle {
   font-size: 30rpx;
   margin-bottom: 21rpx;
+  font-weight: bold;
 }
 .container .formContainer .detail {
   border: 1px solid #DFDFDF;
@@ -134,4 +137,11 @@
   border-bottom: 1rpx solid #D7D7D7;
   padding-bottom: 30rpx;
   padding-left: 30rpx;
+}
+.container .formContainer .formItem .titleBr {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
 }

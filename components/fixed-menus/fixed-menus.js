@@ -8,13 +8,18 @@ Component({
     isShowShare:false,
     isShowWxShareYd:false,
     isShowQrcode:false,
+    isShowRecommend:false,
     hide:false,
     _timeout:null,
     msg_name:null,
     msg_phone:null,
     msg_email:null,
     msg_content:null,
-    phone:null
+    phone:null,
+    rmd_unit:null,
+    rmd_name:null,
+    rmd_content:null,
+
     
   },
   attached(){
@@ -70,6 +75,30 @@ Component({
         })
       }
     },
+    async subRecommend(){
+      let {rmd_unit,rmd_name,rmd_content}=this.data;
+      let {leaveMessage}=getApp().$apis;
+      wx.showLoading({
+        title:"提交中"
+      })
+      let res=await leaveMessage({
+        mobile:msg_phone,
+        name:msg_name,
+        content:msg_content,
+        email:msg_email
+      });
+      wx.hideLoading()
+      if(res){
+        this.hideComment()
+        wx.showToast({
+          title:"推荐成功",
+          duration:800
+        })
+        this.setData({
+          rmd_unit:null,rmd_name:null,rmd_content:bull
+        })
+      }
+    },
     showComment(){
       this.setData({
         isShowComment:true
@@ -110,6 +139,16 @@ Component({
     hideQrcode(){
       this.setData({
         isShowQrcode:false
+      })
+    },
+    showRecommend(){
+      this.setData({
+        isShowRecommend:true
+      })
+    },
+    hideRecommend(){
+      this.setData({
+        isShowRecommend:false
       })
     },
     scroll(){

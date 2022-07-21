@@ -1,35 +1,43 @@
 <view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
-     <ctHeader isBack="{{true}}">共享知识</ctHeader>
-	
-	 <fixedMenus top="648rpx" id="fixedMenus"></fixedMenus>
-    <view class="banner">
-        <image src="{{banner}}" />
-    </view>
-   <view class="list">
-			<view class="listItem" wx:for="{{knowledgeList}}" wx:key="id">
-				<view class="title">
-					{{item.title}}
-				</view>
-				<view class="time">
-					{{share.getTime(item.time)}}
-				</view>
-				<navigator 	hover-class="none" class="toInfo" url="/pak1/knowledge-detail/knowledge-detail?id={{item.id}}">
-					查看详情>>
-				</navigator>
+	<ctHeader isBack="{{true}}">共享知识</ctHeader>
+
+	<fixedMenus top="648rpx" id="fixedMenus"></fixedMenus>
+	<view class="banner">
+		<image src="{{banner}}" />
+	</view>
+	<view class="tabsCont">
+		<view class="tabs">
+			<view wx:for="{{tabsList}}" wx:key="item.id" bindtap="selectTab" class="{{state==index?'active':''}}" data-key="{{index}}">
+					{{item.name}}
 			</view>
-			
-			<view class="lodingMoreIcon" hidden="{{!_showLoading}}">
-				<van-loading style="margin-right:20rpx"/>加载中
-			</view>
-			
 		</view>
+
+	</view>
+	<view class="list">
+		<view class="listItem" wx:for="{{knowledgeList}}" wx:key="id">
+			<view class="title">
+				{{item.title}}
+			</view>
+			<view class="time">
+				{{share.getTime(item.time)}}
+			</view>
+			<navigator hover-class="none" class="toInfo" url="/pak1/knowledge-detail/knowledge-detail?id={{item.id}}">
+				查看详情>>
+			</navigator>
+		</view>
+
+		<view class="lodingMoreIcon" hidden="{{!_showLoading}}">
+			<van-loading style="margin-right:20rpx" />加载中
+		</view>
+
+	</view>
 </view>
 <wxs module="share">
-	 function getTime(time){
-	  console.log(time)
-	   return time.split(" ")[0]
-   }
-   module.exports={
-	   getTime:getTime
-   }
+	function getTime(time) {
+		console.log(time)
+		return time.split(" ")[0]
+	}
+	module.exports = {
+		getTime: getTime
+	}
 </wxs>

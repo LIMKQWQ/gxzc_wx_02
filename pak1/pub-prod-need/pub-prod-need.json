@@ -1,0 +1,10 @@
+{
+  "navigationStyle":"custom",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+      "van-uploader": "@vant/weapp/uploader/index",
+      "van-area": "@vant/weapp/area/index",
+      "van-action-sheet": "@vant/weapp/action-sheet/index"
+    }
+    
+}

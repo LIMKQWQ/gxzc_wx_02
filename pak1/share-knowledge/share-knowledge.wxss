@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .mask {
   display: none;
   height: 100vh;
@@ -16,14 +17,17 @@
   justify-content: center;
   align-items: center;
 }
+
 .mask.show {
   display: flex;
 }
+
 .clipOneLine {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .lodingMoreIcon {
   display: flex;
   justify-content: center;
@@ -31,18 +35,22 @@
   font-size: 28rpx;
   height: 100rpx;
 }
+
 .container .banner {
   min-height: 280rpx;
 }
+
 .container .banner image {
   height: 280rpx;
   width: 100%;
 }
+
 .container .list {
   width: 690rpx;
   margin: 0 auto;
   margin-top: 39rpx;
 }
+
 .container .list .listItem {
   margin-bottom: 40rpx;
   height: 130rpx;
@@ -54,9 +62,11 @@
   justify-content: center;
   position: relative;
 }
+
 .container .list .listItem:last-child {
   margin-bottom: 0;
 }
+
 .container .list .listItem .title {
   font-size: 28rpx;
   font-weight: bold;
@@ -65,10 +75,12 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .container .list .listItem .time {
   margin-top: 22rpx;
   color: #666666;
 }
+
 .container .list .listItem .toInfo {
   position: absolute;
   right: 30rpx;
@@ -82,4 +94,38 @@
   transform: translateY(-50%);
   font-size: 22rpx;
   color: #21439B;
+}
+
+.tabsCont {
+  padding: 0 30rpx;
+}
+
+.tabs {
+  margin-top: 40rpx;
+  overflow: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+}
+
+.tabs view {
+  display: inline-block;
+  background-color: #F8F8F8;
+  color: #333;
+  /* border: 1px solid #000; */
+  height: 48rpx;
+  line-height: 48rpx;
+  padding: 0 10rpx;
+}
+
+.tabs view:not(:last-child) {
+  border-right: 1px solid #EEEEEE;
+}
+
+.tabs .active {
+  color: #fff;
+  background-color: #21439B;
+}
+.tabs::-webkit-scrollbar{
+  display:none
 }

@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .mask {
   display: none;
   height: 100vh;
@@ -15,14 +16,17 @@
   justify-content: center;
   align-items: center;
 }
+
 .mask.show {
   display: flex;
 }
+
 .clipOneLine {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .container {
   width: 100%;
   position: fixed;
@@ -36,29 +40,36 @@
   justify-content: center;
   align-items: center;
 }
+
 .container.isIndex {
   position: fixed;
   width: 100%;
   background-color: transparent;
   border-bottom: none;
 }
+
 .container.isIndex .content {
   color: #fff;
 }
+
 .container.isIndex .content .toggleLangIcon.isIndex {
   display: block;
 }
+
 .container.isBack {
   position: fixed;
   width: 100%;
   background-color: #fff;
 }
+
 .container.isBack .content .toggleLangIcon {
   display: none;
 }
+
 .container.isBack .content .btns {
   display: flex;
 }
+
 .container .content {
   display: flex;
   justify-content: center;
@@ -69,6 +80,7 @@
   width: 100%;
   color: #333;
 }
+
 .container .content .toggleLangIcon {
   width: 37rpx;
   position: absolute;
@@ -76,9 +88,11 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
 .container .content .toggleLangIcon.isIndex {
   display: none;
 }
+
 .container .content .btns {
   width: 168rpx;
   height: 62rpx;
@@ -89,6 +103,7 @@
   transform: translateY(-50%);
   display: none;
 }
+
 .container .content .btns::after {
   content: "";
   display: none;
@@ -99,21 +114,66 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
 .container .content .btns .btn {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .container .content .btns .btn.backBtn {
   width: 79rpx;
 }
+
 .container .content .btns .btn.backBtn .backIcon {
   width: 37rpx;
 }
+
 .container .content .btns .btn.toggleBtn {
   width: 88rpx;
 }
+
 .container .content .btns .btn.toggleBtn .backToggleLangIcon {
   width: 37rpx;
+}
+
+.en {
+  position: absolute;
+  left: 60rpx;
+  font-size: 26rpx;
+  padding: 2rpx 2rpx;
+  border-radius: 8rpx;
+  border: 4rpx solid #333;
+}
+
+.container.isIndex .content .en {
+  color: #fff;
+  border: 4rpx solid #fff;
+}
+
+.container.isBack .leftBtn {
+  position: absolute;
+  left: 40rpx;
+  border: 1px solid #E0E0E0;
+  width: 180rpx;
+  border-radius: 33rpx;
+  height: 66rpx;
+}
+
+.container.isBack .leftBtn text {
+  height: 100%;
+  width: 1rpx;
+  background-color: #E0E0E0;
+  display: block;
+  margin-left: 80rpx;
+}
+
+.container.isBack .content .en {
+  left: 145rpx;
+}
+
+.container.isBack .content .btns {
+  left: 50rpx;
+  z-index: 9999;
 }

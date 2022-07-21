@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .mask {
   visibility: hidden;
   height: 100vh;
@@ -16,9 +17,11 @@
   justify-content: center;
   align-items: center;
 }
+
 .mask.show {
   visibility: visible;
 }
+
 .container .info {
   height: 220rpx;
   background-color: #21439B;
@@ -27,37 +30,46 @@
   padding-left: 30rpx;
   position: relative;
 }
+
 .container .info.unlogin .infoContent .rightInfo .unlogin {
   display: flex;
 }
+
 .container .info.personb {
   height: 280rpx;
   align-items: flex-start;
   padding-top: 50rpx;
 }
+
 .container .info.personb .infoContent .rightInfo .personb {
   display: block;
 }
+
 .container .info.personc .infoContent .rightInfo .personc {
   display: block;
 }
+
 .container .info .infoContent {
   display: flex;
   align-items: center;
 }
+
 .container .info .infoContent .avatar {
   width: 120rpx;
   height: 120rpx;
 }
+
 .container .info .infoContent .avatar .avatarPic {
   width: 120rpx;
   height: 120rpx;
 }
+
 .container .info .infoContent .rightInfo {
   color: #fff;
   font-size: 26rpx;
   margin-left: 30rpx;
 }
+
 .container .info .infoContent .rightInfo .unlogin {
   width: 195rpx;
   height: 46rpx;
@@ -69,16 +81,20 @@
   align-items: center;
   display: none;
 }
+
 .container .info .infoContent .rightInfo .personb {
   color: #fff;
   display: none;
 }
+
 .container .info .infoContent .rightInfo .personb .username {
   font-size: 34rpx;
 }
+
 .container .info .infoContent .rightInfo .personb .code {
   font-size: 28rpx;
 }
+
 .container .info .personbInfo {
   width: 690rpx;
   height: 170rpx;
@@ -94,6 +110,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .container .info .personbInfo .infoItem {
   display: flex;
   flex-direction: column;
@@ -101,6 +118,7 @@
   align-items: center;
   position: relative;
 }
+
 .container .info .personbInfo .infoItem::after {
   content: "";
   display: block;
@@ -111,34 +129,43 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
 .container .info .personbInfo .infoItem.follow {
   width: 228rpx;
 }
+
 .container .info .personbInfo .infoItem.trade {
   width: 245rpx;
 }
+
 .container .info .personbInfo .infoItem.views {
   width: 215rpx;
 }
+
 .container .info .personbInfo .infoItem.views::after {
   display: none;
 }
+
 .container .info .personbInfo .infoItem .num {
   font-size: 38rpx;
   font-weight: bold;
 }
+
 .container .info .personbInfo .infoItem .infoTitle {
   margin-top: 10rpx;
   font-size: 24rpx;
 }
+
 .container .menus {
   width: 690rpx;
   margin: 0 auto;
   margin-top: 10rpx;
 }
+
 .container .menus.personb {
   margin-top: 110rpx;
 }
+
 .container .menus .menuItem {
   height: 100rpx;
   display: flex;
@@ -146,9 +173,11 @@
   border-bottom: 1rpx solid #DCDCDC;
   position: relative;
 }
+
 .container .menus .menuItem .menuIcon {
   width: 24rpx;
 }
+
 .container .menus .menuItem .rightIcon {
   width: 12rpx;
   position: absolute;
@@ -156,39 +185,48 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
 .container .menus .menuItem .menuText {
   font-size: 32rpx;
   margin-left: 15rpx;
 }
+
 .container .selectUserMask .selectUser {
   width: 620rpx;
   height: 456rpx;
   background-color: #fff;
   padding: 40rpx;
 }
+
 .container .selectUserMask .selectUser .top {
   display: flex;
   justify-content: space-between;
 }
+
 .container .selectUserMask .selectUser .top .title {
   color: #21439B;
   font-size: 34rpx;
   font-weight: bold;
 }
+
 .container .selectUserMask .selectUser .top .closeBtn {
   height: 30rpx;
 }
+
 .container .selectUserMask .selectUser .selectMenus {
   display: flex;
   justify-content: center;
   margin-top: 60rpx;
 }
+
 .container .selectUserMask .selectUser .selectMenus .menuItem:last-child {
   margin-left: 140rpx;
 }
+
 .container .selectUserMask .selectUser .selectMenus .menuItem.selected .btn .selectedIcon {
   display: block;
 }
+
 .container .selectUserMask .selectUser .selectMenus .menuItem .btn {
   width: 120rpx;
   height: 120rpx;
@@ -200,9 +238,11 @@
   justify-content: center;
   align-items: center;
 }
+
 .container .selectUserMask .selectUser .selectMenus .menuItem .btn .icon {
   width: 60rpx;
 }
+
 .container .selectUserMask .selectUser .selectMenus .menuItem .btn .selectedIcon {
   width: 23rpx;
   position: absolute;
@@ -211,11 +251,13 @@
   transform: translate(-50%, 40%);
   display: none;
 }
+
 .container .selectUserMask .selectUser .selectMenus .menuItem .title {
   font-size: 26rpx;
   text-align: center;
   margin-top: 24rpx;
 }
+
 .container .selectUserMask .selectUser .nextStepBtn {
   width: 170rpx;
   height: 54rpx;
@@ -228,4 +270,84 @@
   border-radius: 27rpx;
   margin: 0 auto;
   margin-top: 40rpx;
+}
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 99999;
+  top: 0;
+}
+
+.popup .popupSelect {
+  width: 600rpx;
+  height: 540rpx;
+  background-color: #fff;
+  border-radius: 4rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 30rpx;
+}
+
+.popup .popupSelect .selectTit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 36rpx;
+  color: #21439B;
+  font-weight: 600;
+  margin-bottom: 80rpx;
+}
+
+.popup .popupSelect .selectTit image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.popup .popupSelect .selectInput {
+  position: relative;
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+}
+
+
+.popup .popupSelect .selectInput input {
+  width: 100%;
+  height: 66rpx;
+  border: 1px solid #D7D7D7;
+  padding-left: 20rpx;
+  color: #999;
+  box-sizing: border-box;
+}
+
+.popup .popupSelect .selectInput input::placeholder {
+  color: #999;
+}
+
+.popup .popupSelect .selectInput image {
+  width: 20rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.popup .submit{
+  width:  280rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  background-color: #21439B;
+  color: #fff;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 28rpx;
+  font-size: 28rpx;
 }

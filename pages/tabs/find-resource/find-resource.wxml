@@ -1,5 +1,5 @@
 <view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
-    <ctHeader>找资源</ctHeader>
+    <ctHeader>资源大厅</ctHeader>
     <fixedMenus top="560rpx" id="fixedMenus"></fixedMenus>
     <view class="newsInfo">
         <view class="top">
@@ -74,7 +74,54 @@
                 </view>
 
             </view>
-        </view> -->
+        </view> --> 
+        <view class="filterBar">
+            <view class="filterTabs">
+                <text bind:tap="handover" data-num="1">资产出租</text>
+                <text bind:tap="handover" data-num="2">资产出手</text>
+            </view>
+            <view class="registerBtn">免费入驻</view>
+            <view class="filterMenu">
+                <view class="filterCont" wx:if="{{ filterActive == 1 }}">
+                    <view class="filterList">
+                        <view class="filterTit"><text>钻井类</text></view>
+                        <view class="filterOption">
+                            <text bind:tap="handover" data-num="3">钻井设备</text>
+                            <text>钻井设2222备</text>
+                            <text>钻井设3备</text>
+                            <text>钻井设444444备</text>
+                            <text>钻井设55555备</text>
+                        </view>
+                    </view>
+                    <view class="filterList">
+                        <view class="filterTit"><text>钻井类</text></view>
+                        <view class="filterOption">
+                            <text>钻井设备</text>
+                            <text>钻井设2222备</text>
+                            <text>钻井设3备</text>
+                            <text>钻井设444444备</text>
+                            <text>钻井设55555备</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="filterCont" wx:if="{{filterActive == 2}}">
+                    <view class="filterList">
+                        <view class="filterTit"><text>钻井类</text></view>
+                        <view class="filterOption">
+                            <text>钻井设备</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="filterCont" wx:if="{{filterActive == 3}}">
+                    <view class="filterList">
+                        <view class="filterTit"><text>分类</text></view>
+                        <view class="filterOption">
+                            <text>钻井设备</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
         <view class="inputseach">
             <image src="./images/seach.png" mode="widthFix" alt="" />
             <input placeholder-style="font-size:28rpx" type="text" confirm-type='search' placeholder="请输入关键词进行搜索" model:value="{{searchStr}}" bindinput="inputChange" bindconfirm="search" />

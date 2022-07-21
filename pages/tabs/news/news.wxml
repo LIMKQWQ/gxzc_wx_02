@@ -1,6 +1,6 @@
 <view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
-    <ctHeader wx-if="{{activeTab==1}}">公司动态</ctHeader>
-    <ctHeader wx-if="{{activeTab==2}}">行业动态</ctHeader>
+    <ctHeader wx-if="{{activeTab==1}}" isBack="{{true}}" >公司动态</ctHeader>
+    <ctHeader wx-if="{{activeTab==2}}" isBack="{{true}}">行业动态</ctHeader>
     <fixedMenus top="551rpx" id="fixedMenus"></fixedMenus>
     <view class="banner">
         <image src="{{activeTab==1?newsBanner:industryBanner}}" mode="aspectFill"></image>

@@ -1,11 +1,38 @@
 <view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
     <ctHeader>个人中心</ctHeader>
     <fixedMenus top="{{status=='personb'?'191rpx':'687rpx'}}" id="fixedMenus" disabledShare="{{true}}"></fixedMenus>
+    <!-- 三级联动菜单 -->
+    <view class="popup" wx:if="{{popupShow}}">
+        <view class="popupSelect">
+            <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+                <view class="selectTit">
+                    <text>选择产品分类</text>
+                    <image src="./images/header/close.png" class="closeBtn" mode="widthFix" bindtap="closePopup" />
+                </view>
+                <view class="selectInput">
+                    <input type="text" value="{{multiArray[0][multiIndex[0]]}}" placeholder="请选择一级分类" disabled />
+                    <image src="./images/right.png" class="rightIcon" mode="widthFix" />
+                </view>
+                <view class="selectInput">
+                    <input type="text" value="{{multiArray[1][multiIndex[1]]}}" placeholder="请选择二级分类" disabled />
+                    <image src="./images/right.png" class="rightIcon" mode="widthFix" />
+                </view>
+                <view class="selectInput">
+                    <input type="text" value="{{multiArray[2][multiIndex[2]]}}" placeholder="请选择三级分类" disabled />
+                    <image src="./images/right.png" class="rightIcon" mode="widthFix" />
+                </view>
+            </picker>
+            <view class="submit" bindtap="submit">
+                确认
+            </view>
+        </view>
+    </view>
+
     <view class="info {{status}}">
         <view class="infoContent">
             <view class="avatar">
-                <image src="./images/avatar.png" mode="aspectFill" class="avatarPic" wx:if="{{status=='unlogin'}}"/>
-                <image src="{{userInfo.avatar?user.getImg(userInfo.avatar,baseUrl):'./images/avatar.png'}}" mode="aspectFill" class="avatarPic"  wx:if="{{status!='unlogin'}}"/>
+                <image src="./images/avatar.png" mode="aspectFill" class="avatarPic" wx:if="{{status=='unlogin'}}" />
+                <image src="{{userInfo.avatar?user.getImg(userInfo.avatar,baseUrl):'./images/avatar.png'}}" mode="aspectFill" class="avatarPic" wx:if="{{status!='unlogin'}}" />
             </view>
             <view class="rightInfo">
                 <!-- 未登录 -->
@@ -33,22 +60,24 @@
                 <view class="num">{{nums[2].num}}</view>
                 <view class="infoTitle">浏览量</view>
             </view>
-            
+
         </view>
     </view>
+
     <view class="menus {{status=='personb'?'personb':''}}">
-        
+
         <view data-url="/pak1/set-passwd/set-passwd" bind:tap="to" class="menuItem setPasswd">
             <image src="./images/lock.png" class="menuIcon" mode="widthFix" />
             <image src="./images/right.png" class="rightIcon" mode="widthFix" />
             <view class="menuText">密码设置</view>
         </view>
-         <navigator 	hover-class="none" url="/pak1/pub-prod/pub-prod"  class="menuItem collection" wx:if="{{status=='personb'}}">
+        <!-- url="/pak1/pub-prod-temp/pub-prod-temp" -->
+        <navigator hover-class="none" class="menuItem collection" wx:if="{{status=='personb'}}" bindtap="openPopup">
             <image src="./images/pub.png" class="menuIcon" mode="widthFix" />
             <image src="./images/right.png" class="rightIcon" mode="widthFix" />
             <view class="menuText">发布产品</view>
         </navigator>
-         <navigator 	hover-class="none" url="/pak1/demand/demand" class="menuItem collection" wx:if="{{status=='personb'}}">
+        <navigator hover-class="none" url="/pak1/demand/demand" class="menuItem collection" wx:if="{{status=='personb'}}">
             <image src="./images/msg.png" class="menuIcon" mode="widthFix" />
             <image src="./images/right.png" class="rightIcon" mode="widthFix" />
             <view class="menuText">需求信息箱</view>
@@ -58,18 +87,18 @@
             <image src="./images/right.png" class="rightIcon" mode="widthFix" />
             <view class="menuText">新上资源信息箱</view>
         </view>
-         <navigator 	hover-class="none" url="/pak1/manage-prod/manage-prod" class="menuItem collection" wx:if="{{status=='personb'}}">
+        <navigator hover-class="none" url="/pak1/manage-prod/manage-prod" class="menuItem collection" wx:if="{{status=='personb'}}">
             <image src="./images/prod.png" class="menuIcon" mode="widthFix" />
             <image src="./images/right.png" class="rightIcon" mode="widthFix" />
             <view class="menuText">产品管理</view>
         </navigator>
-        
+
         <view data-url="/pak1/collection/collection" bind:tap="to" class="menuItem collection">
             <image src="./images/star.png" class="menuIcon" mode="widthFix" />
             <image src="./images/right.png" class="rightIcon" mode="widthFix" />
             <view class="menuText">我的收藏</view>
         </view>
-        <view  class="menuItem collection" bind:tap="logout" wx:if="{{status!='unlogin'}}">
+        <view class="menuItem collection" bind:tap="logout" wx:if="{{status!='unlogin'}}">
             <image src="./images/logout.png" class="menuIcon" mode="widthFix" />
             <image src="./images/right.png" class="rightIcon" mode="widthFix" />
             <view class="menuText">退出登录</view>
@@ -88,12 +117,12 @@
                         <image src="./images/header/rzIcon.png" class="icon" mode="widthFix" />
                         <image src="./images/header/selected.png" class="selectedIcon" mode="widthFix" />
                     </view>
-                    
+
                     <view class="title">资源入驻</view>
                 </view>
-                <view class="menuItem {{actived==2?'selected':''}}" data-item="2" bind:tap="selectItem" >
+                <view class="menuItem {{actived==2?'selected':''}}" data-item="2" bind:tap="selectItem">
                     <view class="btn">
-                        <image src="./images/header/rzIcon.png" class="icon" mode="widthFix"/>
+                        <image src="./images/header/rzIcon.png" class="icon" mode="widthFix" />
                         <image src="./images/header/selected.png" class="selectedIcon" mode="widthFix" />
                     </view>
                     <view class="title">找资源</view>
@@ -102,19 +131,21 @@
             <view class="nextStepBtn" bind:tap="toRegister">下一步</view>
         </view>
     </view>
+
 </view>
+
 <wxs module="user">
-    function prevent(){
+    function prevent() {
 
     }
-    	function getImg(str,baseUrl){
-		if(str.indexOf("http")!=-1){
-			return str;
-		}
-		return baseUrl+str;
-	}
-    module.exports={
-        prevent:prevent,
-        getImg:getImg
+    function getImg(str, baseUrl) {
+        if (str.indexOf("http") != -1) {
+            return str;
+        }
+        return baseUrl + str;
+    }
+    module.exports = {
+        prevent: prevent,
+        getImg: getImg
     }
 </wxs>
