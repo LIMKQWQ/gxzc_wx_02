@@ -5,7 +5,6 @@
 }
 
 .container {
-  margin-top: 220rpx;
   padding: 0 30rpx;
 }
 

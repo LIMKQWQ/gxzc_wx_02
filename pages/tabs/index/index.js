@@ -115,44 +115,34 @@ Component({
         knowledgeList: [], //知识共享列表
         hotList: [], //热门资源列表
         __shareImg: null,
-        newsList: [{
-                id: "sneiog",
-                title: "喜讯！安东石油荣登北京市专精特 新“小巨人”榜单！喜讯！安东石油荣登北京市专精特 新“小巨人”榜单！",
-                time: "2022-02-24",
-                views: 4000,
-                image: "/uploads/20220714/31fbe2540544f8cbc7d8ab90b6062f4f.jpg"
-            },
-            {
-                id: "sneiog",
-                title: "喜讯！安东石油荣登北京市专精特 新“小巨人”榜单！喜讯！安东石油荣登北京市专精特 新“小巨人”榜单！",
-                time: "2022-02-24",
-                views: 4000,
-                image: "/uploads/20220714/31fbe2540544f8cbc7d8ab90b6062f4f.jpg"
-            }
-        ],
+        newsList: [],//新闻列表
         sortList: [{
+            id:0,
             name: "石油专用管材类",
             img: "./images/moreIcon.png"
         }, {
-            name: "石油类",
+            id:1,
+            name: "钻井类",
             img: "./images/moreIcon.png"
         }, {
-            name: "石油专用管材类",
+            id:2,
+            name: "完井类",
             img: "./images/moreIcon.png"
         }, {
-            name: "石油专用管材类",
+            id:3,
+            name: "油气地面工程类",
             img: "./images/moreIcon.png"
         }, {
-            name: "石油专用管材类",
+            id:4,
+            name: "通用配套类",
             img: "./images/moreIcon.png"
         }, {
-            name: "石油专用管材类",
+            id:5,
+            name: "井下类",
             img: "./images/moreIcon.png"
         }, {
-            name: "石油专用管材类",
-            img: "./images/moreIcon.png"
-        }, {
-            name: "石油专用管材类",
+            id:6,
+            name: "物业资产类",
             img: "./images/moreIcon.png"
         }]
     },
@@ -202,6 +192,23 @@ Component({
             } = await getApp().$apis.getShareKnowledgeList({
                 page: 1
             });
+
+            await getApp().$apis.getNews({
+                page: 1
+            }).then(res => {
+                let newsArr = []
+                for (let index = 0; index < 2; index++) {
+                    // newsArr.concat(res.list.data[index]) 
+                    newsArr.push(
+                        res.list.data[index]
+                    )
+                }
+                console.log(newsArr,'news');
+                this.setData({
+                    newsList:newsArr
+                })
+            });
+            
             let hotList = await getApp().$apis.getHotList({
                 lng: longitude,
                 lat: latitude
@@ -329,6 +336,13 @@ Component({
             } = e.detail;
             this._setSwiperIndex(current);
         },
+        skipFilter(e){
+            console.log(e.target.dataset);
+            let tabId=e.currentTarget.dataset.item.id;
+            wx.navigateTo({
+              url: `/pak1/filter/filter?id=${tabId}`,
+            })
+        }
     }
 
 })

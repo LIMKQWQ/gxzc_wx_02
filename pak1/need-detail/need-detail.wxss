@@ -176,6 +176,10 @@
   display: flex;
 }
 
+.hide {
+  display: none;
+}
+
 .container .resourBox .detailcontent image {
   width: 100%;
 }
@@ -291,4 +295,40 @@
 .intr .intrCont {
   line-height: 42rpx;
   font-size: 24rpx;
+}
+
+.container .message label {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 600;
+  margin-top: 28rpx;
+  display: block;
+}
+.container .message .pace{
+  color: #999;
+}
+.container .message input,
+.container .message textarea {
+  padding: 12rpx 20rpx;
+  color: #333333;
+  margin-top: 12rpx;
+  border: 1px solid #D7D7D7;
+  font-size: 28rpx;
+  display: block;
+}
+
+.container .message textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container .message .submit{
+  width: 200rpx;
+  margin-top: 40rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  background-color: #21439B;
+  color: #fff;
+  border-radius: 33rpx;
+  margin-left: 0;
 }

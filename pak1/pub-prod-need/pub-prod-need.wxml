@@ -8,7 +8,7 @@
         单位名称
       </view>
       <view class="input">
-        <input placeholder-style="font-size:28rpx" type="text" model:value="{{brandName}}" bindinput="prevent" placeholder="请输入单位名称" />
+        <input placeholder-style="font-size:28rpx" type="text" model:value="{{units_name}}" bindinput="prevent" placeholder="请输入单位名称" />
       </view>
     </view>
     <!-- 新增联系人 联系电话 -->
@@ -17,7 +17,7 @@
         联系人
       </view>
       <view class="input">
-        <input placeholder-style="font-size:28rpx" type="text" model:value="{{brandName}}" bindinput="prevent" placeholder="请输入联系人" />
+        <input placeholder-style="font-size:28rpx" type="text" model:value="{{contacts}}" bindinput="prevent" placeholder="请输入联系人" />
       </view>
     </view>
     <view class="formItem">
@@ -25,7 +25,7 @@
         联系电话
       </view>
       <view class="input">
-        <input placeholder-style="font-size:28rpx" type="text" model:value="{{brandName}}" bindinput="prevent" placeholder="请输入电话" />
+        <input placeholder-style="font-size:28rpx" type="text" model:value="{{mobile}}" bindinput="prevent" placeholder="请输入电话" />
       </view>
     </view>
     <view class="formItem">
@@ -41,7 +41,7 @@
         数量
       </view>
       <view class="input">
-        <input placeholder-style="font-size:28rpx" type="text" model:value="{{stock}}" bindinput="prevent" placeholder="请输入数量" />
+        <input placeholder-style="font-size:28rpx" type="text" model:value="{{quantity}}" bindinput="prevent" placeholder="请输入数量" />
       </view>
     </view>
     <!-- <view class="formItem">
@@ -58,9 +58,8 @@
       <view class="title">
         状态
       </view>
-      <picker class="input" header-text="状态" range="{{lists.category.list}}" range-key="name" value="{{lists.category.index}}" data-picker="category" bindchange="pickChange">
-
-        <input placeholder-style="font-size:28rpx" type="text" value="{{lists.category.index!==null?lists.category.list[lists.category.index].name:''}}" placeholder="请选择状态" disabled="{{true}}" />
+      <picker class="input" header-text="状态" range="{{statusList}}" value="{{statusIndex}}" bindchange="statusChange">
+        <input placeholder-style="font-size:28rpx" type="text" value="{{statusIndex!==null?statusList[statusIndex]:''}}" placeholder="请选择状态" disabled="{{true}}" />
         <image src="./images/right.png" mode="widthFix" class="icon" />
       </picker>
     </view>
@@ -172,7 +171,7 @@
       <view class="detailTitle">
         要求
       </view>
-      <textarea placeholder="请输入要求"></textarea>
+      <textarea placeholder="请输入要求" model:value="{{note}}"></textarea>
     </view>
 
     <view class="detailTitle">

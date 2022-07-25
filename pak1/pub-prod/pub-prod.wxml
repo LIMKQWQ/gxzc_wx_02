@@ -41,7 +41,6 @@
                 资产类别
             </view>
             <picker class="input" header-text="钻具类别" range="{{lists.category.list}}" range-key="name" value="{{lists.category.index}}" data-picker="category" bindchange="pickChange">
-
                 <input placeholder-style="font-size:28rpx" type="text" value="{{lists.category.index!==null?lists.category.list[lists.category.index].name:''}}" placeholder="请选择资产类别" disabled="{{true}}" />
                 <image src="./images/right.png" mode="widthFix" class="icon" />
             </picker>

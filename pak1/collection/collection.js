@@ -15,12 +15,12 @@ Page({
         this.selectComponent("#fixedMenus").showQrcode()
     },
     async initData(){
-        let {colletedResourceList}=getApp().$apis;
+        let {getProductLike}=getApp().$apis;
         let {latitude:lat,longitude:lng}=this.data._location;
         wx.showLoading({
             title:"正在加载"
         })
-        let res=await colletedResourceList({lng,lat});
+        let res=await getProductLike({lng,lat});
         wx.hideLoading();
         res.list=chunkArr(res.list,2);
         this.setData({

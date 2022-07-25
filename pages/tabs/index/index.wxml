@@ -80,13 +80,13 @@
 	<view class="sortList">
 		<view class="top">
 			<view class="title">产品类别</view>
-			<view bind:tap="to" data-url="/pak1/filter/filter" data-open="navigateTo" class="more"> <text>查看更多</text>
+			<view bind:tap="to" data-url="/pak1/filter/filter?id=0" data-open="navigateTo" class="more"> <text>查看更多</text>
 				<image src="./images/moreIcon.png" mode="widthFix" />
 			</view>
 		</view>
 		<view class="list">
-			<view wx:for="{{sortList}}" class="item">
-				<view class="sortIcon">
+			<view wx:for="{{sortList}}"  class="item">
+				<view class="sortIcon"  bindtap="skipFilter" data-item="{{item}}">
 					<image src="{{item.img}}" mode="widthFix" />
 				</view>
 				<view class="sortName">

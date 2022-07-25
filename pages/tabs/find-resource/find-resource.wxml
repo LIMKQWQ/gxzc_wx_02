@@ -29,94 +29,34 @@
     </view>
     <!-- 筛选 -->
     <view class="resourcontent">
-        <!-- <view class="resoutop">
-            <view class="resoutopRow">
-                <picker header-text="类别" range="{{classes.list}}" range-key="name" value="{{classes.index}}" data-picker="classes" bindchange="pickChange">
-                    <view class="selectx">
-                        <view class="dropdown">
-                            {{classes.index?classes.list[classes.index].name:'类别'}}
-                        </view>
-                        <image src="./images/xia.png" mode="widthFix" alt="" />
-                    </view>
-                </picker>
-                <picker header-text="规格" range="{{size.list}}" range-key="name" value="{{size.index}}" data-picker="size" bindchange="pickChange">
-                    <view class="selectx">
-                        <view class="dropdown">{{size.index?size.list[size.index].name:'规格'}}</view>
-                        <image src="./images/xia.png" mode="widthFix" alt="" />
-                    </view>
-                </picker>
-                <picker header-text="材质" range="{{gj.list}}" range-key="name" value="{{gj.index}}" data-picker="gj" bindchange="pickChange">
-                    <view class="selectx">
-                        <view class="dropdown">{{gj.index?gj.list[gj.index].name:'材质'}}</view>
-                        <image src="./images/xia.png" mode="widthFix" alt="" />
-                    </view>
-                </picker>
-            </view>
-            <view class="resoutopRow">
-                <picker header-text="生产厂家" range="{{proder.list}}" range-key="name" value="{{proder.index}}" data-picker="proder" bindchange="pickChange">
-                    <view class="selectx">
-                        <view class="dropdown prod">
-                            {{proder.index?proder.list[proder.index].name:'生产厂家'}}
-                        </view>
-                        <image src="./images/xia.png" mode="widthFix" alt="" />
-                    </view>
-                </picker>
-                <picker header-text="位置" range="{{address.list}}" range-key="name" value="{{address.index}}" data-picker="address" bindchange="pickChange">
-                    <view class="selectx">
-                        <view class="dropdown">
-                            {{address.index?address.list[address.index].name:'位置'}}
-                        </view>
-                        <image src="./images/xia.png" mode="widthFix" alt="" />
-                    </view>
-                </picker>
-                <view class="filterBtn">
-                    <view class="seach" bind:tap="search">筛选</view>
-                </view>
-
-            </view>
-        </view> --> 
         <view class="filterBar">
             <view class="filterTabs">
                 <text bind:tap="handover" data-num="1">资产出租</text>
-                <text bind:tap="handover" data-num="2">资产出手</text>
+                <text bind:tap="handover" data-num="2">资产出售</text>
             </view>
-            <view class="registerBtn">免费入驻</view>
+            <view class="registerBtn" bindtap="toBeSuber">免费入驻</view>
             <view class="filterMenu">
-                <view class="filterCont" wx:if="{{ filterActive == 1 }}">
-                    <view class="filterList">
-                        <view class="filterTit"><text>钻井类</text></view>
+                <view class="filterCont">
+                    <view class="filterList" wx:for="{{filterList.type}}" wx:key="{{item.id}}" wx:if="{{showFilter}}">
+                        <view class="filterTit" bindtap="handleSubFilter" data-item="{{item}}"><text>{{item.tname}}</text></view>
                         <view class="filterOption">
-                            <text bind:tap="handover" data-num="3">钻井设备</text>
-                            <text>钻井设2222备</text>
-                            <text>钻井设3备</text>
-                            <text>钻井设444444备</text>
-                            <text>钻井设55555备</text>
-                        </view>
-                    </view>
-                    <view class="filterList">
-                        <view class="filterTit"><text>钻井类</text></view>
-                        <view class="filterOption">
-                            <text>钻井设备</text>
-                            <text>钻井设2222备</text>
-                            <text>钻井设3备</text>
-                            <text>钻井设444444备</text>
-                            <text>钻井设55555备</text>
+                            <text bind:tap="handover" data-num="3" wx:for="{{item.data}}"  wx:for-item="fil" wx:key="{{fil.id}}">{{fil.tname}}</text>
                         </view>
                     </view>
                 </view>
-                <view class="filterCont" wx:if="{{filterActive == 2}}">
-                    <view class="filterList">
-                        <view class="filterTit"><text>钻井类</text></view>
-                        <view class="filterOption">
-                            <text>钻井设备</text>
-                        </view>
-                    </view>
-                </view>
-                <view class="filterCont" wx:if="{{filterActive == 3}}">
+            
+                <view class="filterCont" wx:if="{{showSubFilter}}">
                     <view class="filterList">
                         <view class="filterTit"><text>分类</text></view>
-                        <view class="filterOption">
-                            <text>钻井设备</text>
+                        <view class="filterOption" wx:for="{{subFilterList.type}}" >
+                            <text>{{item.tname}}</text>
+                        </view>
+                    </view>
+
+                    <view class="filterList">
+                        <view class="filterTit"><text>所在地</text></view>
+                        <view class="filterOption" wx:for="{{subFilterList.manufacturer}}" >
+                            <text>{{item}}</text>
                         </view>
                     </view>
                 </view>

@@ -1,168 +1,195 @@
-
 Component({
   options: {
     pureDataPattern: /^_/ // 指定所有 _ 开头的数据字段为纯数据字段
   },
   data: {
-    isShowComment:false,
-    isShowShare:false,
-    isShowWxShareYd:false,
-    isShowQrcode:false,
-    isShowRecommend:false,
-    hide:false,
-    _timeout:null,
-    msg_name:null,
-    msg_phone:null,
-    msg_email:null,
-    msg_content:null,
-    phone:null,
-    rmd_unit:null,
-    rmd_name:null,
-    rmd_content:null,
+    isShowComment: false,
+    isShowShare: false,
+    isShowWxShareYd: false,
+    isShowQrcode: false,
+    isShowRecommend: false,
+    hide: false,
+    _timeout: null,
+    msg_name: null,
+    msg_phone: null,
+    msg_email: null,
+    msg_content: null,
+    phone: null,
+    rmd_unit: null,
+    rmd_name: null,
+    rmd_phone: null,
+    rmd_content: null,
+    needsId:0
 
-    
   },
-  attached(){
+  attached() {
     this.initData()
   },
-  pageLifetimes:{
-    PageScroll(){
+  pageLifetimes: {
+    PageScroll() {
       console.log("scroll")
     }
   },
   properties: {
-    top:String,
-    id:String,
-    disabledShare:Boolean
+    top: String,
+    id: String,
+    disabledShare: Boolean
   },
   methods: {
-    async initData(){
-      let {getContact}=getApp().$apis;
-      let {list:{mobile}}=await getContact();
+    async initData() {
+      let {
+        getContact
+      } = getApp().$apis;
+      let {
+        list: {
+          mobile
+        }
+      } = await getContact();
       this.setData({
-        phone:mobile
+        phone: mobile
       })
     },
-    call(){
+    call() {
       wx.makePhoneCall({
-        phoneNumber: this.data.phone 
+        phoneNumber: this.data.phone
       })
     },
-    async subComment(){
-      let {msg_name,msg_phone,msg_email,msg_content}=this.data;
-      let {leaveMessage}=getApp().$apis;
+    async subComment() {
+      let {
+        msg_name,
+        msg_phone,
+        msg_email,
+        msg_content
+      } = this.data;
+      let {
+        leaveMessage
+      } = getApp().$apis;
       wx.showLoading({
-        title:"提交中"
+        title: "提交中"
       })
-      let res=await leaveMessage({
-        mobile:msg_phone,
-        name:msg_name,
-        content:msg_content,
-        email:msg_email
+      let res = await leaveMessage({
+        mobile: msg_phone,
+        name: msg_name,
+        content: msg_content,
+        email: msg_email
       });
       wx.hideLoading()
-      if(res){
+      if (res) {
         this.hideComment()
         wx.showToast({
-          title:"留言成功",
-          duration:800
+          title: "留言成功",
+          duration: 800
         })
         this.setData({
-          msg_name:null,
-          msg_phone:null,
-          msg_email:null,
-          msg_content:null
+          msg_name: null,
+          msg_phone: null,
+          msg_email: null,
+          msg_content: null
         })
       }
     },
-    async subRecommend(){
-      let {rmd_unit,rmd_name,rmd_content}=this.data;
-      let {leaveMessage}=getApp().$apis;
+    async subRecommend() {
+      let {
+        needsId,
+        rmd_unit,
+        rmd_name,
+        rmd_phone,
+        rmd_content
+      } = this.data;
+      let {
+        resourceRecommend
+      } = getApp().$apis;
       wx.showLoading({
-        title:"提交中"
+        title: "提交中"
       })
-      let res=await leaveMessage({
-        mobile:msg_phone,
-        name:msg_name,
-        content:msg_content,
-        email:msg_email
+      let res = await resourceRecommend({
+        nid:needsId,
+        company: rmd_unit,
+        contacts: rmd_name,
+        number:rmd_phone,
+        content: rmd_content
       });
       wx.hideLoading()
-      if(res){
+      if (res) {
         this.hideComment()
         wx.showToast({
-          title:"推荐成功",
-          duration:800
+          title: "推荐成功",
+          duration: 800
         })
         this.setData({
-          rmd_unit:null,rmd_name:null,rmd_content:bull
+          rmd_unit: null,
+          rmd_name: null,
+          rmd_phone:null,
+          rmd_content: null,
+          isShowRecommend:false
         })
       }
     },
-    showComment(){
+    showComment() {
       this.setData({
-        isShowComment:true
+        isShowComment: true
       })
     },
-    hideComment(){
+    hideComment() {
       this.setData({
-        isShowComment:false
+        isShowComment: false
       })
     },
-    showShare(){
+    showShare() {
       this.setData({
-        isShowShare:true
+        isShowShare: true
       })
     },
-    hideShare(){
+    hideShare() {
       this.setData({
-        isShowShare:false
+        isShowShare: false
       })
     },
-    hideWxShareYd(){
+    hideWxShareYd() {
       this.setData({
-        isShowWxShareYd:false
+        isShowWxShareYd: false
       })
     },
-    showWxShareYd(){
+    showWxShareYd() {
 
       this.setData({
-        isShowShare:false,
-        isShowWxShareYd:true
+        isShowShare: false,
+        isShowWxShareYd: true
       })
     },
-    showQrcode(){
+    showQrcode() {
       this.setData({
-        isShowQrcode:true
+        isShowQrcode: true
       })
     },
-    hideQrcode(){
+    hideQrcode() {
       this.setData({
-        isShowQrcode:false
+        isShowQrcode: false
       })
     },
-    showRecommend(){
+    showRecommend(id) {
       this.setData({
-        isShowRecommend:true
+        isShowRecommend: true,
+        needsId:id
       })
     },
-    hideRecommend(){
+    hideRecommend() {
       this.setData({
-        isShowRecommend:false
+        isShowRecommend: false
       })
     },
-    scroll(){
+    scroll() {
       clearTimeout(this.data._timeout);
       this.setData({
-        hide:true
+        hide: true
       })
-      let timeout=setTimeout(()=>{
+      let timeout = setTimeout(() => {
         this.setData({
-          hide:false
+          hide: false
         })
-      },500)
+      }, 500)
       this.setData({
-        _timeout:timeout
+        _timeout: timeout
       })
     }
 

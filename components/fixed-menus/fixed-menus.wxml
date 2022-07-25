@@ -75,6 +75,10 @@
                     <input placeholder-style="font-size:28rpx" type="text" id="phone" model:value="{{rmd_name}}" placeholder="请输入联系人" />
                 </view>
                 <view class="inputItem">
+                    <view class="title">联系莲花</view>
+                    <input placeholder-style="font-size:28rpx" type="text" id="phone" model:value="{{rmd_phone}}" placeholder="请输入联系电话" />
+                </view>
+                <view class="inputItem">
                     <view class="title">内容</view>
                     <textarea placeholder="" model:value="{{rmd_content}}" placeholder="请输入联系内容"></textarea>
                 </view>

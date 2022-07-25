@@ -93,6 +93,8 @@ Component({
 		address:null, //详细地址
         images: null,
         content: null,
+        type:null,
+        note:null,
 		//
         isShowActionSheet:false,
         __imgUrls:[],
@@ -100,7 +102,8 @@ Component({
 		__notEmpty:{
 			title:"请输入标题",
 			manufactor:"请输入生产厂家",
-			images:"请上传缩略图",
+            images:"请上传缩略图",
+            note:"请输入简介",
             content:"请输入详情信息"
 		}
 
@@ -192,7 +195,7 @@ Component({
 		//grade,pipe_level,category, sizedata,province,city,area,
       let grade=this._getKey("grade")
       let pipe_level=this.data.lists.pipe_level.keys.join(",");
-      let category=this._getKey("category")
+      let puoduct_category=this._getKey("category")
       let sizedata=this._getKey("sizedata")
 	  let province=null;
 	  let city=null;
@@ -215,38 +218,27 @@ Component({
 	let content=await this._getRichContent();
 	  let {
 		  title,
-		  quantity,
-		  years,
-		  shuiyan,
-		  diameter,
-		  turnover,
 		  stock,
-		  brandName,
 		  manufactor,
 		  location,
-		  address,
+          address,
+          note,
+          type
 	  }=this.data
 	  let data={
-		  grade,
-		  pipe_level,
-		  category,
-		  sizedata,
-		  province,
-		  city,
+          title,
+          stock,
+          manufactor,
+          province,
+          city,
 		  area,
-		  images,
-		  content,
-		  title,
-		  quantity,
-		  years,
-		  shuiyan,
-		  diameter,
-		  turnover,
-		  stock,
-		  brandName,
-		  manufactor,
 		  location,
-		  address
+          address,
+          images,
+          content,
+          type,
+          puoduct_category,
+          note,	 
 	  }
      
 	    let errs=checkEmpty(data,this.data.__notEmpty);
@@ -298,8 +290,8 @@ Component({
             let {lng,lat}=list[1][indexs[1]]
             data.location=`${lng},${lat}`
         }
-        let {pubProd,modifyProd}=getApp().$apis;
-        let fn=this.data.isModify?modifyProd:pubProd;
+        let {pubProdMod}=getApp().$apis;
+        let fn=pubProdMod;
         if(this.data.isModify){
             data.id=this.data.id
         }

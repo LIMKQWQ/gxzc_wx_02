@@ -1,12 +1,14 @@
 // pak1/filter/filter.js
-import category from './category.js'
-Page({
+const globalData = require("../../common/behavior/appGlobalData.js");
+let fixedMenus = require("../../common/behavior/fixedMenus.js");
 
+Page({
+  behaviors: [globalData, fixedMenus],
   /**
    * 页面的初始数据
    */
   data: {
-    list: category,
+    list: [],
     scrollTops: 0, // 要滚动的高度
     tabCur: 0, // 当前项
     rightCur: 0, // 用于实现左边联动右边
@@ -16,7 +18,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let ids = parseInt(options.id)
+    console.log(ids, "111");
 
+    if (ids != NaN ) {
+      this.setData({
+        tabCur: ids
+      })
+    }
+    this.filterList()
   },
 
   /**
@@ -67,9 +77,23 @@ Page({
   onShareAppMessage: function () {
 
   },
+  // 列表加载
+  async filterList() {
+    await getApp().$apis.getHomeFilter().then(res => {
+      // console.log(res);
+      this.setData({
+        list: res
+      })
+      console.log(this.data.list);
+    })
+
+    // console.log( getApp().$apis.getNeedsKey());
+  },
+
   // 切换左边菜单并联动右边
   tabNav(e) {
     let index = e.currentTarget.dataset.index;
+    console.log(index);
     this.setData({
       tabCur: index,
       rightCur: index,
@@ -112,6 +136,14 @@ Page({
         return false
       }
     }
+  },
+  slideToggle() {
+    console.log(111);
+  },
+  skipProduct(e) {
+    console.log(e.target.dataset.text);
+    wx.switchTab({
+      url: '/pages/tabs/find-resource/find-resource',
+    })
   }
-
 })

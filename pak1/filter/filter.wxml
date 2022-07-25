@@ -1,20 +1,28 @@
-<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88 || 164}}rpx" >
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88 }}rpx" >
   <ctHeader isBack="{{true}}">需求信息箱</ctHeader>
   <fixedMenus top="560rpx" id="fixedMenus"></fixedMenus>
   <!-- 实现左右联动效果 -->
   <view class="link">
     <!-- 左边 -->
     <scroll-view class="left" scroll-y scroll-with-animation scroll-top="{{scrollTops}}">
-      <view class="item {{tabCur===index?'active':''}}" wx:for="{{list}}" wx:key="index" data-index="{{index}}" bindtap="tabNav">{{item.name}}</view>
+      <view class="item {{tabCur===index?'active':''}}" wx:for="{{list}}" wx:key="{{item.id}}" data-index="{{index}}" bindtap="tabNav">{{item.tname}}</view>
     </scroll-view>
 
     <!-- 右边 -->
-    <scroll-view class="right" scroll-y scroll-with-animation scroll-into-view="scroll-{{rightCur}}" bindscroll="scrollLink">
+    <scroll-view class="right" scroll-y scroll-with-animation>
       <!-- 重点： id="scroll-{{index}}"  这个必须要有 不然实现不了左边联动右边的效果-->
-      <view wx:for="{{list}}" wx:key="{{index}}" class="right-cont" id="scroll-{{index}}">
+      <!-- <view wx:for="{{list}}" wx:key="{{index}}" class="right-cont" id="scroll-{{index}}">
         <view class="title">{{item.name}}</view>
         <view class="content">
           <view class="list-item" wx:for="{{item.list}}" wx:key="{{indexs}}" wx:for-index="indexs" wx:for-item="items">{{items}}</view>
+        </view>
+      </view> -->
+      <view class="right-cont" wx:for="{{list}}" wx:for-item="item" wx:if="{{index == tabCur}}" wx:key="{{item.id}}"> 
+        <view class="rightList" wx:for="{{list[tabCur].data}}" wx:for-item="fil">
+          <view class="title" bindtap="slideToggle">{{fil.tname}} <image src="./image/off.png" mode="widthFix" /></view>
+          <view class="subList">
+            <view wx:for="{{list[tabCur].data[index].data}}" wx:for-item="fl" wx:key="{{fl.id}}" bindtap="skipProduct" data-text="{{fl.tname}}">{{fl.tname}}</view>
+          </view>
         </view>
       </view>
     </scroll-view>

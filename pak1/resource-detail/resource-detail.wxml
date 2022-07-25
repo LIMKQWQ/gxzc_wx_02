@@ -2,20 +2,20 @@
     <ctHeader isBack="{{true}}">资源详情</ctHeader>
     <fixedMenus top="800rpx" id="fixedMenus"></fixedMenus>
     <view class="swiperContainer">
-        <swiper class="resourceSwiper" autoplay="{{true}}" circular="{{true}}" 	bindanimationfinish="swiperChange">
+        <swiper class="resourceSwiper" autoplay="{{true}}" circular="{{true}}" bindanimationfinish="swiperChange">
             <swiper-item class="swiperItem" wx:for="{{images}}" wx:key="filename">
                 <image src="{{m_resourceDetail.getImg(item.url,baseUrl)}}" wx-if="{{item.type=='img'}}" mode="aspectFill"></image>
                 <video src="{{m_resourceDetail.getImg(item.url,baseUrl)}}" wx-if="{{item.type=='video'}}" mode="aspectFill"></video>
-            
+
             </swiper-item>
-           
+
         </swiper>
         <view class="nums">
             {{swiper.current}}/{{swiper.sum}}
         </view>
     </view>
     <view class="resourBox">
-        <view class="titleBox">{{info.titel}} <text class="tag_qz">求租</text> <text class="tag_qg">求购</text></view>
+        <view class="titleBox">{{info.titel}} <text class="tag_qz" wx:if="{{ category==1 || category==3 }}">出租</text> <text class="tag_qg" wx:if="{{ category==2 || category==3}}" >出售</text></view>
         <!-- <view class="math">
                 <view class="math001">
                     <span class="quantity animateNum num">{{info.again_rent||0}}根</span>
@@ -41,7 +41,7 @@
         <!-- 简介 -->
         <view class="intr">
             <view class="intrTit">介绍：</view>
-            <view class="intrCont">杆防刺漏技能，同时加大了接头水眼尺。非标钻杆的主要特点是优化了过渡带的结构， 提高了钻杆防刺漏技能，同时加大了接头水眼尺非标钻杆的主要特点是优化了过渡带的结构， 提高了钻杆防刺漏技能，同时加大了接头水眼尺。非标钻杆的主要特点是优化了过渡带的结构， 提高了钻杆防刺漏技能，同时加大了接头水眼尺非标钻杆的主要特点是优化了过渡带的结构， 提高了钻杆防刺漏技能，同时加大了接头水眼尺。非标钻杆的主要特点是优化了过渡带的结构， 提高了钻杆防刺漏技能，同时加大了接头水眼尺。</view>
+            <view class="intrCont">{{note}}</view>
         </view>
         <!-- 详情 -->
         <view class="detaildata">
@@ -54,7 +54,7 @@
             </rich-text>
             <view class="fuwenbenregiet">
                 <image src="./images/lock.png" mode="aspectFill" alt="" />
-                <navigator 	hover-class="none" url="/pages/login/login" class="jianjie">登录后即可查看全部内容</navigator>
+                <navigator hover-class="none" url="/pages/login/login" class="jianjie">登录后即可查看全部内容</navigator>
             </view>
         </view>
     </view>
@@ -66,20 +66,20 @@
         <view class="btn actionesData" bind:tap="toggleCollectResource">
             <span wx:if="{{!collected}}">收藏资源</span>
             <span wx:if="{{collected}}">取消收藏</span>
-            <image class="img1" src="./images/love.png" mode="aspectFill" wx:if="{{!collected}}"  alt="" />
+            <image class="img1" src="./images/love.png" mode="aspectFill" wx:if="{{!collected}}" alt="" />
             <image class="img2" src="./images/love2.png" mode="aspectFill" wx:if="{{collected}}" alt="" />
         </view>
     </view>
-    
+
 </view>
 <wxs module="m_resourceDetail">
-    function getImg(str,baseUrl){
-		if(str.indexOf("http")!=-1){
-			return str;
-		}
-		return baseUrl+str;
-	}
-	module.exports={
-		getImg:getImg
-	}
+    function getImg(str, baseUrl) {
+        if (str.indexOf("http") != -1) {
+            return str;
+        }
+        return baseUrl + str;
+    }
+    module.exports = {
+        getImg: getImg
+    }
 </wxs>

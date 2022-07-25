@@ -4,18 +4,13 @@
   <view class="resourcontent">
     <view class="inputseach">
       <image src="./images/seach.png" mode="widthFix" alt="" />
-      <input placeholder-style="font-size:28rpx" type="text" confirm-type='search' placeholder="请输入关键词进行搜索" model:value="{{searchStr}}" bindinput="inputChange" bindconfirm="search" bindfocus="inputFocus" />
+      <input placeholder-style="font-size:28rpx" type="text" confirm-type='search' placeholder="请输入关键词进行搜索" model:value="{{searchStr}}" bindconfirm="search" bindfocus="inputFocus" />
       <view class="searchBtn" bind:tap="search">搜索</view>
     </view>
     <view class="hot">
       <view class="hotTit">热门搜索</view>
       <View class="flexWrap">
-        <text>方钻杆</text>
-        <text>方钻杆</text>
-        <text>方钻杆</text>
-        <text>方钻杆</text>
-        <text>方钻杆</text>
-        <text>方钻杆</text>
+          <text wx:for="{{hotSearch}}" wx:key="{{index}}" bindtap="hotTag" data-text="{{item.name}}">{{item.name}} </text>
       </View>
     </view>
   </view>

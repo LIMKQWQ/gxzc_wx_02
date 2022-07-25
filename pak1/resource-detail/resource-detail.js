@@ -15,9 +15,9 @@ Page({
         info:null,
         id:null,
        shareTitle:null,
-       __shareImg:null
-
-
+       __shareImg:null,
+       note:null,
+       category:null
     },
     swiperChange({detail}){
         let {current}=detail;
@@ -30,6 +30,8 @@ Page({
         let page=pages[pages.length-1];
         let {getResourceDetail}=getApp().$apis;
         let res=await getResourceDetail({id:page.options.id});
+        console.log(res);
+
         if(res){
             let {images,list,shoucang}=res;
             list.images=list.images.split(",");
@@ -49,6 +51,8 @@ Page({
                 collected:shoucang,
                 id:page.options.id,
                 shareTitle:list.titel,
+                note:list.note,
+                category:list.category,
                 __shareImg:shareImg?this.data.baseUrl+shareImg:false
 
             })

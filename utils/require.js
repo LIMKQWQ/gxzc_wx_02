@@ -1,7 +1,7 @@
 const {
   oBaseUrl,
   baseUrl
-} = require('./evn.js').prod
+} = require('./evn.js').test
 const {
   oBaseUrl: oBaseUrl_t,
   baseUrl: baseUrl_t
@@ -27,7 +27,7 @@ module.exports = {
     return new Promise((resolve, reject) => {
       let _url = `${baseUrl_}/${isSubDomain?subDomain:''}/${url}`;
 
-      // console.log(_url)
+      console.log(_url)
       wx.request({
         url: _url,
         data: data,

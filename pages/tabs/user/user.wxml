@@ -4,24 +4,31 @@
     <!-- 三级联动菜单 -->
     <view class="popup" wx:if="{{popupShow}}">
         <view class="popupSelect">
-            <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-                <view class="selectTit">
-                    <text>选择产品分类</text>
-                    <image src="./images/header/close.png" class="closeBtn" mode="widthFix" bindtap="closePopup" />
-                </view>
-                <view class="selectInput">
-                    <input type="text" value="{{multiArray[0][multiIndex[0]]}}" placeholder="请选择一级分类" disabled />
-                    <image src="./images/right.png" class="rightIcon" mode="widthFix" />
-                </view>
-                <view class="selectInput">
-                    <input type="text" value="{{multiArray[1][multiIndex[1]]}}" placeholder="请选择二级分类" disabled />
-                    <image src="./images/right.png" class="rightIcon" mode="widthFix" />
-                </view>
-                <view class="selectInput">
-                    <input type="text" value="{{multiArray[2][multiIndex[2]]}}" placeholder="请选择三级分类" disabled />
-                    <image src="./images/right.png" class="rightIcon" mode="widthFix" />
-                </view>
-            </picker>
+            <view class="selectTit">
+                <text>选择产品分类</text>
+                <image src="./images/header/close.png" class="closeBtn" mode="widthFix" bindtap="closePopup" />
+            </view>
+            <view class="selectInput">
+                <picker bindchange="bindPickerChange" value="{{index1}}" range="{{array}}" range-key="{{'tname'}}" data-item="{{array}}">
+                    <input type="text" value="{{index1!=null?array[index1].tname:''}}" placeholder="请选择一级分类" disabled />
+                </picker>
+                <image src="./images/right.png" class="rightIcon" mode="widthFix" />
+            </view>
+
+            <view class="selectInput">
+                <picker bindchange="bindPickerChangeTwo" value="{{index2}}" range="{{arrayTwo}}" range-key="{{'tname'}}" data-item="{{arrayTwo}}">
+                    <input type="text" value="{{index2!=null?arrayTwo[index2].tname:''}}"  placeholder="请选择二级分类" disabled />
+                </picker>
+
+                <image src="./images/right.png" class="rightIcon" mode="widthFix" />
+            </view>
+            <view class="selectInput" wx:if="{{showSelectThree}}">
+                <picker bindchange="bindPickerChangeThree" value="{{index3}}" range="{{arrayThree}}" range-key="{{'tname'}}" data-item="{{arrayThree}}">
+                    <input type="text"  value="{{index3!=null?arrayThree[index3].tname:''}}" placeholder="请选择三级分类" disabled />
+                </picker>
+
+                <image src="./images/right.png" class="rightIcon" mode="widthFix" />
+            </view>
             <view class="submit" bindtap="submit">
                 确认
             </view>

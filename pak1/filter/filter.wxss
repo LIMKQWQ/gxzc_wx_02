@@ -4,49 +4,68 @@
 }
 
 .left {
-  width: 220rpx;
+  width: 400rpx;
   /* 这里的高度可以写也可以不写，效果还是可以实现的，不过最好还是写上吧 */
   height: 100vh;
-  background-color: rgb(229, 243, 243);
-  text-align: center;
+  /* background-color: rgb(229, 243, 243); */
+  background-color: #fff;
+  text-align: left;
   color: #333;
+  border-right: 1rpx solid #ededed;
 }
 
 .left .item {
-  line-height: 50px;
+  line-height: 100rpx;
+  height: 100rpx;
   font-size: 34rpx;
+  padding-left: 30rpx;
+  font-size: 28rpx;
+  color: #333;
 }
 
-.active {
-  background-color: tomato;
+.left .active {
+  background-color: #21439B;
   color: #fff;
+  font-weight: 600;
 }
 
 .right {
   /* 这里的高度可写也可不写，效果还是可以实现的，不过最好还是写上吧 */
   height: 100vh;
-  background-color: #f8f8f8;
-  padding: 0 30rpx;
+  background-color: #fff;
 }
 
-.right-cont {
-  padding-bottom: 30rpx;
-  border-bottom: 1rpx solid #ccc;
+.right-cont .rightList {
+  padding: 20rpx 30rpx;
+  border-bottom: 1px solid #ededed;
 }
 
-.title {
-  text-align: center;
-  font-size: 36rpx;
+
+.right-cont .rightList .title {
   color: #333;
-  padding-top: 60rpx;
-  padding-bottom: 20rpx;
+  font-weight: bold;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.right-cont .rightList .title image {
+  width: 12rpx;
+}
+
+.right-cont .rightList .subList>view {
+  color: #666;
+  padding-left: 20rpx;
+  margin-top: 30rpx;
+  font-size: 28rpx;
 }
 
 .content {
   padding: 0 5rpx 0 20rpx;
 }
 
-.list-item{
+.list-item {
   font-size: 32rpx;
   color: #333;
   line-height: 50rpx;

@@ -49,6 +49,7 @@ Component({
         page.onShow = () => {
             this._startScroll();
         }
+        this.getPicker()
     },
 
 
@@ -59,6 +60,9 @@ Component({
         scrolled: false,
         disabledShare: true,
         popupShow: false,
+        pickerId: 0,
+        pickerId2: 0,
+        pickerId3: 0,
         nums: [{
                 num: 0,
                 to: 2400
@@ -72,53 +76,14 @@ Component({
                 to: 8000
             }
         ],
-        multiArray: [
-            ['无脊柱动物', '脊柱动物'],
-            ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'],
-            ['猪肉绦虫', '吸血虫']
-        ],
-        objectMultiArray: [
-            [{
-                    id: 0,
-                    name: '无脊柱动物'
-                },
-                {
-                    id: 1,
-                    name: '脊柱动物'
-                }
-            ],
-            [{
-                    id: 0,
-                    name: '扁性动物'
-                },
-                {
-                    id: 1,
-                    name: '线形动物'
-                },
-                {
-                    id: 2,
-                    name: '环节动物'
-                },
-                {
-                    id: 3,
-                    name: '软体动物'
-                },
-                {
-                    id: 3,
-                    name: '节肢动物'
-                }
-            ],
-            [{
-                    id: 0,
-                    name: '猪肉绦虫'
-                },
-                {
-                    id: 1,
-                    name: '吸血虫'
-                }
-            ]
-        ],
-        multiIndex: [0, 0, 0]
+        array: [],
+        index1: null,
+        arrayTwo: [],
+        index2: null,
+        arrayThree: [],
+        index3: null,
+        type: 0,
+        showSelectThree: true
     },
     computed: {
         status(data) {
@@ -228,79 +193,101 @@ Component({
                 popupShow: true
             })
         },
-        bindMultiPickerChange: function (e) {
-            console.log('picker发送选择改变，携带值为', e.detail.value)
+        bindPickerChange: function (e) {
+            console.log('picker发送选择改变，携带值为', e.detail.value,e.target.dataset.item[e.detail.value])
+            let item = e.target.dataset.item[e.detail.value];
+            console.log(item);
             this.setData({
-                multiIndex: e.detail.value
+                index1: e.detail.value,
+                pickerId2: item.id,
+                type: item.type,
+                arrayThree: []
+            })
+            console.log(e.target.dataset.item.id, "id");
+            this.getPickerTwo()
+        },
+        bindPickerChangeTwo: function (e) {
+            console.log('picker发送选择改变，携带值为', e.detail.value, e.target.dataset.item[e.detail.value])
+            let item = e.target.dataset.item[e.detail.value];
+            this.setData({
+                index2: e.detail.value,
+                pickerId3:item.id,
+                type: item.type
+            })
+            this.getPickerThree()
+
+        },
+        bindPickerChangeThree: function (e) {
+            console.log('picker发送选择改变，携带值为', e.detail.value, e.target.dataset.item[e.detail.value])
+            let item = e.target.dataset.item[e.detail.value];
+            this.setData({
+                index3: e.detail.value,
+                type:item.type
             })
         },
-        bindMultiPickerColumnChange: function (e) {
-            console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
-            var data = {
-                multiArray: this.data.multiArray,
-                multiIndex: this.data.multiIndex
-            };
-            data.multiIndex[e.detail.column] = e.detail.value;
-            switch (e.detail.column) {
-                case 0:
-                    switch (data.multiIndex[0]) {
-                        case 0:
-                            data.multiArray[1] = ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'];
-                            data.multiArray[2] = ['猪肉绦虫', '吸血虫'];
-                            break;
-                        case 1:
-                            data.multiArray[1] = ['鱼', '两栖动物', '爬行动物'];
-                            data.multiArray[2] = ['鲫鱼', '带鱼'];
-                            break;
-                    }
-                    data.multiIndex[1] = 0;
-                    data.multiIndex[2] = 0;
-                    break;
-                case 1:
-                    switch (data.multiIndex[0]) {
-                        case 0:
-                            switch (data.multiIndex[1]) {
-                                case 0:
-                                    data.multiArray[2] = ['猪肉绦虫', '吸血虫'];
-                                    break;
-                                case 1:
-                                    data.multiArray[2] = ['蛔虫'];
-                                    break;
-                                case 2:
-                                    data.multiArray[2] = ['蚂蚁', '蚂蟥'];
-                                    break;
-                                case 3:
-                                    data.multiArray[2] = ['河蚌', '蜗牛', '蛞蝓'];
-                                    break;
-                                case 4:
-                                    data.multiArray[2] = ['昆虫', '甲壳动物', '蛛形动物', '多足动物'];
-                                    break;
-                            }
-                            break;
-                        case 1:
-                            switch (data.multiIndex[1]) {
-                                case 0:
-                                    data.multiArray[2] = ['鲫鱼', '带鱼'];
-                                    break;
-                                case 1:
-                                    data.multiArray[2] = ['青蛙', '娃娃鱼'];
-                                    break;
-                                case 2:
-                                    data.multiArray[2] = ['蜥蜴', '龟', '壁虎'];
-                                    break;
-                            }
-                            break;
-                    }
-                    data.multiIndex[2] = 0;
-                    break;
+        async getPicker() {
+            let {
+                pickerId
+            } = this.setData;
+            await getApp().$apis.getProductType({
+                pid: pickerId
+            }).then(res => {
+                console.log(res);
+                this.setData({
+                    array: res,
+                })
+            })
+        },
+        async getPickerTwo() {
+            let {
+                pickerId2
+            } = this.data;
+            console.log(pickerId2, "2222");
+            await getApp().$apis.getProductType({
+                pid: pickerId2
+            }).then(res => {
+                console.log(res);
+                this.setData({
+                    arrayTwo: res
+                })
+            })
+        },
+        async getPickerThree() {
+            let {
+                pickerId3
+            } = this.data;
+            console.log(pickerId3, "3333");
+            await getApp().$apis.getProductType({
+                pid: pickerId3
+            }).then(res => {
+                console.log(res);
+                if (res == '') {
+                    this.setData({
+                        showSelectThree: false
+                    })
+                    return
+                }
+                this.setData({
+                    arrayThree: res,
+                    showSelectThree: true
+                })
+            })
+        },
+        submit() {
+            let {
+                type
+            } = this.data;
+            console.log(type);
+            if (type == 1) {
+                wx.navigateTo({
+                    url: '/pak1/pub-prod/pub-prod',
+                })
+            } else if (type == 2) {
+                wx.navigateTo({
+                    url: '/pak1/pub-prod-temp/pub-prod-temp',
+                })
             }
-            console.log(data.multiIndex);
-            this.setData(data);
-        },
-        submit(){
-            wx.navigateTo({
-              url: '/pak1/pub-prod/pub-prod',
-            })
+
         }
     }
 

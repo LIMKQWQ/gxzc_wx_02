@@ -93,7 +93,7 @@ Component({
 		address:null, //详细地址
         images: null,
         content: null,
-		//
+        type:null,
         isShowActionSheet:false,
         __imgUrls:[],
         __mediaUrls:[],
@@ -173,7 +173,6 @@ Component({
             success:({tempFiles})=>{
                let files=tempFiles.filter(({size})=>size<5000000);
                 let urls=files.map(({tempFilePath})=>tempFilePath);
-                
                this.data.__imgUrls.push(...urls);
                this.setData({
                 __imgUrls:this.data.__imgUrls
@@ -192,7 +191,7 @@ Component({
 		//grade,pipe_level,category, sizedata,province,city,area,
       let grade=this._getKey("grade")
       let pipe_level=this.data.lists.pipe_level.keys.join(",");
-      let category=this._getKey("category")
+      let puoduct_category=this._getKey("category")
       let sizedata=this._getKey("sizedata")
 	  let province=null;
 	  let city=null;
@@ -224,12 +223,13 @@ Component({
 		  brandName,
 		  manufactor,
 		  location,
-		  address,
+          address,
+          type 
 	  }=this.data
 	  let data={
 		  grade,
 		  pipe_level,
-		  category,
+		//   category,
 		  sizedata,
 		  province,
 		  city,
@@ -246,7 +246,9 @@ Component({
 		  brandName,
 		  manufactor,
 		  location,
-		  address
+          address,
+          type,
+          puoduct_category
 	  }
      
 	    let errs=checkEmpty(data,this.data.__notEmpty);
@@ -298,8 +300,8 @@ Component({
             let {lng,lat}=list[1][indexs[1]]
             data.location=`${lng},${lat}`
         }
-        let {pubProd,modifyProd}=getApp().$apis;
-        let fn=this.data.isModify?modifyProd:pubProd;
+        let {pubProdMod}=getApp().$apis;
+        let fn=pubProdMod;
         if(this.data.isModify){
             data.id=this.data.id
         }

@@ -2,50 +2,20 @@
     <ctHeader isBack="{{true}}">资源详情</ctHeader>
     <fixedMenus top="800rpx" id="fixedMenus"></fixedMenus>
     <view class="swiperContainer">
-        <swiper class="resourceSwiper" autoplay="{{true}}" circular="{{true}}" 	bindanimationfinish="swiperChange">
-            <swiper-item class="swiperItem" wx:for="{{images}}" wx:key="filename">
-                <image src="{{m_resourceDetail.getImg(item.url,baseUrl)}}" wx-if="{{item.type=='img'}}" mode="aspectFill"></image>
-                <video src="{{m_resourceDetail.getImg(item.url,baseUrl)}}" wx-if="{{item.type=='video'}}" mode="aspectFill"></video>
-            
-            </swiper-item>
-           
-        </swiper>
-        <view class="nums">
-            {{swiper.current}}/{{swiper.sum}}
-        </view>
+        <image src="{{m_resourceDetail.getImg(item.url,baseUrl)}}" wx-if="{{item.type=='img'}}" mode="aspectFill"></image>
     </view>
     <view class="resourBox">
-        <view class="titleBox">{{info.titel}} <text class="tag_qz">求租</text> <text class="tag_qg">求购</text></view>
-        <!-- <view class="math">
-                <view class="math001">
-                    <span class="quantity animateNum num">{{info.again_rent||0}}根</span>
-                    <span>库存数量</span>
-                </view>
-                <span class="span"></span>
-                <view class="math001">
-                    <span class="quantity">{{info.stock||0}}根</span>
-                    <span>在租数量</span>
-                </view>
-                <span class="span"></span>
-            <view class="math001">
-                <span class="quantity">{{info.turnover||0}}万</span>
-                <span>成交量</span>
-            </view>
-        </view> -->
+        <view class="titleBox">{{shareTitle}} <text class="tag_qz" wx:if="{{ status == 'zu' }}">求租</text> <text class="tag_qg" wx:else="{{ status == 'gou' }}">求购</text></view>
         <view class="contenttext">
-            <!-- <view wx-if="{{info.year}}">使用年限：{{info.year}}年</view>
-            <view wx-if="{{info.name}}">品牌名称：{{info.name}}</view>
-            <view wx-if="{{info.grade}}">钻具等级：{{info.grade}}</view>
-            <view wx-if="{{info.address}}">所在地点：{{info.address}}</view> -->
-            <view>数量：1893根</view>
-            <view>需求所在地：济南</view>
-            <view>获得推荐：11次</view>
+            <view>数量：{{quantity}}根</view>
+            <view>需求所在地：{{area}}</view>
+            <view>获得推荐：{{recommend}}次</view>
         </view>
-   
+
         <!-- 简介 -->
         <view class="intr">
             <view class="intrTit">介绍：</view>
-            <view class="intrCont">杆防刺漏技能，同时加大了接头水眼尺。非标钻杆的主要特点是优化了过渡带的结构， 提高了钻杆防刺漏技能，同时加大了接头水眼尺非标钻杆的主要特点是优化了过渡带的结构， 提高了钻杆防刺漏技能，同时加大了接头水眼尺。非标钻杆的主要特点是优化了过渡带的结构， 提高了钻杆防刺漏技能，同时加大了接头水眼尺非标钻杆的主要特点是优化了过渡带的结构， 提高了钻杆防刺漏技能，同时加大了接头水眼尺。非标钻杆的主要特点是优化了过渡带的结构， 提高了钻杆防刺漏技能，同时加大了接头水眼尺。</view>
+            <view class="intrCont">{{intr}}。</view>
         </view>
         <!-- 详情 -->
         <view class="detaildata">
@@ -54,12 +24,27 @@
             <view class="span2"></view>
         </view>
         <view class="detailcontent {{!_userInfo?'unlogin':''}}">
-            <rich-text nodes="{{info.content}}">
+            <rich-text nodes="{{content}}">
             </rich-text>
             <view class="fuwenbenregiet">
                 <image src="./images/lock.png" mode="aspectFill" alt="" />
-                <navigator 	hover-class="none" url="/pages/login/login" class="jianjie">登录后即可查看全部内容</navigator>
+                <navigator hover-class="none" url="/pages/login/login" class="jianjie">登录后即可查看全部内容</navigator>
             </view>
+            <view class="detaildata">
+                <view class="span"></view>
+                <view class="viewTitle">我要留言</view>
+                <view class="span2"></view>
+            </view>
+            <view class="message {{!_userInfo?'hide':''}}">
+                <label>姓名</label>
+                <input type="text" placeholder="请输入你的姓名" placeholder-class="pace" model:value="{{ msgName }}"  />
+                <label>电话</label>
+                <input type="text" placeholder="请输入你的电话" placeholder-class="pace"  model:value="{{ msgPhone }}"  />
+                <label>内容</label>
+                <textarea placeholder="请输入你的内容" placeholder-class="pace"  model:value="{{ msgContent }}" ></textarea>
+                <button class="submit" bindtap="submitMsg">提交</button>
+            </view>
+
         </view>
     </view>
     <view class="rebuttones" catchtap="{{true}}">
@@ -75,16 +60,16 @@
             <image class="img2" src="./images/love2.png" mode="aspectFill" wx:if="{{collected}}" alt="" />
         </view> -->
     </view>
-    
+
 </view>
 <wxs module="m_resourceDetail">
-    function getImg(str,baseUrl){
-		if(str.indexOf("http")!=-1){
-			return str;
-		}
-		return baseUrl+str;
-	}
-	module.exports={
-		getImg:getImg
-	}
+    function getImg(str, baseUrl) {
+        if (str.indexOf("http") != -1) {
+            return str;
+        }
+        return baseUrl + str;
+    }
+    module.exports = {
+        getImg: getImg
+    }
 </wxs>

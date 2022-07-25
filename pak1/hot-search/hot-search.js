@@ -1,66 +1,47 @@
-// pak1/hot-search/hot-search.js
+const globalData = require("../../common/behavior/appGlobalData.js");
+let fixedMenus = require("../../common/behavior/fixedMenus.js");
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
+  behaviors: [globalData, fixedMenus],
+  onLoad() {
+    this.initData()
+  },
   data: {
-
+    searchStr: '',
+    hotSearch: []
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  async initData() {
+    // let pages=getCurrentPages();
+    // let id=pages[pages.length-1].options.id;
+    // let {getKnowledgeDetail}=getApp().$apis;
+    // let {list,banner}=await getKnowledgeDetail({id});
+    this.getHotSearch()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  async getHotSearch() {
+    await getApp().$apis.getNeedsKey().then(res => {
+      this.setData({
+        hotSearch: res
+      })
+      console.log(this.data.hotSearch);
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  hotTag(e) {
+    // console.log(e.target.dataset.text);
+    this.setData({
+      searchStr:e.target.dataset.text
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  search() {
+    //  console.log(this.data.searchStr);
+    let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
+    let prevPage = pages[pages.length - 2];
+    //prevPage 是获取上一个页面的js里面的pages的所有信息。 -2 是上一个页面，-3是上上个页面以此类推。
+    prevPage.setData({ // 将我们想要传递的参数在这里直接setData。上个页面就会执行这里的操作。
+      searchStr: this.data.searchStr
+    })
+    prevPage.search()
+    wx.navigateBack({
+      delta: 1 // 返回上一级页面。
+    })
   }
 })
