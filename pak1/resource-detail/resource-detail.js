@@ -17,7 +17,9 @@ Page({
        shareTitle:null,
        __shareImg:null,
        note:null,
-       category:null
+       template:null,
+       category:null,
+       baseUrl:"https://gxzc.eccode.net"
     },
     swiperChange({detail}){
         let {current}=detail;
@@ -37,13 +39,12 @@ Page({
             list.images=list.images.split(",");
             list.content=list.content.replaceAll(/(?<=\<img.*?)height="150rpx".*?(?=\>)/g,"")
             list.content=list.content.replaceAll("<img",`<img style=" display:block;max-width:100%;object-fit:cover;object-position:center" `)
-        list.content=list.content.replaceAll(/<img style=" display:block;max-width:100%;object-fit:cover;object-position:center"(.*?)style="(.*?)"(?=.*?[\/]?>)/g,`<img style=" max-width:100%;object-fit:cover;object-position:center;$2"$1`)
-           
+            list.content=list.content.replaceAll(/<img style=" display:block;max-width:100%;object-fit:cover;object-position:center"(.*?)style="(.*?)"(?=.*?[\/]?>)/g,`<img style=" max-width:100%;object-fit:cover;object-position:center;$2"$1`)
             list.content=list.content.replaceAll("<table",`<table style="max-width:100% !important;"`)
-            list.content=`<div style="width:100%;margin:0 auto;word-break:break-all;">${list.content}</div>`
-            
+            list.content=`<div style="width:100%;margin:0 auto;word-break:break-all;">${list.content}</div>`;
             let sum=res.images.length;
             let shareImg=images.find(item=>item.type=="img")?.url;
+            
             this.setData({
                 "swiper.sum":sum,
                 images,
@@ -52,10 +53,12 @@ Page({
                 id:page.options.id,
                 shareTitle:list.titel,
                 note:list.note,
+                template:list.template,
                 category:list.category,
                 __shareImg:shareImg?this.data.baseUrl+shareImg:false
-
             })
+            console.log(this.data.__shareImg,this.data.info.content);
+
         }
     },
     async toggleCollectResource(){

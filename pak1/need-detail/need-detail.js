@@ -21,6 +21,7 @@ Page({
         msgName: '',
         msgPhone: '',
         msgContent: '',
+        baseUrl:"https://gxzc.eccode.net"
     },
     swiperChange({
         detail
@@ -71,7 +72,7 @@ Page({
                 // __shareImg: shareImg ? this.data.baseUrl + shareImg : false
             })
             // console.log(this.data.quantity,"------------");
-
+            console.log(this.data);
         }
     },
     async toggleCollectResource() {

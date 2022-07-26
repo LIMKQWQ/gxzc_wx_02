@@ -25,7 +25,7 @@ module.exports = {
       oBaseUrl_ = oBaseUrl_t;
     }
     return new Promise((resolve, reject) => {
-      let _url = `${baseUrl_}/${isSubDomain?subDomain:''}/${url}`;
+      let _url = `${oBaseUrl_}/${isSubDomain?subDomain:''}/${url}`;
 
       console.log(_url)
       wx.request({

@@ -69,13 +69,13 @@
 }
 
 .container .resourBox .titleBox {
-  height: 31rpx;
   font-size: 32rpx;
   font-weight: 600;
   color: #333333;
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
 }
+
 
 .container .resourBox .math {
   display: flex;
@@ -112,6 +112,7 @@
 .container .resourBox .contenttext {
   display: flex;
   flex-wrap: wrap;
+  margin: 40rpx 0 60rpx;
 }
 
 .container .resourBox .contenttext view {
@@ -255,24 +256,30 @@
 }
 
 .container .resourBox .titleBox .tag_qz {
-  font-size: 22rpx;
-  color: #fff;
   background-color: #21439B;
-  margin-left: 30rpx;
   width: 80rpx;
   text-align: center;
-  display: block;
+  display: inline-block;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: #fff;
+}
 
+.container .resourBox .titleBox text {
+  margin-right: 20rpx;
+  margin-bottom: 10rpx;
 }
 
 .container .resourBox .titleBox .tag_qg {
-  font-size: 22rpx;
-  color: #fff;
   background-color: #CF1D1D;
-  margin-left: 30rpx;
   width: 80rpx;
   text-align: center;
-  display: block;
+  display: inline-block;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: #fff;
 }
 
 .intr {

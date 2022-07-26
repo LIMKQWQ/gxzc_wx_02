@@ -15,7 +15,7 @@
         </view>
     </view>
     <view class="resourBox">
-        <view class="titleBox">{{info.titel}} <text class="tag_qz" wx:if="{{ category==1 || category==3 }}">出租</text> <text class="tag_qg" wx:if="{{ category==2 || category==3}}" >出售</text></view>
+        <view class="titleBox"><text>{{info.titel}}</text> <text class="tag_qz" wx:if="{{ category==1 || category==3 }}">出租</text> <text class="tag_qg" wx:if="{{ category==2 || category==3}}" >出售</text></view>
         <!-- <view class="math">
                 <view class="math001">
                     <span class="quantity animateNum num">{{info.again_rent||0}}根</span>
@@ -32,14 +32,14 @@
                 <span>成交量</span>
             </view>
         </view> -->
-        <!-- <view class="contenttext">
+        <view class="contenttext" wx:if="{{template==2}}">
             <view wx-if="{{info.year}}">使用年限：{{info.year}}年</view>
             <view wx-if="{{info.name}}">品牌名称：{{info.name}}</view>
             <view wx-if="{{info.grade}}">钻具等级：{{info.grade}}</view>
             <view wx-if="{{info.address}}">所在地点：{{info.address}}</view>
-        </view> -->
+        </view>
         <!-- 简介 -->
-        <view class="intr">
+        <view class="intr" wx:if="{{template==1}}">
             <view class="intrTit">介绍：</view>
             <view class="intrCont">{{note}}</view>
         </view>

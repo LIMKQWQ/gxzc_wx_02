@@ -1,6 +1,48 @@
 <view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
     <ctHeader>资源大厅</ctHeader>
     <fixedMenus top="560rpx" id="fixedMenus"></fixedMenus>
+ 
+    <!-- 筛选 -->
+    <view class="resourcontent">
+        <view class="filterBar">
+            <view class="filterTabs">
+                <text bind:tap="handover" data-num="1">资产出租</text>
+                <text bind:tap="handover" data-num="2">资产出售</text>
+            </view>
+            <view class="registerBtn" bindtap="toBeSuber">免费入驻</view>
+            <view class="filterMenu {{ showSubFilter ? 'subFilterMenu':'' }}">
+                <view class="filterCont"  wx:if="{{showFilter}}">
+                    <view class="filterList" wx:for="{{filterList.type}}" wx:key="{{item.id}}">
+                        <view class="filterTit"><text>{{item.tname}}</text></view>
+                        <view class="filterOption">
+                            <text bind:tap="handover"wx:for="{{item.data}}"  wx:for-item="fil" wx:key="{{fil.id}}"  bindtap="handleSubFilter" data-item="{{fil}}">{{fil.tname}}</text>
+                        </view>
+                    </view>
+                </view>
+            
+                <view class="filterCont" wx:if="{{showSubFilter}}">
+                    <view class="filterList">
+                        <view class="filterTit"><text>分类</text></view>
+                        <view class="filterOption">
+                            <text  wx:for="{{subFilterList.type}}" >{{item.tname}}</text>
+                        </view>
+                    </view>
+                    <view class="filterList">
+                        <view class="filterTit"><text>所在地</text></view>
+                        <view class="filterOption"  >
+                            <text wx:for="{{subFilterList.manufacturer}}">{{item}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="inputseach">
+            <image src="./images/seach.png" mode="widthFix" alt="" />
+            <input placeholder-style="font-size:28rpx" type="text" confirm-type='search' placeholder="请输入关键词进行搜索" model:value="{{searchStr}}" bindinput="inputChange" bindconfirm="search" />
+            <view class="searchBtn" bind:tap="search">搜索</view>
+        </view>
+    </view>
+    <!-- 最新通告 -->
     <view class="newsInfo">
         <view class="top">
             <view class="title">最新<text>通告</text> </view>
@@ -27,47 +69,6 @@
             </swiper-item>
         </swiper>
     </view>
-    <!-- 筛选 -->
-    <view class="resourcontent">
-        <view class="filterBar">
-            <view class="filterTabs">
-                <text bind:tap="handover" data-num="1">资产出租</text>
-                <text bind:tap="handover" data-num="2">资产出售</text>
-            </view>
-            <view class="registerBtn" bindtap="toBeSuber">免费入驻</view>
-            <view class="filterMenu">
-                <view class="filterCont">
-                    <view class="filterList" wx:for="{{filterList.type}}" wx:key="{{item.id}}" wx:if="{{showFilter}}">
-                        <view class="filterTit" bindtap="handleSubFilter" data-item="{{item}}"><text>{{item.tname}}</text></view>
-                        <view class="filterOption">
-                            <text bind:tap="handover" data-num="3" wx:for="{{item.data}}"  wx:for-item="fil" wx:key="{{fil.id}}">{{fil.tname}}</text>
-                        </view>
-                    </view>
-                </view>
-            
-                <view class="filterCont" wx:if="{{showSubFilter}}">
-                    <view class="filterList">
-                        <view class="filterTit"><text>分类</text></view>
-                        <view class="filterOption" wx:for="{{subFilterList.type}}" >
-                            <text>{{item.tname}}</text>
-                        </view>
-                    </view>
-
-                    <view class="filterList">
-                        <view class="filterTit"><text>所在地</text></view>
-                        <view class="filterOption" wx:for="{{subFilterList.manufacturer}}" >
-                            <text>{{item}}</text>
-                        </view>
-                    </view>
-                </view>
-            </view>
-        </view>
-        <view class="inputseach">
-            <image src="./images/seach.png" mode="widthFix" alt="" />
-            <input placeholder-style="font-size:28rpx" type="text" confirm-type='search' placeholder="请输入关键词进行搜索" model:value="{{searchStr}}" bindinput="inputChange" bindconfirm="search" />
-            <view class="searchBtn" bind:tap="search">搜索</view>
-        </view>
-    </view>
     <!-- 资源列表 -->
     <view class="tip" hidden="{{!showTip}}">
         搜索结果如下
@@ -84,7 +85,7 @@
             </view>
             <view class="info">
                 <view class="infoTitle">{{item.titel}}</view>
-                <view class="tags">
+                <view class="tags" wx:if="{{item.template == 2}}">
                     <view class="tagItem">
                         <block wx-if="{{item.water_eye}}">{{item.water_eye}} <block wx-if="{{item.manufacturer||item.steel_grade}}">|</block>
                         </block>
@@ -92,16 +93,22 @@
                         </block>{{item.steel_grade||""}}
                     </view>
                 </view>
-                <!-- <view class="intr">
+                <view class="intr" wx:if="{{item.template == 1}}">
                     介绍：非标钻杆的主要特点是11111111111
-                </view> -->
+                </view>
+                <view wx:if="{{item.template == 1}}" class="manufacturer"> 生产厂家：{{item.manufacturer}} </view>
                 <view class="pak">
                     <view class="pakitem" wx-if="{{item.diameter}}">
                         接头外径:
                         <view>{{item.diameter}}</view>
                     </view>
                     <view class="pakitembet" wx-if="{{item.again_rent}}">
-                        <view>状态:<text class="pak_cz">出租</text>/<text class="pak_cs">出售</text></view>
+                        <view  wx:if="{{item.category == 1 || item.category == 2 }}">状态:
+                            <text class="pak_cz" wx:if="{{item.category == 1}}">出租</text><text class="pak_cs" wx:if="{{item.category == 2}}">出售</text>
+                        </view>
+                        <view  wx:if="{{item.category == 3}}">
+                            <text class="pak_cz">出租</text> / <text class="pak_cs">出售</text>
+                        </view>
                         <view>库存: <text>{{item.again_rent}}根</text></view> 
                     </view>
                 </view>

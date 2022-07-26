@@ -1,11 +1,12 @@
 <view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
-    <ctHeader isBack="{{true}}">资源详情</ctHeader>
+    <ctHeader isBack="{{true}}">需求详情</ctHeader>
     <fixedMenus top="800rpx" id="fixedMenus"></fixedMenus>
-    <view class="swiperContainer">
-        <image src="{{m_resourceDetail.getImg(item.url,baseUrl)}}" wx-if="{{item.type=='img'}}" mode="aspectFill"></image>
+    <view class="banner">
+        <image src="{{baseUrl+images}}" mode="widthFix"></image>
     </view>
     <view class="resourBox">
-        <view class="titleBox">{{shareTitle}} <text class="tag_qz" wx:if="{{ status == 'zu' }}">求租</text> <text class="tag_qg" wx:else="{{ status == 'gou' }}">求购</text></view>
+        <view class="titleBox">
+        <text>{{shareTitle}}</text> <text class="tag_qz" wx:if="{{ status == 'zu' }}">求租</text> <text class="tag_qg" wx:else="{{ status == 'gou' }}">求购</text></view>
         <view class="contenttext">
             <view>数量：{{quantity}}根</view>
             <view>需求所在地：{{area}}</view>
@@ -62,7 +63,7 @@
     </view>
 
 </view>
-<wxs module="m_resourceDetail">
+<!-- <wxs module="m_resourceDetail">
     function getImg(str, baseUrl) {
         if (str.indexOf("http") != -1) {
             return str;
@@ -72,4 +73,4 @@
     module.exports = {
         getImg: getImg
     }
-</wxs>
+</wxs> -->

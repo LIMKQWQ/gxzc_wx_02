@@ -26,7 +26,8 @@ App({
   },
   globalData: {
     _userInfo: null,
-    baseUrl:"https://www.dajia-oil.com",
+    baseUrl:"https://gxzc.eccode.net",
+    // oBaseUrl:"https://www.dajia-oil.com",
     location:null
   },
   $apis:apis,

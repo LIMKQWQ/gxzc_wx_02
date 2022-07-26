@@ -29,13 +29,12 @@ Page({
         let {getNewsDetail,getIndustryDetail}=getApp().$apis;
         let fn=tab==1?getNewsDetail:getIndustryDetail;
         let {banner,list,announce,last,next}=await fn({id});
-        
+        console.log(list);
         // list.content=list.content.replaceAll(/(?<=\<img.*?)height="150rpx".*?(?=\>)/g,"")
         list.content=list.content.replaceAll("<img",`<img style=" display:block;max-width:100%;object-fit:cover;object-position:center" `)
         list.content=list.content.replaceAll(/<img style=" display:block;max-width:100%;object-fit:cover;object-position:center"(.*?)style="(.*?)"(?=.*?[\/]?>)/g,`<img style=" max-width:100%;object-fit:cover;object-position:center;$2"$1`)
         list.content=list.content.replaceAll("<table",`<table style="max-width:100% !important;"`)
         list.content=`<div style="width:92%;margin:0 auto;word-break:break-all;">${list.content}</div>`
-        
         this.setData({
             banner:this.data.baseUrl+banner.image,
             info:list,

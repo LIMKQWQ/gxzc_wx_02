@@ -30,12 +30,12 @@
 		<image src="./images/left.png" class="changeBtn pre" bind:tap="toPre" />
 		<image src="images/right.png" class="changeBtn next" bind:tap="toNext" />
 	</view>
-	<!-- <van-notice-bar left-icon="//s3.bmp.ovh/imgs/2022/05/25/4209f3efacbddd4c.png" background="#ffffff">
+	<van-notice-bar left-icon="//s3.bmp.ovh/imgs/2022/05/25/4209f3efacbddd4c.png" background="#ffffff">
 		<view class="notices">
 			<text wx:for="{{notices}}" wx:key="index">{{item.title}}</text>
 
 		</view>
-	</van-notice-bar> -->
+	</van-notice-bar>
 	<!-- 统计数据 -->
 	<view class="census">
 

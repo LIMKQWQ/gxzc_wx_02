@@ -46,9 +46,10 @@
 }
 
 .container .newsInfo {
-  width: 692rpx;
   margin: 0 auto;
+  padding: 0 30rpx;
   margin-top: 40rpx;
+  background-color: #FAFAFA;
 }
 
 .container .newsInfo .top {
@@ -289,6 +290,7 @@
   padding-bottom: 84rpx;
   margin-bottom: 30rpx;
   position: relative;
+  height: 480rpx;
   box-shadow: 0rpx 6rpx 17rpx 1rpx rgba(153, 153, 153, 0.2);
 }
 
@@ -346,7 +348,15 @@
   color: #666;
   display: flex;
   margin-top: 21rpx;
+  height: 60rpx;
 }
+
+.container .resourceList .resourceItem .info .tags .tagItem {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 
 .container .resourceList .resourceItem .info .pak {
   font-size: 22rpx;
@@ -410,7 +420,11 @@
   color: #666;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  /* white-space: nowrap; */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  /* 指定显示文本的行数 */
+  height: 60rpx;
 }
 
 .filterBar {
@@ -419,6 +433,7 @@
   align-items: center;
   position: relative;
   z-index: 98;
+  flex-wrap: wrap;
 }
 
 .filterBar .filterTabs {
@@ -477,4 +492,17 @@
   display: block;
   margin-bottom: 20rpx;
   margin-right: 20rpx;
+}
+
+.filterBar .subFilterMenu {
+  position: static;
+}
+
+.container .resourceList .resourceItem .manufacturer {
+  font-size: 22rpx;
+  margin-top: 15rpx;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
