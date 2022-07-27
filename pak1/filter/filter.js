@@ -10,8 +10,9 @@ Page({
   data: {
     list: [],
     scrollTops: 0, // 要滚动的高度
-    tabCur: 0, // 当前项
+    tabCur: 1, // 当前项
     rightCur: 0, // 用于实现左边联动右边
+    show: true
   },
 
   /**
@@ -21,7 +22,7 @@ Page({
     let ids = parseInt(options.id)
     console.log(ids, "111");
 
-    if (ids != NaN ) {
+    if (ids != NaN) {
       this.setData({
         tabCur: ids
       })
@@ -80,9 +81,22 @@ Page({
   // 列表加载
   async filterList() {
     await getApp().$apis.getHomeFilter().then(res => {
-      // console.log(res);
+      console.log(res[0].data[0]);
+      let listArr = res.map((item, index) => {
+        // console.log(item,"map(1)");
+        let datas = item.data.map((itm, inx) => {
+          console.log(itm, "itm");
+          return Object.assign(itm, {
+            'on': false
+          })
+        })
+        return Object.assign(item, {
+          data: datas
+        })
+      })
+      console.log(res, listArr, "listArr");
       this.setData({
-        list: res
+        list: listArr
       })
       console.log(this.data.list);
     })
@@ -137,11 +151,27 @@ Page({
       }
     }
   },
-  slideToggle() {
-    console.log(111);
+  slideToggle(e) {
+    // console.log(e.currentTarget.dataset, this.data.tabCur);
+    let slideIndex = e.currentTarget.dataset.index;
+    let {
+      list,
+      tabCur
+    } = this.data;
+    // console.log(list[tabCur].data[slideIndex].on, "list");
+    list[tabCur].data[slideIndex].on = !list[tabCur].data[slideIndex].on;
+    console.log(list[tabCur].data[slideIndex]);
+    this.setData({
+      list: list
+    })
   },
   skipProduct(e) {
-    console.log(e.target.dataset.text);
+    console.log(e.currentTarget.dataset.item.pid);
+    wx.setStorage({
+      data: e.currentTarget.dataset.item.pid,
+      key: 'filterId',
+    })
+    // prevPage.
     wx.switchTab({
       url: '/pages/tabs/find-resource/find-resource',
     })

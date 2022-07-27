@@ -30,6 +30,7 @@ Page({
     this.setData({
       searchStr:e.target.dataset.text
     })
+    this.search()
   },
   search() {
     //  console.log(this.data.searchStr);

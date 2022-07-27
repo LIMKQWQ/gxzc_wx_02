@@ -1,5 +1,5 @@
-<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88 }}rpx" >
-  <ctHeader isBack="{{true}}">需求信息箱</ctHeader>
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88 }}rpx">
+  <ctHeader isBack="{{true}}">商品类别</ctHeader>
   <fixedMenus top="560rpx" id="fixedMenus"></fixedMenus>
   <!-- 实现左右联动效果 -->
   <view class="link">
@@ -17,11 +17,13 @@
           <view class="list-item" wx:for="{{item.list}}" wx:key="{{indexs}}" wx:for-index="indexs" wx:for-item="items">{{items}}</view>
         </view>
       </view> -->
-      <view class="right-cont" wx:for="{{list}}" wx:for-item="item" wx:if="{{index == tabCur}}" wx:key="{{item.id}}"> 
-        <view class="rightList" wx:for="{{list[tabCur].data}}" wx:for-item="fil">
-          <view class="title" bindtap="slideToggle">{{fil.tname}} <image src="./image/off.png" mode="widthFix" /></view>
-          <view class="subList">
-            <view wx:for="{{list[tabCur].data[index].data}}" wx:for-item="fl" wx:key="{{fl.id}}" bindtap="skipProduct" data-text="{{fl.tname}}">{{fl.tname}}</view>
+      <view class="right-cont" wx:for="{{list}}" wx:for-item="item" wx:if="{{index == tabCur}}" wx:key="{{item.id}}" > 
+        <view class="rightList" wx:for="{{list[tabCur].data}}" wx:for-item="fil" wx:for-index="indexs" >
+          <view class="title" bindtap="slideToggle" data-index="{{indexs}}">{{fil.tname}}
+            <image src="./image/off.png" mode="widthFix" />
+          </view>
+          <view class="subList" style="height:{{ fil.on ? '':0}}" >
+            <view wx:for="{{list[tabCur].data[indexs].data}}" wx:for-item="fl" wx:key="{{fl.id}}" bindtap="skipProduct" data-item="{{fl}}">{{fl.tname}}</view>
           </view>
         </view>
       </view>

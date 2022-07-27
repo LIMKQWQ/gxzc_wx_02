@@ -185,7 +185,10 @@ Component({
         },
         closePopup() {
             this.setData({
-                popupShow: false
+                popupShow: false,
+                index1:null,
+                index2:null,
+                index3:null
             })
         },
         openPopup() {
@@ -286,7 +289,8 @@ Component({
                 wx.navigateTo({
                     url: '/pak1/pub-prod-temp/pub-prod-temp',
                 })
-            }
+            }   
+            this.closePopup()
 
         }
     }

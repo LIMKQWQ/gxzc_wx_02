@@ -54,6 +54,18 @@
   width: 12rpx;
 }
 
+.right-cont .rightList .subList {
+  height: 300rpx;
+  transition: height 1s;
+  -moz-transition: height 1s;
+  /* Firefox 4 */
+  -webkit-transition: height 1s;
+  /* Safari and Chrome */
+  -o-transition: height 1s;
+  /* Opera */
+  overflow: hidden;
+}
+
 .right-cont .rightList .subList>view {
   color: #666;
   padding-left: 20rpx;

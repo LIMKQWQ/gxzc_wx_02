@@ -1,4 +1,4 @@
-const globalData = require("../../common/behavior/appGlobalData.js");
+    const globalData = require("../../common/behavior/appGlobalData.js");
 let fixedMenus = require("../../common/behavior/fixedMenus.js");
 const computedBehavior = require('miniprogram-computed').behavior;
 let keyBoard = require("../../common/behavior/keyBoard.js");
@@ -534,7 +534,7 @@ Component({
         async initData() {
             let {
                 getPubClasses,
-                getAddress
+                getAddress  
             } = getApp().$apis;
             let res = await getPubClasses();
             let {

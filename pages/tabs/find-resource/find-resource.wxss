@@ -151,6 +151,7 @@
 .container .newsInfo .infoSwiper .swiperItem .list .newsItem .content .contentTitle {
   font-size: 24rpx;
   line-height: 30rpx;
+  height: 60rpx;
   max-height: 90rpx;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -273,7 +274,7 @@
 
 .container .tip {
   padding-left: 30rpx;
-  margin: 30rpx 0;
+  margin: 30rpx 0 40rpx;
   color: #666666;
 }
 
@@ -400,7 +401,6 @@
 }
 
 .container .resourceList .resourceItem .info .pak .pakitembet>view {
-  max-width: 49%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -418,12 +418,12 @@
   font-size: 22rpx;
   margin-top: 21rpx;
   color: #666;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  /* white-space: nowrap; */
+  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   /* 指定显示文本的行数 */
+  overflow: hidden;
+  /* 超出隐藏 */
   height: 60rpx;
 }
 
@@ -442,7 +442,7 @@
 }
 
 .filterBar .filterTabs text {
-  font-size: 28rpx;
+  font-size: 32rpx;
   font-weight: bold;
   color: #333;
   margin-right: 40rpx;
@@ -480,6 +480,7 @@
 .filterBar .filterMenu .filterCont .filterList .filterTit {
   line-height: 66rpx;
   font-weight: bold;
+  font-size: 28rpx;
 }
 
 .filterBar .filterMenu .filterCont .filterList .filterOption {
@@ -491,7 +492,8 @@
 .filterBar .filterMenu .filterCont .filterList .filterOption text {
   display: block;
   margin-bottom: 20rpx;
-  margin-right: 20rpx;
+  margin-right: 30rpx;
+  font-size: 28rpx;
 }
 
 .filterBar .subFilterMenu {
@@ -505,4 +507,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.container .resourceList .resourceItem .info .pak .category {
+  width: 59% ;
+}
+
+.container .resourceList .resourceItem .info .pak .again_rent {
+  width: 40%;
 }

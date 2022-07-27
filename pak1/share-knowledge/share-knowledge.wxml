@@ -7,7 +7,7 @@
 	</view>
 	<view class="tabsCont">
 		<view class="tabs">
-			<view wx:for="{{tabsList}}" wx:key="item.id" wx:key="{{item.id}}" bindtap="selectTab" class="{{type==index?'active':''}}" data-key="{{index}}" >
+			<view wx:for="{{tabsList}}" wx:key="item.id" wx:key="{{item.id}}" bindtap="selectTab" class="{{active==index?'active':''}}" data-item="{{item}}" data-key="{{index}}">
 					{{item.name}}
 			</view>
 		</view>

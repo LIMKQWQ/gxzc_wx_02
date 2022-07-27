@@ -47,7 +47,7 @@
                         <view>{{item.diameter}}</view>
                     </view> -->
           <view class="pakitembet">
-            <view>需求所在地: <text>{{item.area_name}}</text></view>
+            <view>所在地: <text>{{item.area_name}}</text></view>
             <view>数量:<text>{{item.quantity}}根</text></view>
           </view>
           <view class="pakitembet" >

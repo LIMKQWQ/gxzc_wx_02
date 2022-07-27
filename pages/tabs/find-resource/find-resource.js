@@ -12,6 +12,43 @@ Component({
         }
         await this._initData();
     },
+    pageLifetimes: {
+        // 组件显示触发
+        show: function () {
+            let that = this;
+            wx.getStorage({
+                key: 'filterId',
+                success(res) {
+                    console.log(res.data, "storage")
+                    getApp().$apis.getProductFiler({
+                        pid: res.data
+                    }).then(res => {
+                        console.log(res, "resfiltersss", that);
+                        that.setData({
+                            subFilterList: res,
+                            showFilter: false,
+                            showSubFilter: true
+                        })
+                    })
+                }
+            });
+            wx.removeStorage({
+                key: 'filterId',
+                success:function(res){
+                    console.log(res,"resssssssssssssssss");
+                }
+            })
+            // console.log(123);
+        },
+        hide:function(){
+            this.setData({
+                showFilter: false,
+                showSubFilter: false
+            })
+        }
+
+    },
+
     options: {
         pureDataPattern: /^__/ // 指定所有 _ 开头的数据字段为纯数据字段
     },
@@ -21,12 +58,14 @@ Component({
         announceList: [],
         resourceList: [],
         filterList: [],
-        subFilterList:[],
+        subFilterList: [],
         showLoading: false,
         filterActive: 0,
         showFilter: false,
         filterType: 0,
         banner: "",
+        searchCate: null,
+        searchManu: null,
         classes: {
             list: ["类别1", "类别2"],
             index: null
@@ -82,7 +121,7 @@ Component({
                 this.setData({
                     filterList: res,
                     showFilter: true,
-                    showSubFilter:false
+                    showSubFilter: false
                 })
             })
             if (tabSelect == this.data.filterActive) {
@@ -223,6 +262,7 @@ Component({
                 seachc,
                 size
             } = filter;
+            console.log(category, manufacturer, "111");
             if ((!!area || !!category || !!grade || !!manufacturer || !!seachc || !!size) && list.data.length) {
                 this.setData({
                     showTip: true
@@ -302,7 +342,6 @@ Component({
         },
         _getFilter() {
             let {
-                classes,
                 size,
                 gj,
                 proder,
@@ -310,14 +349,13 @@ Component({
                 __lat,
                 __lng
             } = this.data;
-            let proderName = proder.list[proder.index]?.name;
-
+            // console.log(this.data.searchCate,"11xx1");
             return {
                 page: this.data.page,
-                category: classes.list[classes.index]?.id,
+                category: this.data.searchCate,
                 size: size.list[size.index]?.id,
                 grade: gj.list[gj.index]?.id,
-                manufacturer: proderName != "全部" ? proderName : null,
+                manufacturer: this.data.searchManu,
                 seachc: this.data.searchStr,
                 area: address.list[address.index]?.id,
                 lat: __lat,
@@ -351,19 +389,35 @@ Component({
             return arr;
         },
         async handleSubFilter(e) {
-            console.log(e.currentTarget.dataset.item);
-            let {pid}=e.currentTarget.dataset.item;
+            console.log(e.currentTarget.dataset.item.id, 11111111111);
+            // let {id}=e.currentTarget.dataset.item.id;
             await getApp().$apis.getProductFiler({
-                pid:4
+                pid: e.currentTarget.dataset.item.id
             }).then(res => {
                 console.log(res, "resfiltersss");
                 this.setData({
                     subFilterList: res,
                     showFilter: false,
-                    showSubFilter:true
+                    showSubFilter: true
                 })
             })
+        },
+        handleFilterType(e) {
+            console.log(e.currentTarget.dataset.item.tname);
+            this.setData({
+                searchCate: e.currentTarget.dataset.item.tname
+            })
+            this.search()
+        },
+        // Manufacturer
+        handleFilterManu(e) {
+            console.log(e.currentTarget.dataset.item);
+            this.setData({
+                searchManu: e.currentTarget.dataset.item
+            })
+            this.search()
         }
+
 
 
 

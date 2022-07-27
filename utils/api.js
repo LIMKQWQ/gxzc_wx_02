@@ -270,13 +270,7 @@ module.exports = {
   getHomeNotice: () => request("homeNotice", "post", null, true, true),
   // 共享知识页面
   getKnowledgeTabs: () => request("knowledge/type", "post"),
-  getKnowledgeList: ({
-    page,
-    type
-  }) => request("knowledge", "post", {
-    page,
-    type
-  }),
+
   // 导航资产份分类
   getHomeFilter: () => request("product/home_type", "post"),
 
@@ -318,7 +312,7 @@ module.exports = {
   }),
   // 发布模板通用
   pubProdMod: (obj) => request("product/release_mod", "post", obj),
-    // 发布需求
+  // 发布需求
   pubNeedsProd: (obj) => request("needs/release", "post", obj),
   // 新资源分类
   getProductType: ({
@@ -362,4 +356,6 @@ module.exports = {
     manufacturer,
     area
   }),
+  // 首页新闻资讯
+  getHomeNews: () => request("home/news", "post", ),
 }

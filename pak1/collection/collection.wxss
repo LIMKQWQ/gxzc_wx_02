@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .mask {
   display: none;
   height: 100vh;
@@ -15,40 +16,49 @@
   justify-content: center;
   align-items: center;
 }
+
 .mask.show {
   display: flex;
 }
+
 .clipOneLine {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .container .list {
   width: 690rpx;
   margin: 0 auto;
   margin-top: 30rpx;
 }
+
 .container .list .row {
   display: flex;
   justify-content: space-between;
 }
+
 .container .list .row .listItem {
   width: 335rpx;
   box-shadow: 0rpx 6rpx 17rpx 1rpx rgba(153, 153, 153, 0.2);
   padding-bottom: 84rpx;
   margin-bottom: 30rpx;
   position: relative;
+  height: 480rpx;
 }
+
 .container .list .row .listItem .thumbnail {
   position: relative;
   width: 100%;
   height: 260rpx;
 }
+
 .container .list .row .listItem .thumbnail image {
   width: 100%;
   height: 260rpx;
   object-fit: cover;
 }
+
 .container .list .row .listItem .thumbnail .distance {
   height: 44rpx;
   padding: 0 20rpx;
@@ -63,21 +73,38 @@
   color: #666;
   font-size: 22rpx;
 }
+
 .container .list .row .listItem .thumbnail .distance .distanceIcon {
   width: 20rpx;
   height: 20rpx;
   margin-right: 4rpx;
 }
+
 .container .list .row .listItem .title {
   padding: 15rpx;
   font-weight: bold;
   font-size: 28rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
 }
+
+
 .container .list .row .listItem .tags {
   font-size: 22rpx;
-  color: #666666;
-  padding-left: 15rpx;
+  color: #666;
+  display: flex;
+  height: 60rpx;
+  padding: 0 15rpx;
 }
+
+.container .list .row .listItem .tags .tagItem {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .container .list .row .listItem .info {
   margin-top: 16rpx;
   display: flex;
@@ -86,9 +113,11 @@
   font-size: 22rpx;
   color: #666666;
 }
+
 .container .list .row .listItem .info .distance image {
   width: 20rpx;
 }
+
 .container .list .row .listItem .toManage {
   margin-top: 15rpx;
   position: absolute;
@@ -96,6 +125,7 @@
   left: 50%;
   transform: translateX(-50%);
 }
+
 .container .list .row .listItem .toManage .btn {
   display: block;
   width: 144rpx;
@@ -108,7 +138,50 @@
   border-radius: 22rpx;
   color: #ffffff;
 }
+
 .container .list .row .listItem .toManage .btn image {
   width: 18rpx;
   margin-left: 6rpx;
+}
+
+.container .list .row .listItem .intr {
+  font-size: 22rpx;
+  color: #666;
+  padding: 0 15rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  /* 指定显示文本的行数 */
+  overflow: hidden;
+  /* 超出隐藏 */
+  height: 60rpx;
+}
+
+.container .list .row .listItem .manufacturer {
+  font-size: 22rpx;
+  margin-top: 15rpx;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 15rpx;
+
+}
+
+.container .list .row .listItem .pak_cz {
+  color: #21439B;
+}
+
+.container .list .row .listItem .pak_cs {
+  color: #CF1D1D;
+}
+
+.container .list .row .listItem .stock {
+  display: flex;
+}
+.container .list .row .listItem .diameter{
+  padding: 0 15rpx;
+  font-size: 22rpx;
+  margin-top: 15rpx;
+  color: #666;
 }

@@ -113,9 +113,11 @@
   background-color: #F8F8F8;
   color: #333;
   /* border: 1px solid #000; */
-  height: 48rpx;
-  line-height: 48rpx;
+  height: 56rpx;
+  text-align: center;
+  line-height: 56rpx;
   padding: 0 10rpx;
+  font-size: 28rpx;
 }
 
 .tabs view:not(:last-child) {

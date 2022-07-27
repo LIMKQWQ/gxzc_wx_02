@@ -23,6 +23,7 @@ Page({
         let res=await getProductLike({lng,lat});
         wx.hideLoading();
         res.list=chunkArr(res.list,2);
+        console.log(res.list);
         this.setData({
             list:res.list
         })

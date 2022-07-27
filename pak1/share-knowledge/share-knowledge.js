@@ -18,12 +18,23 @@ Page({
     currentPage: 1, //当前页数
     knowledgeList: [],
     _showLoading: false,
-    type: 0,
-    tabsList: []
+    type: 1,
+    tabsList: [],
+    active:0
 
   },
   async loadMore() {
-    if (this.data.currentPage >= this.data.last_page || this.data._showLoading) {
+    let {
+      currentPage,
+      last_page,
+      _showLoading,
+      type,
+      knowledgeList
+    } = this.data;
+    console.log(currentPage, last_page);
+
+    if (currentPage >= last_page || _showLoading) {
+      // console.log(this.data.currentPage, this.data.last_page);
       console.log("已经加载完了")
       return;
     };
@@ -31,55 +42,70 @@ Page({
     this.setData({
       _showLoading: true
     })
-
     let {
       list
-    } = await getApp().$apis.getKnowledgeList({
-      page: this.data.currentPage + 1,
-      type: this.data.type + 1
+    } = await getApp().$apis.getShareKnowledgeList({
+      page: currentPage + 1,
+      type: type
     });
-    console.log(this.data.currentPage + 1, this.data.type + 1);
-    console.log("新的加载完毕", list)
-    let newList = [...this.data.knowledgeList, ...list];
+    console.log(list);
+    // console.log(this.data.currentPage + 1, this.data.type + 1);
+    // console.log("新的加载完毕", list)
+    let newList = [...knowledgeList, ...list.data];
     this.setData({
       knowledgeList: newList,
-      currentPage: this.data.currentPage + 1
-    });
-    this.setData({
+      currentPage: list.current_page,
       _showLoading: false
-    })
+    });
+    // this.setData({
+    //   _showLoading: false
+    // })
 
   },
   async _initData() {
     let {
+      type,
+      currentPage
+    } = this.data;
+    console.log(type, currentPage, '当前页数和type');
+    let {
       list,
       banner
-    } = await getApp().$apis.getKnowledgeList({
-      page: 1,
-      type: this.data.type + 1
+    } = await getApp().$apis.getShareKnowledgeList({
+      page: currentPage,
+      type: type
     });
     let list2 = [];
+    console.log(list, "list");
+    let cupage = 0;
     if (list.last_page > 1) {
       console.log("有超过两页")
       let {
         list: list_
-      } = await getApp().$apis.getKnowledgeList({
-        page: 2,
-        type: this.data.type + 1
+      } = await getApp().$apis.getShareKnowledgeList({
+        page: currentPage + 1,
+        type: type
       });
       list2 = list_.data;
+      cupage = list_.current_page;
+      console.log(list_, "list_list_");
     }
+    console.log(list.data, list2);
     this.setData({
       knowledgeList: [...list.data, ...list2],
       banner: this.data.baseUrl + banner.image,
       last_page: list.last_page,
-      currentPage: list2.length ? 2 : 1
+      currentPage: cupage
     })
+    console.log(this.data.knowledgeList);
   },
   selectTab(e) {
+    console.log(e.currentTarget.dataset.key,e.currentTarget.dataset.item.id);
     this.setData({
-      type: e.target.dataset.key,
-      currentPage:1
+      active: e.currentTarget.dataset.key,
+      currentPage:1,
+      type:e.currentTarget.dataset.item.id,
+      knowledgeList:[]
     })
     this._initData()
     //  console.log(111);
@@ -87,7 +113,7 @@ Page({
   async tabsData() {
     await getApp().$apis.getKnowledgeTabs().then(res => {
       this.setData({
-        tabsList: res
+        tabsList: res,
       })
       console.log(this.data.tabsList);
     })

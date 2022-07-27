@@ -58,6 +58,7 @@ Page({
             content = content.replaceAll("<img", `<img style=" display:block;max-width:100%;object-fit:cover;object-position:center" `)
             content = content.replaceAll(/<img style=" display:block;max-width:100%;object-fit:cover;object-position:center"(.*?)style="(.*?)"(?=.*?[\/]?>)/g, `<img style=" max-width:100%;object-fit:cover;object-position:center;$2"$1`)
             content = content.replaceAll("<table", `<table style="max-width:100% !important;"`)
+            content =content.replaceAll(`src="`,`src="${this.data.baseUrl}`)
             content = `<div style="width:100%;margin:0 auto;word-break:break-all;">${content}</div>`
             this.setData({
                 images: images,

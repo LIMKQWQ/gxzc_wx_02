@@ -388,18 +388,31 @@
 .container .resourceList .resourceItem .info .pak .pakitembet {
   justify-content: space-between;
 }
-.container .resourceList .resourceItem .info .pak .pakitembet>view{
-  max-width: 49%;
+
+.container .resourceList .resourceItem .info .pak .pakitembet>view:first-child {
+  width: 59%;
+}
+
+.container .resourceList .resourceItem .info .pak .pakitembet>view:last-child {
+  width: 40%;
+}
+
+.container .resourceList .resourceItem .info .pak .pakitembet>view {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: left;
 }
-.pak .pak_cz{
+
+.pak .pak_cz {
   color: #21439B;
-}.pak .pak_cs{
-  color: #CF1D1D ;
 }
-.container .resourceList .resourceItem  .intr{
+
+.pak .pak_cs {
+  color: #CF1D1D;
+}
+
+.container .resourceList .resourceItem .intr {
   font-size: 22rpx;
   margin-top: 21rpx;
   color: #666;
@@ -408,26 +421,29 @@
   white-space: nowrap;
 }
 
-.btnBar{
+.btnBar {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 40rpx;
 }
-.btnBar>view{
+
+.btnBar>view {
   width: 200rpx;
-  font-size: 28rpx;  
+  font-size: 28rpx;
   text-align: center;
   height: 56rpx;
   line-height: 56rpx;
   border-radius: 8rpx;
 }
-.btnBar .registerBtn{
+
+.btnBar .registerBtn {
   border: 1px solid #21439B;
   margin-right: 20rpx;
   color: #21439B;
 }
-.btnBar .releaseBtn{
+
+.btnBar .releaseBtn {
   margin-left: 20rpx;
   background-color: #21439B;
   color: #fff;

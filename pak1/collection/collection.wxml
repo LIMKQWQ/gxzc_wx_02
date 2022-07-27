@@ -1,50 +1,69 @@
 <view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
-    <ctHeader isBack="{{true}}">我的收藏</ctHeader>
-    <fixedMenus top="200rpx" id="fixedMenus"></fixedMenus>
-    <view class="list">
+	<ctHeader isBack="{{true}}">我的收藏</ctHeader>
+	<fixedMenus top="200rpx" id="fixedMenus"></fixedMenus>
+	<view class="list">
 		<view class="row" wx:for="{{list}}" wx:for-item="items" wx:key="index">
-			<navigator 	hover-class="none"  url="/pak1/resource-detail/resource-detail?id={{item.id}}" class="listItem" wx:for="{{items}}" wx:key="id">
+			<navigator hover-class="none" url="/pak1/resource-detail/resource-detail?id={{item.id}}" class="listItem" wx:for="{{items}}" wx:key="id">
 				<view class="thumbnail">
-					<image src="{{collection.getImg(item.image,baseUrl)}}" mode="aspectFill"/>
+					<image src="{{collection.getImg(item.image,baseUrl)}}" mode="aspectFill" />
 					<view class="distance">
 						<image src="./images/distance.png" mode="aspectFill" class="distanceIcon"></image>
 						距您{{item.distance}}KM
-                	</view>
+					</view>
 				</view>
+
 				<view class="title">
 					{{item.titel}}
 				</view>
-				<view class="tags">
-					<block wx-if="{{item.water_eye}}">{{item.water_eye}} <block wx-if="{{item.manufacturer||item.steel_grade}}">|</block></block> <block wx-if="{{item.manufacturer}}">{{item.manufacturer}} <block wx-if="{{item.steel_grade}}">|</block></block>{{item.steel_grade||""}}
+
+				<view class="tags" wx:if="{{item.template == 2}}">
+					<view class="tagItem">
+						<block wx-if="{{item.water_eye}}">{{item.water_eye}} <block wx-if="{{item.manufacturer||item.steel_grade}}">|</block>
+						</block>
+						<block wx-if="{{item.manufacturer}}">{{item.manufacturer}} <block wx-if="{{item.steel_grade}}">|</block>
+						</block>{{item.steel_grade||""}}
+					</view>
+				</view>
+				<view class="intr" wx:if="{{item.template == 1}}">
+					介绍：{{item.note}}
+				</view>
+				<view wx:if="{{item.template == 1}}" class="manufacturer"> 生产厂家：{{item.manufacturer}} </view>
+
+				<view class="diameter" wx-if="{{item.diameter}}">
+					接头外径:{{item.diameter}}
 				</view>
 				<view class="info">
-					<view class="params" wx-if="{{item.diameter}}">
-						接头外径:
-						<view>{{item.diameter}}</view>
+					<view wx:if="{{item.category == 1 || item.category == 2 }}">状态:
+						<text class="pak_cz" wx:if="{{item.category == 1}}">出租</text><text class="pak_cs" wx:if="{{item.category == 2}}">出售</text>
+					</view>
+					<view wx:if="{{item.category == 3}}">
+						状态:<text class="pak_cz">出租</text> / <text class="pak_cs">出售</text>
 					</view>
 					<view class="stock" wx-if="{{item.again_rent}}">
 						库存:
 						<view>{{item.again_rent}}根</view>
 					</view>
-					
+
 				</view>
 				<view class="toManage" catchtap="{{true}}">
-					<view  class="btn" bind:tap="showKf">在线询价<image src="./images/btnIconWhite.png" mode="widthFix"/></view>
+					<view class="btn" bind:tap="showKf">在线询价
+						<image src="./images/btnIconWhite.png" mode="widthFix" />
+					</view>
 				</view>
 			</navigator>
-			
-		</view>	
+
+		</view>
 		<empty top="100rpx" wx:if="{{!list||!list.length}}">收藏列表为空</empty>
 	</view>
 </view>
 <wxs module="collection">
-	function getImg(str,baseUrl){
-		if(str.indexOf("http")!=-1){
+	function getImg(str, baseUrl) {
+		if (str.indexOf("http") != -1) {
 			return str;
 		}
-		return baseUrl+str;
+		return baseUrl + str;
 	}
-	module.exports={
-		getImg:getImg
+	module.exports = {
+		getImg: getImg
 	}
 </wxs>

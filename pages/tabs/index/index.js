@@ -115,33 +115,33 @@ Component({
         knowledgeList: [], //知识共享列表
         hotList: [], //热门资源列表
         __shareImg: null,
-        newsList: [],//新闻列表
+        newsList: [], //新闻列表
         sortList: [{
-            id:0,
+            id: 0,
             name: "石油专用管材类",
             img: "./images/moreIcon.png"
         }, {
-            id:1,
+            id: 1,
             name: "钻井类",
             img: "./images/moreIcon.png"
         }, {
-            id:2,
+            id: 2,
             name: "完井类",
             img: "./images/moreIcon.png"
         }, {
-            id:3,
+            id: 3,
             name: "油气地面工程类",
             img: "./images/moreIcon.png"
         }, {
-            id:4,
+            id: 4,
             name: "通用配套类",
             img: "./images/moreIcon.png"
         }, {
-            id:5,
+            id: 5,
             name: "井下类",
             img: "./images/moreIcon.png"
         }, {
-            id:6,
+            id: 6,
             name: "物业资产类",
             img: "./images/moreIcon.png"
         }]
@@ -193,22 +193,21 @@ Component({
                 page: 1
             });
 
-            await getApp().$apis.getNews({
-                page: 1
-            }).then(res => {
-                let newsArr = []
-                for (let index = 0; index < 2; index++) {
-                    // newsArr.concat(res.list.data[index]) 
-                    newsArr.push(
-                        res.list.data[index]
-                    )
-                }
-                console.log(newsArr,'news');
+            await getApp().$apis.getHomeNews().then(res => {
+                console.log(res,"news");
                 this.setData({
-                    newsList:newsArr
+                    newsList: res
                 })
             });
-            
+
+            await getApp().$apis.getProductType({
+                pid: 0
+            }).then(res => {
+                this.setData({
+                    sortList: res
+                })
+            })
+
             let hotList = await getApp().$apis.getHotList({
                 lng: longitude,
                 lat: latitude
@@ -336,13 +335,16 @@ Component({
             } = e.detail;
             this._setSwiperIndex(current);
         },
-        skipFilter(e){
-            console.log(e.target.dataset);
-            let tabId=e.currentTarget.dataset.item.id;
+        // 分类跳转
+        skipFilter(e) {
+            console.log(e.currentTarget.dataset);
+            let tabId = e.currentTarget.dataset.index;
             wx.navigateTo({
-              url: `/pak1/filter/filter?id=${tabId}`,
+                url: `/pak1/filter/filter?id=${tabId}`,
             })
-        }
+        },
+        // 获取分类接口
+
     }
 
 })

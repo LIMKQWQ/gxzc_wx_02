@@ -72,8 +72,8 @@
       {
         "pagePath":"pages/tabs/need-resource/need-resource",
         "text":"需求大厅",
-        "iconPath":"assets/imgs/news.png",
-        "selectedIconPath":"assets/imgs/news_s.png"
+        "iconPath":"assets/imgs/need.png",
+        "selectedIconPath":"assets/imgs/need_s.png"
       },
       {
         "pagePath":"pages/tabs/about/about",

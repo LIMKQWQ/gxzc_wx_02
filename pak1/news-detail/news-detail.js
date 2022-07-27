@@ -20,6 +20,7 @@ Page({
     async initData(){
         let pages=getCurrentPages();
         let {id,tab}=pages[pages.length-1].options;
+        console.log(tab);
         if(tab==2){
             
            this.setData({

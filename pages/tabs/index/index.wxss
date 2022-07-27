@@ -478,16 +478,16 @@
 }
 
 .sortList .sortIcon {
-  width: 80rpx;
-  height: 80rpx;
+  width: 82rpx;
+  height: 82rpx;
   border: 1rpx dashed #ccc;
   position: relative;
   margin: auto;
 }
 
 .sortList .sortIcon image {
-  width: 40rpx;
-  height: 40rpx;
+  width: 80rpx;
+  height: 80rpx;
   position: absolute;
   top: 0;
   left: 0;

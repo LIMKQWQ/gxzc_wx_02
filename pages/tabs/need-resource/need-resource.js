@@ -13,6 +13,42 @@ Component({
             that.loadMore()
         }
         await this._initData();
+        let {
+            _userInfo
+        } = getApp().globalData;
+        let {
+            getUserInfo,
+            getHomeNotice
+        } = getApp().$apis;
+        let notices = await getHomeNotice();
+        this.setData({
+            notices
+        })
+        wx.$bus.on("login", (userInfo) => {
+            this.setData({
+                _userInfo: userInfo
+            })
+        })
+        wx.$bus.on("logout", () => {
+            this.setData({
+                _userInfo: null,
+                userInfo: null
+            })
+        })
+        wx.$bus.on("refreshUserInfo", (userInfo) => {
+            console.log("refreshUserInfo", userInfo)
+            this.setData({
+                userInfo: userInfo.user
+            })
+        })
+        if (_userInfo) {
+            //已登录
+            let userInfo = await getUserInfo();
+            console.log("已登录,获取用户信息", userInfo)
+            if (userInfo) {
+                wx.$bus.emit("refreshUserInfo", userInfo);
+            }
+        }
     },
     options: {
         pureDataPattern: /^__/ // 指定所有 _ 开头的数据字段为纯数据字段
@@ -22,6 +58,7 @@ Component({
         totalPage: 1,
         announceList: [],
         resourceList: [],
+        userInfo: null,
         showLoading: false,
         searchStr: null,
         showTip: false,

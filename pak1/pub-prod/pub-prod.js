@@ -26,7 +26,7 @@ Component({
             })
             let pages=getCurrentPages();
             let page=pages[pages.length-1];
-            console.log(page.options);
+            console.log(page.options,"page.options");
             let id=page.options.id;
             if(id||id==='0'){
                 this.setData({
@@ -135,7 +135,7 @@ Component({
                 __mediaUrls:list
             })
         }))
-       console.log(file)
+       console.log(file,"file")
        let {type,thumb,url}=file;
        let list=this.data.fileList;
        if(type=="video"){
@@ -204,7 +204,7 @@ Component({
 			city=Number(list[1][indexs[1]]?.id)||null;
 			area=Number(list[2][indexs[2]]?.id)||null;
 	}
-	console.log(province,city,area)
+	console.log(province,city,area,"area")
 	//获取图片
     wx.showLoading({
         title:"正在提交"
@@ -253,7 +253,7 @@ Component({
      
 	    let errs=checkEmpty(data,this.data.__notEmpty);
         if(errs.length){
-            console.log(errs)
+            console.log(errs,"errs")
             wx.hideLoading()
 
             wx.showToast({
@@ -306,7 +306,7 @@ Component({
             data.id=this.data.id
         }
         let res=await fn(deleteNull(data))
-        console.log(res)
+        console.log(res,'fn')
         wx.hideLoading()
        if(res){
            wx.navigateBack({
@@ -475,17 +475,15 @@ Component({
         let {getProd}=getApp().$apis;
         let pages=getCurrentPages();
         let page=pages[pages.length-1];
-       console.log(page.options)
+       console.log(page.options,"initData_modify")
         let id=page.options.id;
         console.log("获取产品",id)
         wx.showLoading({
             title:"正在加载"
         })
         let res=await getProd({id});
-        console.log(res)
+        console.log(res,"getProd")
         let {drill:_grade,grade:_pipe_level,category:_category,size:_sizedata,province:{list:address},city:{list:cityAddress},area:{list:areaAddress}}=res;
-          
-
             this.setData({
                 id:res.list.id,
                 "lists.grade.list":this._dealObj(_grade.list),

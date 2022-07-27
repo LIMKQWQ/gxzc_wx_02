@@ -85,12 +85,12 @@
 			</view>
 		</view>
 		<view class="list">
-			<view wx:for="{{sortList}}"  class="item">
-				<view class="sortIcon"  bindtap="skipFilter" data-item="{{item}}">
-					<image src="{{item.img}}" mode="widthFix" />
+			<view wx:for="{{sortList}}" class="item" wx:key="indexs" bindtap="skipFilter" wx:for-index="indexs" data-index="{{indexs}}">
+				<view class="sortIcon">
+					<image src="{{baseUrl+item.image}}" mode="widthFix" />
 				</view>
 				<view class="sortName">
-					{{item.name}}
+					{{item.tname}}
 				</view>
 			</view>
 		</view>
@@ -246,7 +246,7 @@
 			</view>
 		</view>
 		<view class="list">
-			<navigator hover-class="none" url="/pak1/news-detail/news-detail?id={{item.id}}" class="newsItem" wx:for="{{newsList}}" wx:key="id">
+			<navigator hover-class="none" url="/pak1/news-detail/news-detail?id={{item.id}}&tab={{item.type}}" class="newsItem" wx:for="{{newsList}}" wx:key="id">
 				<view class="leftInfo">
 					<view class="title">
 						{{item.title}}

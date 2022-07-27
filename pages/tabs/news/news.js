@@ -49,6 +49,7 @@ Component({
                 industryTotal:res[1].list.last_page,
                 industryList:res[1].list.data
             })
+            console.log(this.data.newsList);
         },
         async loadMore(){
             let to=this.data.activeTab==1?"newsList":"industryList";

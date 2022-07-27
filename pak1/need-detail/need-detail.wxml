@@ -6,7 +6,8 @@
     </view>
     <view class="resourBox">
         <view class="titleBox">
-        <text>{{shareTitle}}</text> <text class="tag_qz" wx:if="{{ status == 'zu' }}">求租</text> <text class="tag_qg" wx:else="{{ status == 'gou' }}">求购</text></view>
+            <text>{{shareTitle}}</text> <text class="tag_qz" wx:if="{{ status == 'zu' }}">求租</text> <text class="tag_qg" wx:else="{{ status == 'gou' }}">求购</text>
+        </view>
         <view class="contenttext">
             <view>数量：{{quantity}}根</view>
             <view>需求所在地：{{area}}</view>
@@ -24,25 +25,25 @@
             <view class="viewTitle">商品详情</view>
             <view class="span2"></view>
         </view>
-        <view class="detailcontent {{!_userInfo?'unlogin':''}}">
+        <view class="detailcontent ">
             <rich-text nodes="{{content}}">
             </rich-text>
-            <view class="fuwenbenregiet">
+            <!-- <view class="fuwenbenregiet">
                 <image src="./images/lock.png" mode="aspectFill" alt="" />
                 <navigator hover-class="none" url="/pages/login/login" class="jianjie">登录后即可查看全部内容</navigator>
-            </view>
+            </view> -->
             <view class="detaildata">
                 <view class="span"></view>
                 <view class="viewTitle">我要留言</view>
                 <view class="span2"></view>
             </view>
-            <view class="message {{!_userInfo?'hide':''}}">
+            <view class="message">
                 <label>姓名</label>
-                <input type="text" placeholder="请输入你的姓名" placeholder-class="pace" model:value="{{ msgName }}"  />
+                <input type="text" placeholder="请输入你的姓名" placeholder-class="pace" model:value="{{ msgName }}" />
                 <label>电话</label>
-                <input type="text" placeholder="请输入你的电话" placeholder-class="pace"  model:value="{{ msgPhone }}"  />
+                <input type="text" placeholder="请输入你的电话" placeholder-class="pace" model:value="{{ msgPhone }}" />
                 <label>内容</label>
-                <textarea placeholder="请输入你的内容" placeholder-class="pace"  model:value="{{ msgContent }}" ></textarea>
+                <textarea placeholder="请输入你的内容" placeholder-class="pace" model:value="{{ msgContent }}"></textarea>
                 <button class="submit" bindtap="submitMsg">提交</button>
             </view>
 
