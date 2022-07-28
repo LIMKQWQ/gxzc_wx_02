@@ -3,7 +3,7 @@
     <fixedMenus top="560rpx" id="fixedMenus"></fixedMenus>
 
     <!-- 筛选 -->
-    <view class="resourcontent">
+    <view class="resourcontent"  wx:if="{{showTop}}">
         <view class="filterBar">
             <view class="filterTabs">
                 <text bind:tap="handover" data-num="1">资产出租</text>
@@ -24,26 +24,28 @@
                     <view class="filterList">
                         <view class="filterTit"><text>分类</text></view>
                         <view class="filterOption">
-                            <text wx:for="{{subFilterList.type}}" bindtap="handleFilterType" data-item="{{item}}">{{item.tname}}</text>
+                            <text wx:for="{{subFilterList.type}}" bindtap="handleFilterType" data-item="{{item}}"  data-index="{{index}}" 
+                            class="{{isType==index?'active':''}}">{{item.tname}}</text>
                         </view>
                     </view>
                     <view class="filterList">
                         <view class="filterTit"><text>所在地</text></view>
                         <view class="filterOption">
-                            <text wx:for="{{subFilterList.manufacturer}}" bindtap="handleFilterManu" data-item="{{item}}">{{item}}</text>
+                            <text wx:for="{{subFilterList.manufacturer}}" bindtap="handleFilterManu" data-item="{{item}}" data-index="{{index}}" 
+                            class="{{isManufacturer==index?'active':''}}">{{item}}</text>
                         </view>
                     </view>
                 </view>
             </view>
         </view>
-        <view class="inputseach">
+        <view class="inputseach"  wx:if="{{showTop}}">
             <image src="./images/seach.png" mode="widthFix" alt="" />
             <input placeholder-style="font-size:28rpx" type="text" confirm-type='search' placeholder="请输入关键词进行搜索" model:value="{{searchStr}}" bindinput="inputChange" bindconfirm="search" />
             <view class="searchBtn" bind:tap="search">搜索</view>
         </view>
     </view>
     <!-- 最新通告 -->
-    <view class="newsInfo">
+    <view class="newsInfo" wx:if="{{showTop}}">
         <view class="top">
             <view class="title">最新<text>通告</text> </view>
             <!-- <view class="more"><navigator 	hover-class="none" url="/pak1/announce-list/announce-list">查看更多</navigator><image src="./images/moreIcon.png" mode="widthFix" /></view> -->
@@ -71,8 +73,9 @@
     </view>
     <!-- 资源列表 -->
     <view class="tip" hidden="{{!showTip}}">
-        搜索结果如下
+        搜索结果如下 <text wx:if="{{searchCate!=null}}">,{{searchCate}}</text> <text wx:if="{{searchManu!=null}}">,{{searchManu}}</text> <view bindtap="closeSearch" class="closeSearch">取消搜索</view>
     </view>
+
     <view class="resourceList">
 
         <navigator hover-class="none" url="/pak1/resource-detail/resource-detail?id={{item.id}}" class="resourceItem" wx:for="{{resourceList}}" wx:key="self">

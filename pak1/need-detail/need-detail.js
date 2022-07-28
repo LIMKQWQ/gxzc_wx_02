@@ -18,10 +18,11 @@ Page({
         quantity: null,
         recommend: null,
         status: null,
+        msgUnit: "",
         msgName: '',
         msgPhone: '',
         msgContent: '',
-        baseUrl:"https://gxzc.eccode.net"
+        baseUrl: "https://gxzc.eccode.net"
     },
     swiperChange({
         detail
@@ -58,7 +59,7 @@ Page({
             content = content.replaceAll("<img", `<img style=" display:block;max-width:100%;object-fit:cover;object-position:center" `)
             content = content.replaceAll(/<img style=" display:block;max-width:100%;object-fit:cover;object-position:center"(.*?)style="(.*?)"(?=.*?[\/]?>)/g, `<img style=" max-width:100%;object-fit:cover;object-position:center;$2"$1`)
             content = content.replaceAll("<table", `<table style="max-width:100% !important;"`)
-            content =content.replaceAll(`src="`,`src="${this.data.baseUrl}`)
+            content = content.replaceAll(`src="`, `src="${this.data.baseUrl}`)
             content = `<div style="width:100%;margin:0 auto;word-break:break-all;">${content}</div>`
             this.setData({
                 images: images,
@@ -103,15 +104,17 @@ Page({
         this.selectComponent("#fixedMenus").showRecommend()
     },
     async submitMsg() {
-       let {
+        let {
+            msgUnit,
             msgPhone,
             msgName,
             msgContent
         } = this.data
         console.log(msgPhone,
+            msgUnit,
             msgName,
             msgContent, "111", this.data);
-        if (msgName != '' && msgPhone != '' && msgContent != '') {
+        if (msgName != '' && msgPhone != '' && msgContent != '' && msgUnit!='') {
             console.log("xxxxx");
             await getApp().$apis.sendMsg().then(res => {
                 wx.showToast({
@@ -119,9 +122,10 @@ Page({
                 })
             })
             this.setData({
-                msgPhone:'',
-                msgName:"",
-                msgContent:""
+                msgUnit:"",
+                msgPhone: '',
+                msgName: "",
+                msgContent: ""
             })
         } else {
             wx.showToast({

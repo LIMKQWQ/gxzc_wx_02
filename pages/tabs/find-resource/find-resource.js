@@ -64,8 +64,11 @@ Component({
         showFilter: false,
         filterType: 0,
         banner: "",
+        isManufacturer:null,
+        isType:null,
         searchCate: null,
         searchManu: null,
+        showTop:true,
         classes: {
             list: ["类别1", "类别2"],
             index: null
@@ -275,7 +278,8 @@ Component({
 
             this.setData({
                 totalPage: list.last_page,
-                resourceList: list.data
+                resourceList: list.data,
+                showTop:false
             })
 
         },
@@ -403,19 +407,31 @@ Component({
             })
         },
         handleFilterType(e) {
-            console.log(e.currentTarget.dataset.item.tname);
+            console.log(e.currentTarget.dataset);
             this.setData({
-                searchCate: e.currentTarget.dataset.item.tname
+                searchCate: e.currentTarget.dataset.item.tname,
+                isType:e.currentTarget.dataset.index
             })
             this.search()
         },
         // Manufacturer
         handleFilterManu(e) {
-            console.log(e.currentTarget.dataset.item);
+            console.log(e.currentTarget.dataset);
             this.setData({
-                searchManu: e.currentTarget.dataset.item
+                searchManu: e.currentTarget.dataset.item,
+                isManufacturer:e.currentTarget.dataset.index
             })
             this.search()
+        },
+        closeSearch(){
+            this.setData({
+                searchManu:null,
+                isManufacturer:null,
+                searchCate:null,
+                isType:null,
+                showTip:false,
+                showTop:true
+            })
         }
 
 

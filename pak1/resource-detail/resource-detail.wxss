@@ -281,7 +281,16 @@
   font-size: 24rpx;
   color: #fff;
 }
-
+.container .resourBox .titleBox .tag_czcs{
+  background-color: #21439B;
+  width: 120rpx;
+  text-align: center;
+  display: inline-block;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: #fff;
+}
 .intr {
   margin-top: 40rpx;
   color: #333;

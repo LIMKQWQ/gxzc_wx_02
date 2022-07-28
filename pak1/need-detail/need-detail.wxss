@@ -66,7 +66,7 @@
   padding: 30rpx;
   position: relative;
   overflow-x: hidden;
-  
+
 }
 
 .container .resourBox .titleBox {
@@ -223,6 +223,7 @@
   display: flex;
   flex-wrap: wrap;
   height: 98rpx;
+  z-index: 999;
 }
 
 .container .rebuttones .btn {
@@ -259,11 +260,15 @@
   height: 32rpx;
   margin-left: 8rpx;
 }
-.container .resourBox .titleBox .tag_qz,.container .resourBox .titleBox text{
+
+.container .resourBox .titleBox .tag_qz,
+.container .resourBox .titleBox text {
   margin-right: 20rpx;
   display: inline-block;
 }
-.container .resourBox .titleBox .tag_qz,.container .resourBox .titleBox .tag_qg  {
+
+.container .resourBox .titleBox .tag_qz,
+.container .resourBox .titleBox .tag_qg {
   font-size: 22rpx;
   color: #fff;
   background-color: #21439B;
@@ -273,6 +278,7 @@
   line-height: 40rpx;
   display: block;
 }
+
 .intr {
   margin-top: 40rpx;
   color: #333;
@@ -296,9 +302,11 @@
   margin-top: 28rpx;
   display: block;
 }
-.container .message .pace{
+
+.container .message .pace {
   color: #999;
 }
+
 .container .message input,
 .container .message textarea {
   padding: 12rpx 20rpx;
@@ -314,7 +322,7 @@
   box-sizing: border-box;
 }
 
-.container .message .submit{
+.container .message .submit {
   width: 200rpx;
   margin-top: 40rpx;
   height: 66rpx;
@@ -325,7 +333,12 @@
   font-size: 32rpx;
   margin-left: 0;
 }
-.container .banner image{
+
+.container .banner image {
   width: 100%;
   height: auto;
+}
+
+.messageTit {
+  margin-top: 60rpx;
 }

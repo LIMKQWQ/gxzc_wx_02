@@ -157,6 +157,7 @@
   padding-top: 25rpx;
   padding-left: 17rpx;
   border-radius: 7rpx;
+  font-size: 28rpx;
 }
 
 .messageBoard .inputs .inputItem textarea::-webkit-input-placeholder {

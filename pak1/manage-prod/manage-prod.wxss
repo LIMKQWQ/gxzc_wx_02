@@ -28,9 +28,9 @@
 }
 
 .container .list {
-  width: 690rpx;
   margin: 0 auto;
   margin-top: 30rpx;
+  padding: 0 30rpx;
 }
 
 .container .list .row {
@@ -43,11 +43,11 @@
 }
 
 .container .list .row .listItem {
-  min-width: 335rpx;
+  width: 335rpx;
   box-shadow: 0rpx 6rpx 17rpx 1rpx rgba(153, 153, 153, 0.2);
   padding-bottom: 84rpx;
   position: relative;
-  height: 480rpx;
+  height: 450rpx;
 }
 
 .container .list .row .listItem .thumbnail image {
@@ -66,7 +66,7 @@
   font-size: 22rpx;
   color: #666;
   display: flex;
-  height: 60rpx;
+  height: 30rpx;
   padding: 0 15rpx;
 }
 
@@ -122,9 +122,9 @@
   text-overflow: ellipsis;
   /* white-space: nowrap; */
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   /* 指定显示文本的行数 */
-  height: 60rpx;
+  height: 30rpx;
   padding-left: 15rpx;
 }
 
@@ -146,9 +146,25 @@
   color: #666;
   margin-top: 15rpx;
 }
-.container .pak_cz{
+
+.container .pak_cz {
   color: #21439B;
 }
-.container .pak_cs{
+
+.container .pak_cs {
   color: #CF1D1D;
+}
+
+.container .list .row .listItem .info .status {
+  width: 59%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.container .list .row .listItem .info .number {
+  width: 40%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

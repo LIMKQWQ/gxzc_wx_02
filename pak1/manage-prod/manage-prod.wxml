@@ -31,16 +31,16 @@
 					<view>{{item.diameter}}</view>
 				</view>
 				<view class="pakitembet info" wx-if="{{item.again_rent}}">
-					<view wx:if="{{item.category == 1 || item.category == 2 }}">状态:
+					<view wx:if="{{item.category == 1 || item.category == 2 }}" class="status">状态:
 						<text class="pak_cz" wx:if="{{item.category == 1}}">出租</text><text class="pak_cs" wx:if="{{item.category == 2}}">出售</text>
 					</view>
-					<view wx:if="{{item.category == 3}}">
+					<view wx:if="{{item.category == 3}}" class="status">
 						状态：<text class="pak_cz">出租</text> / <text class="pak_cs">出售</text>
 					</view>
-					<view>库存: <text>{{item.again_rent}}根</text></view>
+					<view class="number">库存: <text>{{item.again_rent}}根</text></view>
 				</view>
 				<view class="toManage" catchtap="{{true}}">
-					<navigator hover-class="none" url="/pak1/pub-prod/pub-prod?id={{item.id}}" class="btn">产品管理
+					<navigator hover-class="none" url="/pak1/{{ item.template==2?'pub-prod/pub-prod':'pub-prod-temp/pub-prod-temp' }}?id={{item.id}}" class="btn">产品管理
 						<image src="./images/btnIconWhite.png" mode="widthFix" />
 					</navigator>
 				</view>

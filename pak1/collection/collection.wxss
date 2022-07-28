@@ -44,7 +44,7 @@
   padding-bottom: 84rpx;
   margin-bottom: 30rpx;
   position: relative;
-  height: 480rpx;
+  height: 450rpx;
 }
 
 .container .list .row .listItem .thumbnail {
@@ -95,7 +95,7 @@
   font-size: 22rpx;
   color: #666;
   display: flex;
-  height: 60rpx;
+  height: 30rpx;
   padding: 0 15rpx;
 }
 
@@ -150,11 +150,11 @@
   padding: 0 15rpx;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   /* 指定显示文本的行数 */
   overflow: hidden;
   /* 超出隐藏 */
-  height: 60rpx;
+  height: 30rpx;
 }
 
 .container .list .row .listItem .manufacturer {

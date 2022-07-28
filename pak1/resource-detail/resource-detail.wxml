@@ -15,7 +15,7 @@
         </view>
     </view>
     <view class="resourBox">
-        <view class="titleBox"><text>{{info.titel}}</text> <text class="tag_qz" wx:if="{{ category==1 || category==3 }}">出租</text> <text class="tag_qg" wx:if="{{ category==2 || category==3}}" >出售</text></view>
+        <view class="titleBox"><text>{{info.titel}}</text> <text class="tag_qz" wx:if="{{ category==1}}">出租</text> <text class="tag_qg" wx:if="{{ category==2}}">出售</text> <text wx:if="{{ category==3}}"  class="tag_czcs">出租/出售</text></view>
         <!-- <view class="math">
                 <view class="math001">
                     <span class="quantity animateNum num">{{info.again_rent||0}}根</span>

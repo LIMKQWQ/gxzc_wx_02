@@ -67,17 +67,22 @@ App({
          console.log(res,'***********************************************')
           let {getOpenId,sendUserInfo}=getApp().$apis;
           let {code}=await wx.login();
-          // console.log(code)
+          console.log(code,"code")
           let openid=await getOpenId({code});
           let {userInfo:{nickName,gender,language,city,province,country,avatarUrl}}=res;
-          // console.log({openid,encryptedData,iv})
+          let {encryptedData,iv} =res;
+          // console.log(res,"res");
+          // console.log(nickName,gender,language,city,province,country,avatarUrl,"==========================================================================");
+          console.log(openid,"openid");
+          // console.log({openid,encryptedData,iv},"wwww")
           wx.showLoading({
             title:"加载中"
           })
-          let res_=await sendUserInfo({openid,nickName,gender,language,city,province,country,avatarUrl});
+          // console.log({openid,nickName,gender,language,city,province,country,avatarUrl});
+          let res_=await sendUserInfo({openid,encryptedData,iv});
         
           wx.hideLoading();
-          console.log(res_)
+          console.log(res_,"授权获取")
           
           wx.navigateTo({
             url:"/pages/auth/auth"

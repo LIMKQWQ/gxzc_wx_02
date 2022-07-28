@@ -197,21 +197,23 @@ Component({
             })
         },
         bindPickerChange: function (e) {
-            console.log('picker发送选择改变，携带值为', e.detail.value,e.target.dataset.item[e.detail.value])
-            let item = e.target.dataset.item[e.detail.value];
-            console.log(item);
+            console.log(e,"eeee");
+            console.log('picker发送选择改变，携带值为', e.detail.value,e.currentTarget.dataset.item[e.detail.value])
+            let item = e.currentTarget.dataset.item[e.detail.value];
+            console.log(item.type,"tyoe");
             this.setData({
                 index1: e.detail.value,
                 pickerId2: item.id,
                 type: item.type,
                 arrayThree: []
             })
-            console.log(e.target.dataset.item.id, "id");
+            console.log(e.currentTarget.dataset.item.id, "id");
             this.getPickerTwo()
         },
         bindPickerChangeTwo: function (e) {
-            console.log('picker发送选择改变，携带值为', e.detail.value, e.target.dataset.item[e.detail.value])
-            let item = e.target.dataset.item[e.detail.value];
+            console.log('picker发送选择改变，携带值为', e.detail.value, e.currentTarget.dataset.item[e.detail.value])
+            let item = e.currentTarget.dataset.item[e.detail.value];
+            console.log(item.type,"tyoe");
             this.setData({
                 index2: e.detail.value,
                 pickerId3:item.id,
@@ -221,8 +223,9 @@ Component({
 
         },
         bindPickerChangeThree: function (e) {
-            console.log('picker发送选择改变，携带值为', e.detail.value, e.target.dataset.item[e.detail.value])
-            let item = e.target.dataset.item[e.detail.value];
+            console.log('picker发送选择改变，携带值为', e.detail.value, e.currentTarget.dataset.item[e.detail.value])
+            let item = e.currentTarget.dataset.item[e.detail.value];
+            console.log(item.type,"tyoe");
             this.setData({
                 index3: e.detail.value,
                 type:item.type
@@ -283,11 +286,11 @@ Component({
             console.log(type);
             if (type == 1) {
                 wx.navigateTo({
-                    url: '/pak1/pub-prod/pub-prod',
+                    url: '/pak1/pub-prod-temp/pub-prod-temp',
                 })
             } else if (type == 2) {
                 wx.navigateTo({
-                    url: '/pak1/pub-prod-temp/pub-prod-temp',
+                    url: '/pak1/pub-prod/pub-prod',
                 })
             }   
             this.closePopup()

@@ -32,12 +32,14 @@
                 <image src="./images/lock.png" mode="aspectFill" alt="" />
                 <navigator hover-class="none" url="/pages/login/login" class="jianjie">登录后即可查看全部内容</navigator>
             </view> -->
-            <view class="detaildata">
+            <view class="detaildata messageTit">
                 <view class="span"></view>
-                <view class="viewTitle">我要留言</view>
+                <view class="viewTitle ">我要留言</view>
                 <view class="span2"></view>
             </view>
             <view class="message">
+                <label>资源单位</label>
+                <input type="text" placeholder="请输入资源单位" placeholder-class="pace" model:value="{{ msgUnit }}" />
                 <label>姓名</label>
                 <input type="text" placeholder="请输入你的姓名" placeholder-class="pace" model:value="{{ msgName }}" />
                 <label>电话</label>

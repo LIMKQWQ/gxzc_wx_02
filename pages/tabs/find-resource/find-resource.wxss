@@ -50,6 +50,8 @@
   padding: 0 30rpx;
   margin-top: 40rpx;
   background-color: #FAFAFA;
+  padding-top: 10rpx;
+
 }
 
 .container .newsInfo .top {
@@ -276,8 +278,17 @@
   padding-left: 30rpx;
   margin: 30rpx 0 40rpx;
   color: #666666;
+  position: relative;
 }
 
+.container .tip text {
+  color: #21439B;
+}
+.container .tip .closeSearch{
+  position: absolute;
+  right: 30rpx;
+  top: 0;
+}
 .container .resourceList {
   margin-top: 40rpx;
   padding: 0 30rpx;
@@ -291,7 +302,7 @@
   padding-bottom: 84rpx;
   margin-bottom: 30rpx;
   position: relative;
-  height: 480rpx;
+  height: 450rpx;
   box-shadow: 0rpx 6rpx 17rpx 1rpx rgba(153, 153, 153, 0.2);
 }
 
@@ -349,7 +360,7 @@
   color: #666;
   display: flex;
   margin-top: 21rpx;
-  height: 60rpx;
+  height: 30rpx;
 }
 
 .container .resourceList .resourceItem .info .tags .tagItem {
@@ -420,11 +431,11 @@
   color: #666;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   /* 指定显示文本的行数 */
   overflow: hidden;
   /* 超出隐藏 */
-  height: 60rpx;
+  height: 30rpx;
 }
 
 .filterBar {
@@ -464,12 +475,13 @@
   top: 44rpx;
   left: 0;
   width: 100%;
+  border-radius: 4rpx;
 }
 
 .filterBar .filterMenu .filterCont {
   background-color: #fff;
   padding: 0 30rpx;
-  box-shadow: 0rpx 10rpx 25rpx 5rpx rgba(153, 153, 153, 0.5);
+  box-shadow: 0rpx 10rpx 25rpx 5rpx rgba(153, 153, 153, 0.3);
   width: 100%;
 }
 
@@ -510,9 +522,14 @@
 }
 
 .container .resourceList .resourceItem .info .pak .category {
-  width: 59% ;
+  width: 59%;
 }
 
 .container .resourceList .resourceItem .info .pak .again_rent {
   width: 40%;
+}
+
+.filterBar .filterMenu .filterCont .filterList .filterOption .active {
+  color: #21439B;
+  text-decoration: underline;
 }

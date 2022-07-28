@@ -26,7 +26,7 @@ Component({
             })
             let pages=getCurrentPages();
             let page=pages[pages.length-1];
-            console.log(page.options);
+            console.log(page.options,"options");
             let id=page.options.id;
             if(id||id==='0'){
                 this.setData({
@@ -290,8 +290,9 @@ Component({
             let {lng,lat}=list[1][indexs[1]]
             data.location=`${lng},${lat}`
         }
-        let {pubProdMod}=getApp().$apis;
-        let fn=pubProdMod;
+        let {pubProdMod,modifyProd}=getApp().$apis;
+        console.log(this.data.isModify,"this.data.isModify");
+        let fn=this.data.isModify?modifyProd:pubProdMod;
         if(this.data.isModify){
             data.id=this.data.id
         }
@@ -472,10 +473,10 @@ Component({
             title:"正在加载"
         })
         let res=await getProd({id});
-        console.log(res)
+        console.log(res,"ressssssssssssssssssssssssssssssssssssssssssssssssssss")
         let {drill:_grade,grade:_pipe_level,category:_category,size:_sizedata,province:{list:address},city:{list:cityAddress},area:{list:areaAddress}}=res;
           
-
+            console.log(_category,"_category");
             this.setData({
                 id:res.list.id,
                 "lists.grade.list":this._dealObj(_grade.list),
@@ -504,7 +505,8 @@ Component({
             images,
             content,
             longitude,
-            latitude
+            latitude,
+            note
         }=res.list;
         let location=`${longitude},${latitude}`;
         
@@ -519,6 +521,7 @@ Component({
         let areaIndex=this._getIndex(this.data.lists.address.list[2],area,"id")
         this.setData({
             title,
+            note,
             years,
             shuiyan,
             manufactor,
