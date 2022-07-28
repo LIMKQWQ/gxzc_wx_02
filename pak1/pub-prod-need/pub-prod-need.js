@@ -524,7 +524,6 @@
             },
             async initData() {
                 let {
-                    getPubClasses,
                     getAddress
                 } = getApp().$apis;
 
@@ -537,12 +536,18 @@
                     code: address
                 } = res;
                 // let address = code;
+                address.map(item=>{
+                    Object.assign(item,{
+                        id:item.value
+                    })
+                    console.log(item);
+                })
                 console.log(address, "address");
                 // console.log(address,"address");
                 // //加载市
-                let cityAddress = await this._loadCity(address[0].value);
+                let cityAddress = await this._loadCity(address[0].id);
                 //加载区
-                let areaAddress = await this._loadArea(address[0].value, cityAddress[0].id)
+                let areaAddress = await this._loadArea(address[0].id, cityAddress[0].id)
                 this.setData({
                     "lists.address.list[0]": address,
                     "lists.address.list[1]": cityAddress,

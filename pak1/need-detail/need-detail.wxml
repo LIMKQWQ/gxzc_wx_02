@@ -2,7 +2,7 @@
     <ctHeader isBack="{{true}}">需求详情</ctHeader>
     <fixedMenus top="800rpx" id="fixedMenus"></fixedMenus>
     <view class="banner">
-        <image src="{{baseUrl+images}}" mode="widthFix"></image>
+        <image src="{{baseUrl+images}}"></image>
     </view>
     <view class="resourBox">
         <view class="titleBox">

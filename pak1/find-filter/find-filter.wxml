@@ -1,0 +1,73 @@
+<view class="container" style="padding-top:{{_deviceInfo.ktxStatusHeight+88}}rpx">
+  <ctHeader isBack="{{true}}">筛选结果</ctHeader>
+  <fixedMenus top="560rpx" id="fixedMenus"></fixedMenus>
+
+  <view class="tip">
+    搜索结果如下<text>,{{seachc}}</text>
+  </view>
+  <!-- 资源列表 -->
+  <view class="resourceList">
+    <navigator hover-class="none" url="/pak1/resource-detail/resource-detail?id={{item.id}}" class="resourceItem" wx:for="{{resourceList}}" wx:key="self">
+      <view class="pic">
+        <image src="{{find.getImg(item.image,baseUrl)}}" mode="aspectFill" class="picIcon"></image>
+        <view class="distance">
+          <image src="./images/distance.png" mode="aspectFill" class="distanceIcon"></image>
+          距您{{item.distance}}KM
+        </view>
+      </view>
+      <view class="info">
+        <view class="infoTitle">{{item.titel}}</view>
+        <view class="tags" wx:if="{{item.template == 2}}">
+          <view class="tagItem">
+            <block wx-if="{{item.water_eye}}">{{item.water_eye}} <block wx-if="{{item.manufacturer||item.steel_grade}}">|</block>
+            </block>
+            <block wx-if="{{item.manufacturer}}">{{item.manufacturer}} <block wx-if="{{item.steel_grade}}">|</block>
+            </block>{{item.steel_grade||""}}
+          </view>
+        </view>
+        <view class="intr" wx:if="{{item.template == 1}}">
+          介绍：{{item.note}}
+        </view>
+        <view wx:if="{{item.template == 1}}" class="manufacturer"> 生产厂家：{{item.manufacturer}} </view>
+        <view class="pak">
+          <view class="pakitem" wx-if="{{item.diameter}}">
+            接头外径:
+            <view>{{item.diameter}}</view>
+          </view>
+          <view class="pakitembet" wx-if="{{item.again_rent}}">
+            <view wx:if="{{item.category == 1 || item.category == 2 }}">状态:
+              <text class="pak_cz" wx:if="{{item.category == 1}}">出租</text><text class="pak_cs" wx:if="{{item.category == 2}}">出售</text>
+            </view>
+            <view class="category" wx:if="{{item.category == 3}}">
+              状态:<text class="pak_cz">出租</text> / <text class="pak_cs">出售</text>
+            </view>
+            <view class="again_rent">库存: <text>{{item.again_rent}}根</text></view>
+          </view>
+        </view>
+      </view>
+      <view catchtap="{{true}}">
+        <view class="toKf" bind:tap="showKf">
+          在线询价
+          <image src="./images/to.png" mode="aspectFill" class="toKfIcon"></image>
+        </view>
+      </view>
+
+    </navigator>
+    <empty style="margin:0 auto;padding-bottom:50rpx" top="0" wx-if="{{!resourceList||!resourceList.length}}">无搜索结果</empty>
+    <view class="lodingMoreIcon" hidden="{{!showLoading}}">
+      <van-loading style="margin-right:20rpx" />
+      加载中
+    </view>
+  </view>
+</view>
+<wxs module="find">
+  function getImg(str, baseUrl) {
+    if (str.indexOf("http") != -1) {
+      return str;
+    }
+    return baseUrl + str;
+  }
+  module.exports = {
+    getImg: getImg
+  }
+</wxs>

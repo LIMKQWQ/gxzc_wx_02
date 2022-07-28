@@ -17,13 +17,9 @@ Component({
             _userInfo
         } = getApp().globalData;
         let {
-            getUserInfo,
-            getHomeNotice
+            getUserInfo
         } = getApp().$apis;
-        let notices = await getHomeNotice();
-        this.setData({
-            notices
-        })
+
         wx.$bus.on("login", (userInfo) => {
             this.setData({
                 _userInfo: userInfo

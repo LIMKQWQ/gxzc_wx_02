@@ -7,6 +7,7 @@ Page({
     show: false
   },
   async getPhoneNumber(e) {
+    console.log(e,"eee");
     let {encryptedData,iv}=e.detail;
     let {getOpenId,sendUserPhone}=getApp().$apis;
     wx.showLoading({
@@ -14,6 +15,7 @@ Page({
     })
     let {code}=await wx.login();
     let openid=await getOpenId({code});
+    console.log(openid,encryptedData,iv);
     let res=await sendUserPhone({openid,encryptedData,iv})
     wx.hideLoading()
     if(res.code==1){

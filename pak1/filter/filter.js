@@ -166,14 +166,15 @@ Page({
     })
   },
   skipProduct(e) {
-    console.log(e.currentTarget.dataset.item.pid);
-    wx.setStorage({
-      data: e.currentTarget.dataset.item.pid,
-      key: 'filterId',
-    })
-    // prevPage.
-    wx.switchTab({
-      url: '/pages/tabs/find-resource/find-resource',
+    // console.log(e.currentTarget.dataset.item.tname);
+    // wx.setStorage({
+    //   data: e.currentTarget.dataset.item.pid,
+    //   key: 'filterId',
+    // })
+    let name = e.currentTarget.dataset.item.tname;
+    // console.log(name);
+    wx.navigateTo({
+      url: `/pak1/find-filter/find-filter?name=${name}`,
     })
   }
 })

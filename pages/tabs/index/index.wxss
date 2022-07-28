@@ -478,8 +478,8 @@
 }
 
 .sortList .sortIcon {
-  width: 82rpx;
-  height: 82rpx;
+  width: 83rpx;
+  height: 83rpx;
   border: 1rpx dashed #ccc;
   position: relative;
   margin: auto;

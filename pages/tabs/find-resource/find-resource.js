@@ -11,43 +11,75 @@ Component({
             this.loadMore()
         }
         await this._initData();
-    },
-    pageLifetimes: {
-        // 组件显示触发
-        show: function () {
-            let that = this;
-            wx.getStorage({
-                key: 'filterId',
-                success(res) {
-                    console.log(res.data, "storage")
-                    getApp().$apis.getProductFiler({
-                        pid: res.data
-                    }).then(res => {
-                        console.log(res, "resfiltersss", that);
-                        that.setData({
-                            subFilterList: res,
-                            showFilter: false,
-                            showSubFilter: true
-                        })
-                    })
-                }
-            });
-            wx.removeStorage({
-                key: 'filterId',
-                success:function(res){
-                    console.log(res,"resssssssssssssssss");
-                }
-            })
-            // console.log(123);
-        },
-        hide:function(){
-            this.setData({
-                showFilter: false,
-                showSubFilter: false
-            })
-        }
+        let {
+            _userInfo
+        } = getApp().globalData;
+        let {
+            getUserInfo
+        } = getApp().$apis;
 
+        wx.$bus.on("login", (userInfo) => {
+            this.setData({
+                _userInfo: userInfo
+            })
+        })
+        wx.$bus.on("logout", () => {
+            this.setData({
+                _userInfo: null,
+                userInfo: null
+            })
+        })
+        wx.$bus.on("refreshUserInfo", (userInfo) => {
+            console.log("refreshUserInfo", userInfo)
+            this.setData({
+                userInfo: userInfo.user
+            })
+        })
+        if (_userInfo) {
+            //已登录
+            let userInfo = await getUserInfo();
+            console.log("已登录,获取用户信息", userInfo)
+            if (userInfo) {
+                wx.$bus.emit("refreshUserInfo", userInfo);
+            }
+        }
     },
+    // pageLifetimes: {
+    //     // 组件显示触发
+    //     show: function () {
+    //         let that = this;
+    //         wx.getStorage({
+    //             key: 'filterId',
+    //             success(res) {
+    //                 console.log(res.data, "storage")
+    //                 getApp().$apis.getProductFiler({
+    //                     pid: res.data
+    //                 }).then(res => {
+    //                     console.log(res, "resfiltersss", that);
+    //                     that.setData({
+    //                         subFilterList: res,
+    //                         showFilter: false,
+    //                         showSubFilter: true
+    //                     })
+    //                 })
+    //             }
+    //         });
+    //         wx.removeStorage({
+    //             key: 'filterId',
+    //             success: function (res) {
+    //                 console.log(res, "resssssssssssssssss");
+    //             }
+    //         })
+    //         // console.log(123);
+    //     },
+    //     hide: function () {
+    //         this.setData({
+    //             showFilter: false,
+    //             showSubFilter: false
+    //         })
+    //     }
+
+    // },
 
     options: {
         pureDataPattern: /^__/ // 指定所有 _ 开头的数据字段为纯数据字段
@@ -64,11 +96,12 @@ Component({
         showFilter: false,
         filterType: 0,
         banner: "",
-        isManufacturer:null,
-        isType:null,
+        isManufacturer: null,
+        isType: null,
         searchCate: null,
         searchManu: null,
-        showTop:true,
+        showTop: true,
+        userInfo: null,
         classes: {
             list: ["类别1", "类别2"],
             index: null
@@ -279,7 +312,7 @@ Component({
             this.setData({
                 totalPage: list.last_page,
                 resourceList: list.data,
-                showTop:false
+                showTop: false
             })
 
         },
@@ -410,7 +443,7 @@ Component({
             console.log(e.currentTarget.dataset);
             this.setData({
                 searchCate: e.currentTarget.dataset.item.tname,
-                isType:e.currentTarget.dataset.index
+                isType: e.currentTarget.dataset.index
             })
             this.search()
         },
@@ -419,18 +452,18 @@ Component({
             console.log(e.currentTarget.dataset);
             this.setData({
                 searchManu: e.currentTarget.dataset.item,
-                isManufacturer:e.currentTarget.dataset.index
+                isManufacturer: e.currentTarget.dataset.index
             })
             this.search()
         },
-        closeSearch(){
+        closeSearch() {
             this.setData({
-                searchManu:null,
-                isManufacturer:null,
-                searchCate:null,
-                isType:null,
-                showTip:false,
-                showTop:true
+                searchManu: null,
+                isManufacturer: null,
+                searchCate: null,
+                isType: null,
+                showTip: false,
+                showTop: true
             })
         }
 

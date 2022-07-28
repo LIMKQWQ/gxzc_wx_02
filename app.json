@@ -32,7 +32,8 @@
         "need-detail/need-detail",
         "pub-prod-temp/pub-prod-temp",
         "pub-prod-need/pub-prod-need",
-        "filter/filter"
+        "filter/filter",
+        "find-filter/find-filter"
       ]
     }
   ],

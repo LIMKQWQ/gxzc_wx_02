@@ -333,10 +333,15 @@
   font-size: 32rpx;
   margin-left: 0;
 }
-
-.container .banner image {
+.container .banner {
+  text-align: center;
   width: 100%;
-  height: auto;
+  height: 500rpx;
+}
+.container .banner image {
+  height: 500rpx;
+  width: 100%;
+  object-fit: cover;
 }
 
 .messageTit {

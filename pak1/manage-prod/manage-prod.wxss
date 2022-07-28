@@ -38,9 +38,9 @@
   justify-content: space-between;
 }
 
-.container .list .row:last-child {
+/* .container .list .row:last-child {
   margin-top: 30rpx;
-}
+} */
 
 .container .list .row .listItem {
   width: 335rpx;
@@ -48,6 +48,7 @@
   padding-bottom: 84rpx;
   position: relative;
   height: 450rpx;
+  margin-bottom: 25rpx;
 }
 
 .container .list .row .listItem .thumbnail image {
